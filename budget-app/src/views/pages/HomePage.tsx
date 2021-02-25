@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import NavBar from '../../components/organisms/NavBar/NavBar';
-import Main from '../../components/organisms/Main/Main';
+import Main from './Dashboard/Dashboard';
 import PaymentBar from '../../components/organisms/PaymentBar/PaymentBar';
 
 const SDashboardContainer = styled.div`

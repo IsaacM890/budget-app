@@ -1,10 +1,10 @@
 import './App.css';
-import Dashboard from './views/pages/Dashboard';
+import HomePage from './views/pages/HomePage';
 function App() {
   return (
-    <div>
-      <Dashboard />
-    </div>
+    <>
+      <HomePage />
+    </>
   );
 }
 

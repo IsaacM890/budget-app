@@ -2,24 +2,16 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { IListItemProps } from '../../../models/index';
 
-const ListItemWrapper = styled.li<IListItemProps>(
-  ({ padding, margin }) => `
-  
+const ListItemWrapper = styled.li`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding:${padding};
-  margin:${margin};
-
-`
-);
-
-const ListItem: FC<IListItemProps> = ({ children, padding, margin }) => {
-  return (
-    <ListItemWrapper padding={padding} margin={margin}>
-      {children}
-    </ListItemWrapper>
-  );
+  padding: 5px 0;
+  margin: 5px 3px;
+`;
+//margin={''} padding={''}
+const ListItem: FC<IListItemProps> = ({ children }) => {
+  return <ListItemWrapper>{children}</ListItemWrapper>;
 };
 
 export default ListItem;

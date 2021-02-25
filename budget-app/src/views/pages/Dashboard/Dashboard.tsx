@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import BriefCard from '../../molecules/BriefCard/BriefCard';
-import CreditCard from '../../molecules/CreditCard/CreditCard';
-import IncomeChart from '../../molecules/IncomeChart/IncomeChart';
-import ActivityChart from '../../molecules/ActivityChart/ActivityChart';
+import BriefCard from '../../../components/molecules/BriefCard/BriefCard';
+import CreditCard from '../../../components/molecules/CreditCard/CreditCard';
+import IncomeChart from '../../../constants/charts/IncomeChart/IncomeChart';
+import ActivityChart from '../../../constants/charts/ActivityChart/ActivityChart';
 import { faArchive } from '@fortawesome/free-solid-svg-icons';
 import { faChartLine } from '@fortawesome/free-solid-svg-icons';
+import theme from '../../../style/theme/theme';
 
 const SMainContainer = styled.div`
   display: flex;
@@ -41,11 +42,11 @@ const ActivityWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-const Main: FC = () => {
+const Dashboard: FC = () => {
   return (
     <SMainContainer>
       <SFlexWrapper>
-        <CreditCard f_name={'itzhak'} l_name={'Maharat'} last4Digits={1589} exp_month={11} exp_year={25} />
+        <CreditCard first_name={'itzhak'} last_name={'Maharat'} last4Digits={1589} exp_month={11} exp_year={25} />
       </SFlexWrapper>
       <SFlexWrapper>
         <SIncomeChartWrapper>
@@ -57,8 +58,8 @@ const Main: FC = () => {
           title={'Investments'}
           revenue={'90,854'}
           profit={'+5.08%'}
-          iconbackgroundcolor={'#1ba9e7'}
-          iconcolor={'white'}
+          iconbackgroundcolor={theme.colors.blue.medium}
+          iconcolor={theme.colors.white.primary}
           icon={faArchive}
         />
       </SFlexWrapper>
@@ -67,8 +68,8 @@ const Main: FC = () => {
           title={'Sales'}
           revenue={'90,854'}
           profit={'+5.08%'}
-          iconbackgroundcolor={'#4333A0'}
-          iconcolor={'white'}
+          iconbackgroundcolor={theme.colors.blue.dark}
+          iconcolor={theme.colors.white.primary}
           icon={faChartLine}
         />
       </SFlexWrapper>
@@ -79,4 +80,4 @@ const Main: FC = () => {
   );
 };
 
-export default Main;
+export default Dashboard;

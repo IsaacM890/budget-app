@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { FontSize, FontWeight } from '../../../enums';
+import { FontSize } from '../../../enums';
 import { IBriefCardProps } from '../../../models/index';
 import Typography from '../../atoms/Typography/Typography';
-import Icon from '../../atoms/Icon/Icon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import theme from '../../../style/theme/theme';
 
 const SBriefCardContainer = styled.div`
   border-radius: 10px;
@@ -36,8 +37,8 @@ const SProfitCaptionWrapper = styled.div`
 
 const SMenuIconWrapper = styled.div`
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 20px;
+  top: 10px;
 `;
 
 const SCardIconWrapper = styled.div<IBriefCardProps>(
@@ -58,34 +59,30 @@ const SCardIconWrapper = styled.div<IBriefCardProps>(
 const BriefCard: FC<IBriefCardProps> = ({ title, profit, revenue, iconbackgroundcolor, icon, iconcolor }) => {
   return (
     <SBriefCardContainer>
-      <Typography fontweight={FontWeight.bold} fontsize={FontSize.heading2} color={'black'}>
+      <Typography fontsize={FontSize.heading2} margin={'5px 0'} fontweight={'bold'}>
         {title}
       </Typography>
       <SRevenueWrapper>
-        <Typography fontsize={FontSize.subtitle} color={'grey'}>
+        <Typography fontsize={FontSize.caption} color={theme.colors.grey.primary}>
           Revenue
         </Typography>
-        <Typography fontsize={FontSize.heading2} color={'#62CCF7'}>
+        <Typography fontsize={FontSize.heading2} color={theme.colors.blue.lightblue}>
           {revenue}
         </Typography>
       </SRevenueWrapper>
       <SProfitBox>
-        <Typography fontsize={FontSize.subtitle} color={'black'}>
-          {profit}
-        </Typography>
+        <Typography fontsize={FontSize.subtitle}>{profit}</Typography>
         <SProfitCaptionWrapper>
-          <Typography fontsize={FontSize.subtitle} color={'grey'}>
+          <Typography fontsize={FontSize.subtitle} color={theme.colors.grey.primary}>
             Since last month
           </Typography>
         </SProfitCaptionWrapper>
       </SProfitBox>
       <SMenuIconWrapper>
-        <Icon></Icon>
+        <FontAwesomeIcon icon={faEllipsisH} color={theme.colors.grey.primary} />
       </SMenuIconWrapper>
       <SCardIconWrapper iconbackgroundcolor={iconbackgroundcolor}>
-        <Icon>
-          <FontAwesomeIcon icon={icon} color={iconcolor} />
-        </Icon>
+        <FontAwesomeIcon icon={icon} color={iconcolor} />
       </SCardIconWrapper>
     </SBriefCardContainer>
   );

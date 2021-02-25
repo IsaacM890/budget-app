@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import UserDetails from '../../molecules/UserDetails/UserDetails';
 import PaymentList from '../../organisms/PaymentList/PaymentList';
-import { FontSize, FontWeight } from '../../../enums/index';
+import { FontSize } from '../../../enums/index';
 import Typography from '../../atoms/Typography/Typography';
 
 const SPaymentBarWrapper = styled.div`
@@ -21,13 +21,13 @@ const PaymentBar: FC = () => {
   return (
     <SPaymentBarWrapper>
       <UserDetails
-        f_name={'yaron'}
-        l_name={'avraham'}
+        first_name={'yaron'}
+        last_name={'avraham'}
         email={'yaron2324@gmail.com'}
         avatar={'https://www.itu.cet.ac.il/uploads/2017/08/default-avatar-1.jpg'}
       />
       <STitleWrapper>
-        <Typography color={'black'} fontsize={FontSize.heading2} fontweight={FontWeight.bold}>
+        <Typography fontsize={FontSize.heading2} margin={'5px 0'} fontweight={'bold'}>
           Payment History
         </Typography>
       </STitleWrapper>

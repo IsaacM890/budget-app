@@ -7,16 +7,13 @@ export enum FontSize {
   subtitle2 = 'subtitle2',
 }
 
-export enum FontWeight {
-  bold = 'bold',
-}
-
 export enum IconSize {
   Xlarge = 'xlarge',
   large = 'large',
   medium = 'medium',
   small = 'small',
 }
+
 export enum AvatarSize {
   xl = 'xl',
   lg = 'lg',

@@ -9,52 +9,47 @@ const setAvatarSize = (size?: AvatarSize) => {
       return `
         width: 70px;
         height:70px;
-        border-radius:50px;
         `;
 
     case AvatarSize.lg:
       return `
         width: 60px;
         height: 60px;
-        border-radius:50px;
         `;
 
     case AvatarSize.md:
       return `
         width: 50px;
         height:50px;
-        border-radius:50px;
         `;
 
     case AvatarSize.sm:
       return `
         width:40px;
         height:40px;
-        border-radius:50px;
         `;
 
     case AvatarSize.xs:
       return `
         width: 30px;
         height:30px;
-        border-radius:50px;
         `;
 
     default:
       return ` 
         width: 40px;
         height:40px;
-        border-radius:50px;
         `;
   }
 };
 
 const SAvatar = styled.img<IAvatarProps>`
-  ${(props) => setAvatarSize(props.size)};
+  ${({ size }) => setAvatarSize(size)};
+  ${({ borderRadius }) => `border-radius:${borderRadius};`};
 `;
 
-const Avatar: React.FC<IAvatarProps> = ({ size = AvatarSize.md, src, alt }) => {
-  return <SAvatar size={size} src={src} alt={alt}></SAvatar>;
+const Avatar: React.FC<IAvatarProps> = ({ size = AvatarSize.md, src, borderRadius }) => {
+  return <SAvatar size={size} src={src} alt={'avatar'} borderRadius={borderRadius}></SAvatar>;
 };
 
 export default Avatar;

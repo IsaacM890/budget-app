@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { AvatarSize, FontSize, FontWeight } from '../../../enums';
+import { AvatarSize, FontSize } from '../../../enums';
 import { IUserDetailsProps } from '../../../models/index';
 import Avatar from '../../atoms/Avatar/Avatar';
 import Typography from '../../atoms/Typography/Typography';
@@ -25,15 +25,15 @@ const SCaptionWrapper = styled.div`
   margin-top: 15px;
 `;
 
-const UserDetails: FC<IUserDetailsProps> = ({ f_name, l_name, email, avatar }) => {
+const UserDetails: FC<IUserDetailsProps> = ({ first_name, last_name, email, avatar }) => {
   return (
     <SUserDetailsContainer>
-      <Avatar size={AvatarSize.xl} src={avatar} alt={'pro pic'}></Avatar>
+      <Avatar size={AvatarSize.xl} borderRadius={'50px'} src={avatar}></Avatar>
       <SCaptionWrapper>
-        <Typography fontsize={FontSize.heading3} fontweight={FontWeight.bold} color={'black'}>
-          {f_name + ' ' + l_name}
+        <Typography fontsize={FontSize.heading3} margin={'5px 0'} fontweight={'bold'}>
+          {`${first_name}${' ' + last_name}`}
         </Typography>
-        <Typography fontsize={FontSize.subtitle} opacity={'0.5'} color={'black'}>
+        <Typography fontsize={FontSize.subtitle} opacity={'0.5'}>
           {email}
         </Typography>
       </SCaptionWrapper>

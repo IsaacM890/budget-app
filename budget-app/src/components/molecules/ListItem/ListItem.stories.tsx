@@ -14,12 +14,10 @@ export default {
 
 const Template: Story = (args) => (
   <ListItem {...args}>
-    <Icon size={IconSize.medium}>
+    <Icon margin={'5px 0'} padding={'5px 0'} size={IconSize.medium}>
       <FontAwesomeIcon icon={faChartLine} />
     </Icon>
-    <Typography fontsize={FontSize.caption} color={'black'}>
-      ListItem
-    </Typography>
+    <Typography fontsize={FontSize.caption}>ListItem</Typography>
   </ListItem>
 );
 

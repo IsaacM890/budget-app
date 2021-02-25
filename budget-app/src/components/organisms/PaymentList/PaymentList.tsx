@@ -32,14 +32,14 @@ const SIconWrapper = styled.div<IPaymentListProps>(
 const PaymentList: FC<IPaymentListProps> = ({ paymentdate, amount, currency }) => {
   return (
     <PaymentListWrapper>
-      {payGroup.map((item) => {
+      {payGroup.map(({ backgroundcolor, icon, color, text, id, name }) => {
         return (
-          <ListItem margin={'5px 3px'} padding={'5px 0'}>
-            <SIconWrapper iconBackground={item.backgroundcolor}>
-              <FontAwesomeIcon icon={item.icon} color={item.color} />
+          <ListItem margin={'5px 3px'} padding={'5px 0'} key={id}>
+            <SIconWrapper iconBackground={backgroundcolor}>
+              <FontAwesomeIcon icon={icon} color={color} />
             </SIconWrapper>
-            <ListItemText primary={item.text} secondery={paymentdate} />
-            <ListItemText primary={amount} secondery={currency} />
+            <ListItemText title={text} subtitle={paymentdate} />
+            <ListItemText title={amount} subtitle={currency} />
           </ListItem>
         );
       })}
