@@ -7,6 +7,7 @@ import Typography from '../../atoms/Typography/Typography';
 import { FontSize, IconSize } from '../../../enums/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import theme from '../../../style/theme/theme';
+import { Link } from 'react-router-dom';
 
 const NavListWrapper = styled.ul`
   list-style-type: none;
@@ -21,14 +22,16 @@ const NavList: FC = () => {
     <NavListWrapper>
       {navGroup.map(({ id, icon, color, label, route }) => {
         return (
-          <ListItem key={id}>
-            <Icon margin={'0 5px'} padding={'0 5px'} size={IconSize.medium}>
-              <FontAwesomeIcon icon={icon} color={color} />
-            </Icon>
-            <Typography fontsize={FontSize.caption} color={theme.colors.white.primary}>
-              {label}
-            </Typography>
-          </ListItem>
+          <Link to={route}>
+            <ListItem key={id}>
+              <Icon margin={'0 5px'} padding={'0 5px'} size={IconSize.medium}>
+                <FontAwesomeIcon icon={icon} color={color} />
+              </Icon>
+              <Typography fontsize={FontSize.caption} color={theme.colors.white.primary}>
+                {label}
+              </Typography>
+            </ListItem>
+          </Link>
         );
       })}
     </NavListWrapper>

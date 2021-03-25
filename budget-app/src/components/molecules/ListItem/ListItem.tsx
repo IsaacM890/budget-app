@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { IListItemProps } from '../../../models/index';
 
 const ListItemWrapper = styled.li`
+  &:hover {
+    cursor: pointer;
+  }
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -4,8 +4,12 @@ import NavBar from '../../../components/organisms/NavBar/NavBar';
 import Main from '../Dashboard/Dashboard';
 import PaymentBar from '../../../components/organisms/PaymentBar/PaymentBar';
 import theme from '../../../style/theme/theme';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Transactions from '../Transactions/Transactions';
+import Cards from '../Cards/Cards';
+import Charts from '../Charts/Charts';
 
-const SDashboardContainer = styled.div`
+const SHomePageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: 1fr;
@@ -29,14 +33,21 @@ const SDashboardContainer = styled.div`
   }
 `;
 
-const Dashboard: FC = () => {
+const HomePage: FC = () => {
   return (
-    <SDashboardContainer>
-      <NavBar />
-      <Main />
-      <PaymentBar />
-    </SDashboardContainer>
+    <Router>
+      <SHomePageContainer>
+        <NavBar />
+        <Switch>
+          <Route path="/" exact component={Main} />
+          <Route path="/transactions" component={Transactions} />
+          <Route path="/charts" component={Charts} />
+          <Route path="/cards" component={Cards} />
+        </Switch>
+        <PaymentBar />
+      </SHomePageContainer>
+    </Router>
   );
 };
 
-export default Dashboard;
+export default HomePage;
