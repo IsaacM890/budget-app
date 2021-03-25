@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import BriefCard from '../../../components/molecules/BriefCard/BriefCard';
 import CreditCard from '../../../components/molecules/CreditCard/CreditCard';
-import IncomeChart from '../../../constants/charts/IncomeChart/IncomeChart';
-import ActivityChart from '../../../constants/charts/ActivityChart/ActivityChart';
+import IncomeChart from '../../../components/molecules/IncomeChart/IncomeChart';
+import ActivityChart from '../../../components/molecules/ActivityChart/ActivityChart';
 import { faArchive } from '@fortawesome/free-solid-svg-icons';
 import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import theme from '../../../style/theme/theme';
@@ -25,21 +25,15 @@ const SFlexWrapper = styled.div`
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
-`;
-
-const SIncomeChartWrapper = styled.div`
-  width: 344px;
-  height: 206px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  box-sizing: border-box;
-  border-radius: 10px;
-`;
-
-const ActivityWrapper = styled.div`
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  box-sizing: border-box;
+  @media (max-width: ${theme.breakpoints.desktop}) {
+    width: 50%;
+  }
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    width: 50%;
+  }
+  @media (max-width: ${theme.breakpoints.middlesize}) {
+    width: 50%;
+  }
 `;
 
 const Dashboard: FC = () => {
@@ -49,9 +43,7 @@ const Dashboard: FC = () => {
         <CreditCard first_name={'itzhak'} last_name={'Maharat'} last4Digits={1589} exp_month={11} exp_year={25} />
       </SFlexWrapper>
       <SFlexWrapper>
-        <SIncomeChartWrapper>
-          <IncomeChart />
-        </SIncomeChartWrapper>
+        <IncomeChart />
       </SFlexWrapper>
       <SFlexWrapper>
         <BriefCard
@@ -73,9 +65,7 @@ const Dashboard: FC = () => {
           icon={faChartLine}
         />
       </SFlexWrapper>
-      <ActivityWrapper>
-        <ActivityChart />
-      </ActivityWrapper>
+      <ActivityChart />
     </SMainContainer>
   );
 };

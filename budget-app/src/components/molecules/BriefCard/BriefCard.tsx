@@ -9,7 +9,7 @@ import theme from '../../../style/theme/theme';
 
 const SBriefCardContainer = styled.div`
   border-radius: 10px;
-  width: 344px;
+  width: 100%;
   height: 150px;
   display: flex;
   flex-direction: column;

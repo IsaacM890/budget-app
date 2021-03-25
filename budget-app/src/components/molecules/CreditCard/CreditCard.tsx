@@ -10,7 +10,7 @@ const SCreditCardContainer = styled.div`
   background-image: url(${CreditCardBackground});
   background-size: cover;
   border-radius: 10px;
-  width: 344px;
+  width: 100%;
   height: 206px;
   display: flex;
   flex-direction: column;

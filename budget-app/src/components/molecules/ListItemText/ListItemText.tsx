@@ -10,10 +10,12 @@ const SListItemTextWrapper = styled.div`
   margin-right: 10px;
 `;
 
-const ListItemText: FC<IListItemTextProps> = ({ title, subtitle }) => {
+const ListItemText: FC<IListItemTextProps> = ({ fontweight, title, subtitle, color }) => {
   return (
     <SListItemTextWrapper>
-      <Typography fontsize={FontSize.subtitle2}>{title}</Typography>
+      <Typography fontweight={fontweight} color={color} fontsize={FontSize.subtitle2}>
+        {title}
+      </Typography>
       <Typography fontsize={FontSize.subtitle2} opacity={'0.5'}>
         {subtitle}
       </Typography>

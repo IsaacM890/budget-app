@@ -1,8 +1,7 @@
-import React from 'react';
 import ApexCharts from 'react-apexcharts';
 
-const ActivityChart = (props: any) => {
-  const x = {
+const ActivityChart = () => {
+  const chartObj = {
     series: [
       {
         name: 'Arrival',
@@ -27,6 +26,10 @@ const ActivityChart = (props: any) => {
       },
       dataLabels: {
         enabled: false,
+      },
+      title: {
+        text: 'Activities',
+        align: 'left',
       },
       stroke: {
         show: true,
@@ -55,7 +58,7 @@ const ActivityChart = (props: any) => {
 
   return (
     <div id="chart">
-      <ApexCharts options={x.options} series={x.series} type="bar" height={350} />
+      <ApexCharts options={chartObj.options} series={chartObj.series} type="bar" height={350} />
     </div>
   );
 };

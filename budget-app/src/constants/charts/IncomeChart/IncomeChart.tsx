@@ -1,7 +1,7 @@
 import ApexCharts from 'react-apexcharts';
 
-const IncomeChart = (props: any) => {
-  const x = {
+const IncomeChart = () => {
+  const chartObj = {
     series: [
       {
         name: 'Desktops',
@@ -41,7 +41,7 @@ const IncomeChart = (props: any) => {
 
   return (
     <div id="chart">
-      <ApexCharts options={x.options} series={x.series} type="line" height={190} />
+      <ApexCharts options={chartObj.options} series={chartObj.series} type="line" height={190} />
     </div>
   );
 };

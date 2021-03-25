@@ -21,9 +21,10 @@ const theme = {
   },
   breakpoints: {
     mobile: '320px',
-    tablet: '768px',
-    desktop: '1224px',
-    scrollBreak: '1450px',
+    middlesize: '600',
+    tablet: '847px',
+    desktop: '1087px',
+    strechBreak: '1360px',
   },
 };
 

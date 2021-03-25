@@ -58,12 +58,13 @@ export interface IUserDetailsProps {
 export interface IListItemTextProps {
   title?: string;
   subtitle?: string;
+  color?: string;
+  fontweight?: string;
 }
 
 export interface IPaymentListProps {
   payment?: string;
   paymentdate?: string;
-  amount?: string;
   currency?: string;
   iconBackground?: string;
 }

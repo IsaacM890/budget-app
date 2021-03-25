@@ -4,11 +4,15 @@ import UserDetails from '../../molecules/UserDetails/UserDetails';
 import PaymentList from '../../organisms/PaymentList/PaymentList';
 import { FontSize } from '../../../enums/index';
 import Typography from '../../atoms/Typography/Typography';
+import theme from '../../../style/theme/theme';
 
-const SPaymentBarWrapper = styled.div`
+const SPaymentBarContainer = styled.div`
   background-color: #fcedd8;
   width: 200px;
   padding: 40px 10px;
+  @media (max-width: ${theme.breakpoints.desktop}) {
+    display: none;
+  }
 `;
 
 const STitleWrapper = styled.div`
@@ -19,7 +23,7 @@ const STitleWrapper = styled.div`
 
 const PaymentBar: FC = () => {
   return (
-    <SPaymentBarWrapper>
+    <SPaymentBarContainer>
       <UserDetails
         first_name={'yaron'}
         last_name={'avraham'}
@@ -31,8 +35,8 @@ const PaymentBar: FC = () => {
           Payment History
         </Typography>
       </STitleWrapper>
-      <PaymentList paymentdate={'4 march,18:33'} amount={'+5,770'} currency={'USD'} />
-    </SPaymentBarWrapper>
+      <PaymentList paymentdate={'4 march,18:33'} currency={'USD'} />
+    </SPaymentBarContainer>
   );
 };
 

@@ -25,21 +25,38 @@ const SIconWrapper = styled.div<IPaymentListProps>(
   background-color:${iconBackground};
   margin-right:5px;
 
-  
 `
 );
 
-const PaymentList: FC<IPaymentListProps> = ({ paymentdate, amount, currency }) => {
+const getAmountColor = (amount: number) => {
+  if (amount > 0) {
+    return `#8a7be5`;
+  } else if (amount < 0) {
+    return `#62CCF7`;
+  } else {
+    return 'black';
+  }
+};
+const getSymbol = (amount: number) => {
+  return amount > 0 ? '+' : '';
+};
+
+const PaymentList: FC<IPaymentListProps> = ({ paymentdate, currency }) => {
   return (
     <PaymentListWrapper>
-      {payGroup.map(({ backgroundcolor, icon, color, text, id, name }) => {
+      {payGroup.map(({ amount, backgroundcolor, icon, color, text, id, name }) => {
         return (
           <ListItem margin={'5px 3px'} padding={'5px 0'} key={id}>
             <SIconWrapper iconBackground={backgroundcolor}>
               <FontAwesomeIcon icon={icon} color={color} />
             </SIconWrapper>
             <ListItemText title={text} subtitle={paymentdate} />
-            <ListItemText title={amount} subtitle={currency} />
+            <ListItemText
+              fontweight={'bold'}
+              color={getAmountColor(amount)}
+              title={`${getSymbol(amount)}  ${amount}`}
+              subtitle={currency}
+            />
           </ListItem>
         );
       })}
