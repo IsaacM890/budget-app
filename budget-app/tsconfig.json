@@ -22,6 +22,6 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/components/atoms/Typography", "src/components/molecules/ListItem"],
   "exclude": ["node_modules", "lib", "storybook-static", "src/**/*.stories.tsx", "src/**/*.test.tsx"]
 }
