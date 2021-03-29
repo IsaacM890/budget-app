@@ -41,37 +41,35 @@ const SCardDataBox = styled.div`
   }
 `;
 
-const CreditCard: FC<ICreditCardProps> = ({ first_name, last_name, last4Digits, exp_month, exp_year }) => {
-  return (
-    <SCreditCardContainer>
-      <Typography fontsize={FontSize.heading2} color={theme.colors.white.primary} margin={'5px 0'} fontweight={'bold'}>
-        Card
+const CreditCard: FC<ICreditCardProps> = ({ FirstName, LastName, last4Digits, expMonth, expYear }) => (
+  <SCreditCardContainer>
+    <Typography fontsize={FontSize.heading2} color={theme.colors.white.primary} margin="5px 0" fontweight="bold">
+      Card
+    </Typography>
+    <SDigitsWrapper>
+      <Typography fontsize={FontSize.heading3} color={theme.colors.white.primary} margin="5px 0">
+        {`**** **** **** ${last4Digits}`}
       </Typography>
-      <SDigitsWrapper>
-        <Typography fontsize={FontSize.heading3} color={theme.colors.white.primary} margin={'5px 0'}>
-          {'**** **** **** ' + last4Digits}
+    </SDigitsWrapper>
+    <SCardDataBox>
+      <SCardHolderWrapper>
+        <Typography fontsize={FontSize.subtitle} color={theme.colors.white.primary} opacity="0.5">
+          CARD HOLDER
         </Typography>
-      </SDigitsWrapper>
-      <SCardDataBox>
-        <SCardHolderWrapper>
-          <Typography fontsize={FontSize.subtitle} color={theme.colors.white.primary} opacity={'0.5'}>
-            CARD HOLDER
-          </Typography>
-          <Typography fontsize={FontSize.caption} color={theme.colors.white.primary}>
-            {first_name + ' ' + last_name}
-          </Typography>
-        </SCardHolderWrapper>
-        <SCardExpDateWrapper>
-          <Typography fontsize={FontSize.subtitle} color={theme.colors.white.primary} opacity={'0.5'}>
-            VALID THRU
-          </Typography>
-          <Typography fontsize={FontSize.caption} color={theme.colors.white.primary}>
-            {exp_month + ' / ' + exp_year}
-          </Typography>
-        </SCardExpDateWrapper>
-      </SCardDataBox>
-    </SCreditCardContainer>
-  );
-};
+        <Typography fontsize={FontSize.caption} color={theme.colors.white.primary}>
+          {`${FirstName}  ${LastName}`}
+        </Typography>
+      </SCardHolderWrapper>
+      <SCardExpDateWrapper>
+        <Typography fontsize={FontSize.subtitle} color={theme.colors.white.primary} opacity="0.5">
+          VALID THRU
+        </Typography>
+        <Typography fontsize={FontSize.caption} color={theme.colors.white.primary}>
+          {`${expMonth} / ${expYear}`}
+        </Typography>
+      </SCardExpDateWrapper>
+    </SCardDataBox>
+  </SCreditCardContainer>
+);
 
 export default CreditCard;

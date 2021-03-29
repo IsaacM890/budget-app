@@ -26,26 +26,19 @@ const SCaptionWrapper = styled.div`
   margin: 5px 0;
 `;
 
-const CurrentBalance: FC<ICurrentBalanceProps> = ({ currentBalance }) => {
-  return (
-    <SCurrentBalanceWrapper>
-      <SCaptionWrapper>
-        <Typography
-          fontsize={FontSize.heading1}
-          color={theme.colors.white.primary}
-          margin={'5px 0'}
-          fontweight={'bold'}
-        >
-          {currentBalance}
-        </Typography>
-      </SCaptionWrapper>
-      <SCaptionWrapper>
-        <Typography fontsize={FontSize.caption} color={theme.colors.white.primary} margin={'5px 0'}>
-          Current balance
-        </Typography>
-      </SCaptionWrapper>
-    </SCurrentBalanceWrapper>
-  );
-};
+const CurrentBalance: FC<ICurrentBalanceProps> = ({ currentBalance }) => (
+  <SCurrentBalanceWrapper>
+    <SCaptionWrapper>
+      <Typography fontsize={FontSize.heading1} color={theme.colors.white.primary} margin="5px 0" fontweight="bold">
+        {currentBalance}
+      </Typography>
+    </SCaptionWrapper>
+    <SCaptionWrapper>
+      <Typography fontsize={FontSize.caption} color={theme.colors.white.primary} margin="5px 0">
+        Current balance
+      </Typography>
+    </SCaptionWrapper>
+  </SCurrentBalanceWrapper>
+);
 
 export default CurrentBalance;

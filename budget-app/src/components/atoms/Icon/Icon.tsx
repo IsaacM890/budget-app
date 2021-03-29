@@ -39,12 +39,10 @@ const SIcon = styled.div<IIconProps>`
   ${({ margin }) => `margin:${margin};`};
 `;
 
-const Icon: React.FC<IIconProps> = ({ size, padding, children, backgroundcolor, borderradius, margin }) => {
-  return (
-    <SIcon margin={margin} size={size} padding={padding} backgroundcolor={backgroundcolor} borderradius={borderradius}>
-      {children}
-    </SIcon>
-  );
-};
+const Icon: React.FC<IIconProps> = ({ size, padding, children, backgroundcolor, borderradius, margin }) => (
+  <SIcon margin={margin} size={size} padding={padding} backgroundcolor={backgroundcolor} borderradius={borderradius}>
+    {children}
+  </SIcon>
+);
 
 export default Icon;

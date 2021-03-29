@@ -10,17 +10,15 @@ const SListItemTextWrapper = styled.div`
   margin-right: 10px;
 `;
 
-const ListItemText: FC<IListItemTextProps> = ({ fontweight, title, subtitle, color }) => {
-  return (
-    <SListItemTextWrapper>
-      <Typography fontweight={fontweight} color={color} fontsize={FontSize.subtitle2}>
-        {title}
-      </Typography>
-      <Typography fontsize={FontSize.subtitle2} opacity={'0.5'}>
-        {subtitle}
-      </Typography>
-    </SListItemTextWrapper>
-  );
-};
+const ListItemText: FC<IListItemTextProps> = ({ fontweight, title, subtitle, color }) => (
+  <SListItemTextWrapper>
+    <Typography fontweight={fontweight} color={color} fontsize={FontSize.subtitle2}>
+      {title}
+    </Typography>
+    <Typography fontsize={FontSize.subtitle2} opacity="0.5">
+      {subtitle}
+    </Typography>
+  </SListItemTextWrapper>
+);
 
 export default ListItemText;

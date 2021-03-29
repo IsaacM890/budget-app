@@ -9,12 +9,10 @@ const SActivityChartWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-const ActivityChart: FC = () => {
-  return (
-    <SActivityChartWrapper>
-      <Activitychart />
-    </SActivityChartWrapper>
-  );
-};
+const ActivityChart: FC = () => (
+  <SActivityChartWrapper>
+    <Activitychart />
+  </SActivityChartWrapper>
+);
 
 export default ActivityChart;

@@ -1,3 +1,4 @@
+import React from 'react';
 import ApexCharts from 'react-apexcharts';
 
 const ActivityChart = () => {
@@ -48,8 +49,10 @@ const ActivityChart = () => {
       colors: ['#4333A0', '#FF8788'],
       tooltip: {
         y: {
-          formatter: function (val: any) {
-            return '$ ' + val;
+          formatter: {
+            function(val: any) {
+              return `$ ${val}`;
+            },
           },
         },
       },

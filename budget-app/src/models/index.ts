@@ -32,11 +32,11 @@ export interface IAvatarProps {
 }
 
 export interface ICreditCardProps {
-  first_name: string;
-  last_name: string;
+  FirstName: string;
+  LastName: string;
   last4Digits: number;
-  exp_month: number;
-  exp_year: number;
+  expMonth: number;
+  expYear: number;
 }
 
 export interface IBriefCardProps {
@@ -49,8 +49,8 @@ export interface IBriefCardProps {
 }
 
 export interface IUserDetailsProps {
-  first_name: string;
-  last_name: string;
+  FirstName: string;
+  LastName: string;
   email: string;
   avatar: string;
 }

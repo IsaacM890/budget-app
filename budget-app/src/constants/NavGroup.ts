@@ -1,10 +1,7 @@
-import { faThLarge } from '@fortawesome/free-solid-svg-icons';
-import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import { faChartPie } from '@fortawesome/free-solid-svg-icons';
+import { faThLarge, faExchangeAlt, faChartPie, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 
-export const navGroup = [
+const navGroup = [
   {
     icon: faThLarge,
     label: 'Dashboard',
@@ -41,3 +38,5 @@ export const navGroup = [
     color: 'white',
   },
 ];
+
+export default navGroup;

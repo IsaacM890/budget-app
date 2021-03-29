@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from '../../../components/organisms/NavBar/NavBar';
 import Main from '../Dashboard/Dashboard';
 import PaymentBar from '../../../components/organisms/PaymentBar/PaymentBar';
 import theme from '../../../style/theme/theme';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Transactions from '../Transactions/Transactions';
 import Cards from '../Cards/Cards';
 import Charts from '../Charts/Charts';
@@ -33,21 +33,18 @@ const SHomePageContainer = styled.div`
   }
 `;
 
-const HomePage: FC = () => {
-  return (
-    <Router>
-      <SHomePageContainer>
-        <NavBar />
-        <Switch>
-          <Route path="/" exact component={Main} />
-          <Route path="/transactions" component={Transactions} />
-          <Route path="/charts" component={Charts} />
-          <Route path="/cards" component={Cards} />
-        </Switch>
-        <PaymentBar />
-      </SHomePageContainer>
-    </Router>
-  );
-};
-
+const HomePage: FC = () => (
+  <Router>
+    <SHomePageContainer>
+      <NavBar />
+      <Switch>
+        <Route path="/" exact component={Main} />
+        <Route path="/transactions" component={Transactions} />
+        <Route path="/charts" component={Charts} />
+        <Route path="/cards" component={Cards} />
+      </Switch>
+      <PaymentBar />
+    </SHomePageContainer>
+  </Router>
+);
 export default HomePage;

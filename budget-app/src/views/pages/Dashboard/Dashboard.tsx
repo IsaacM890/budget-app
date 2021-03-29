@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { faArchive, faChartLine } from '@fortawesome/free-solid-svg-icons';
 import BriefCard from '../../../components/molecules/BriefCard/BriefCard';
 import CreditCard from '../../../components/molecules/CreditCard/CreditCard';
 import IncomeChart from '../../../components/molecules/IncomeChart/IncomeChart';
 import ActivityChart from '../../../components/molecules/ActivityChart/ActivityChart';
-import { faArchive } from '@fortawesome/free-solid-svg-icons';
-import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import theme from '../../../style/theme/theme';
 
 const SMainContainer = styled.div`
@@ -36,38 +35,36 @@ const SFlexWrapper = styled.div`
   }
 `;
 
-const Dashboard: FC = () => {
-  return (
-    <SMainContainer>
-      <SFlexWrapper>
-        <CreditCard first_name={'itzhak'} last_name={'Maharat'} last4Digits={1589} exp_month={11} exp_year={25} />
-      </SFlexWrapper>
-      <SFlexWrapper>
-        <IncomeChart />
-      </SFlexWrapper>
-      <SFlexWrapper>
-        <BriefCard
-          title={'Investments'}
-          revenue={'90,854'}
-          profit={'+5.08%'}
-          iconbackgroundcolor={theme.colors.blue.medium}
-          iconcolor={theme.colors.white.primary}
-          icon={faArchive}
-        />
-      </SFlexWrapper>
-      <SFlexWrapper>
-        <BriefCard
-          title={'Sales'}
-          revenue={'90,854'}
-          profit={'+5.08%'}
-          iconbackgroundcolor={theme.colors.blue.dark}
-          iconcolor={theme.colors.white.primary}
-          icon={faChartLine}
-        />
-      </SFlexWrapper>
-      <ActivityChart />
-    </SMainContainer>
-  );
-};
+const Dashboard: FC = () => (
+  <SMainContainer>
+    <SFlexWrapper>
+      <CreditCard FirstName="itzhak" LastName="Maharat" last4Digits={1589} expMonth={11} expYear={25} />
+    </SFlexWrapper>
+    <SFlexWrapper>
+      <IncomeChart />
+    </SFlexWrapper>
+    <SFlexWrapper>
+      <BriefCard
+        title="Investments"
+        revenue="90,854"
+        profit="+5.08%"
+        iconbackgroundcolor={theme.colors.blue.medium}
+        iconcolor={theme.colors.white.primary}
+        icon={faArchive}
+      />
+    </SFlexWrapper>
+    <SFlexWrapper>
+      <BriefCard
+        title="Sales"
+        revenue="90,854"
+        profit="+5.08%"
+        iconbackgroundcolor={theme.colors.blue.dark}
+        iconcolor={theme.colors.white.primary}
+        icon={faChartLine}
+      />
+    </SFlexWrapper>
+    <ActivityChart />
+  </SMainContainer>
+);
 
 export default Dashboard;

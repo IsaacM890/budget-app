@@ -16,8 +16,6 @@ const ListItemWrapper = styled.li`
     text-align: right;
   }
 `;
-const ListItem: FC<IListItemProps> = ({ children }) => {
-  return <ListItemWrapper>{children}</ListItemWrapper>;
-};
+const ListItem: FC<IListItemProps> = ({ children }) => <ListItemWrapper>{children}</ListItemWrapper>;
 
 export default ListItem;

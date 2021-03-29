@@ -48,8 +48,8 @@ const SAvatar = styled.img<IAvatarProps>`
   ${({ borderRadius }) => `border-radius:${borderRadius};`};
 `;
 
-const Avatar: React.FC<IAvatarProps> = ({ size = AvatarSize.md, src, borderRadius }) => {
-  return <SAvatar size={size} src={src} alt={'avatar'} borderRadius={borderRadius}></SAvatar>;
-};
+const Avatar: React.FC<IAvatarProps> = ({ size = AvatarSize.md, src, borderRadius }) => (
+  <SAvatar size={size} src={src} alt="avatar" borderRadius={borderRadius} />
+);
 
 export default Avatar;

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import ApexCharts from 'react-apexcharts';
 
 const IncomeChart = () => {

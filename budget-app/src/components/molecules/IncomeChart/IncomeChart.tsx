@@ -10,12 +10,10 @@ const SIncomeChartWrapper = styled.div`
   border-radius: 10px;
 `;
 
-const IncomeChart: FC = () => {
-  return (
-    <SIncomeChartWrapper>
-      <Incomechart />
-    </SIncomeChartWrapper>
-  );
-};
+const IncomeChart: FC = () => (
+  <SIncomeChartWrapper>
+    <Incomechart />
+  </SIncomeChartWrapper>
+);
 
 export default IncomeChart;

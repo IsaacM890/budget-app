@@ -1,7 +1,7 @@
 import React from 'react';
+import styled from 'styled-components';
 import { FontSize } from '../../../enums';
 import { ITypographyProps } from '../../../models';
-import styled from 'styled-components';
 
 const setfontSize = (size?: FontSize) => {
   switch (size) {
@@ -44,12 +44,10 @@ const STypography = styled.label<ITypographyProps>`
   ${({ opacity }) => `opacity:${opacity};`}
 `;
 
-const Typography: React.FC<ITypographyProps> = ({ fontweight, fontsize, children, color, opacity }) => {
-  return (
-    <STypography fontsize={fontsize} fontweight={fontweight} color={color} opacity={opacity}>
-      {children}
-    </STypography>
-  );
-};
+const Typography: React.FC<ITypographyProps> = ({ fontweight, fontsize, children, color, opacity }) => (
+  <STypography fontsize={fontsize} fontweight={fontweight} color={color} opacity={opacity}>
+    {children}
+  </STypography>
+);
 
 export default Typography;

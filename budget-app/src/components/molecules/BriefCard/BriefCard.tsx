@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { FontSize } from '../../../enums';
 import { IBriefCardProps } from '../../../models/index';
 import Typography from '../../atoms/Typography/Typography';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import theme from '../../../style/theme/theme';
 
 const SBriefCardContainer = styled.div`
@@ -56,36 +56,34 @@ const SCardIconWrapper = styled.div<IBriefCardProps>(
 `
 );
 
-const BriefCard: FC<IBriefCardProps> = ({ title, profit, revenue, iconbackgroundcolor, icon, iconcolor }) => {
-  return (
-    <SBriefCardContainer>
-      <Typography fontsize={FontSize.heading2} margin={'5px 0'} fontweight={'bold'}>
-        {title}
+const BriefCard: FC<IBriefCardProps> = ({ title, profit, revenue, iconbackgroundcolor, icon, iconcolor }) => (
+  <SBriefCardContainer>
+    <Typography fontsize={FontSize.heading2} margin="5px 0" fontweight="bold">
+      {title}
+    </Typography>
+    <SRevenueWrapper>
+      <Typography fontsize={FontSize.caption} color={theme.colors.grey.primary}>
+        Revenue
       </Typography>
-      <SRevenueWrapper>
-        <Typography fontsize={FontSize.caption} color={theme.colors.grey.primary}>
-          Revenue
+      <Typography fontsize={FontSize.heading2} color={theme.colors.blue.lightblue}>
+        {revenue}
+      </Typography>
+    </SRevenueWrapper>
+    <SProfitBox>
+      <Typography fontsize={FontSize.subtitle}>{profit}</Typography>
+      <SProfitCaptionWrapper>
+        <Typography fontsize={FontSize.subtitle} color={theme.colors.grey.primary}>
+          Since last month
         </Typography>
-        <Typography fontsize={FontSize.heading2} color={theme.colors.blue.lightblue}>
-          {revenue}
-        </Typography>
-      </SRevenueWrapper>
-      <SProfitBox>
-        <Typography fontsize={FontSize.subtitle}>{profit}</Typography>
-        <SProfitCaptionWrapper>
-          <Typography fontsize={FontSize.subtitle} color={theme.colors.grey.primary}>
-            Since last month
-          </Typography>
-        </SProfitCaptionWrapper>
-      </SProfitBox>
-      <SMenuIconWrapper>
-        <FontAwesomeIcon icon={faEllipsisH} color={theme.colors.grey.primary} />
-      </SMenuIconWrapper>
-      <SCardIconWrapper iconbackgroundcolor={iconbackgroundcolor}>
-        <FontAwesomeIcon icon={icon} color={iconcolor} />
-      </SCardIconWrapper>
-    </SBriefCardContainer>
-  );
-};
+      </SProfitCaptionWrapper>
+    </SProfitBox>
+    <SMenuIconWrapper>
+      <FontAwesomeIcon icon={faEllipsisH} color={theme.colors.grey.primary} />
+    </SMenuIconWrapper>
+    <SCardIconWrapper iconbackgroundcolor={iconbackgroundcolor}>
+      <FontAwesomeIcon icon={icon} color={iconcolor} />
+    </SCardIconWrapper>
+  </SBriefCardContainer>
+);
 
 export default BriefCard;

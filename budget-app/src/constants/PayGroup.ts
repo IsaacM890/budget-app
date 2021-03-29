@@ -1,10 +1,7 @@
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import { faReply } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faSyncAlt, faReply } from '@fortawesome/free-solid-svg-icons';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
 
-export const payGroup = [
+const payGroup = [
   {
     name: 'check',
     text: 'Deposit from ATL',
@@ -51,3 +48,5 @@ export const payGroup = [
     id: 5,
   },
 ];
+
+export default payGroup;

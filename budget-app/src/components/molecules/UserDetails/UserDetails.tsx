@@ -25,20 +25,18 @@ const SCaptionWrapper = styled.div`
   margin-top: 15px;
 `;
 
-const UserDetails: FC<IUserDetailsProps> = ({ first_name, last_name, email, avatar }) => {
-  return (
-    <SUserDetailsContainer>
-      <Avatar size={AvatarSize.xl} borderRadius={'50px'} src={avatar}></Avatar>
-      <SCaptionWrapper>
-        <Typography fontsize={FontSize.heading3} margin={'5px 0'} fontweight={'bold'}>
-          {`${first_name}${' ' + last_name}`}
-        </Typography>
-        <Typography fontsize={FontSize.subtitle} opacity={'0.5'}>
-          {email}
-        </Typography>
-      </SCaptionWrapper>
-    </SUserDetailsContainer>
-  );
-};
+const UserDetails: FC<IUserDetailsProps> = ({ FirstName, LastName, email, avatar }) => (
+  <SUserDetailsContainer>
+    <Avatar size={AvatarSize.xl} borderRadius="50px" src={avatar} />
+    <SCaptionWrapper>
+      <Typography fontsize={FontSize.heading3} margin="5px 0" fontweight="bold">
+        {`${FirstName}  ${LastName}`}
+      </Typography>
+      <Typography fontsize={FontSize.subtitle} opacity="0.5">
+        {email}
+      </Typography>
+    </SCaptionWrapper>
+  </SUserDetailsContainer>
+);
 
 export default UserDetails;
