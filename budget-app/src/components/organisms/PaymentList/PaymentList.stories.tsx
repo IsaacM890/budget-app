@@ -1,6 +1,6 @@
 import React from 'react';
-import PaymentList from './PaymentList';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import PaymentList from './PaymentList';
 
 export default {
   title: 'organism/PaymentList',

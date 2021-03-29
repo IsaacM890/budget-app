@@ -1,7 +1,7 @@
 import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
 import BriefCard from './BriefCard';
 import { IBriefCardProps } from '../../../models/index';
-import { Story, Meta } from '@storybook/react/types-6-0';
 
 export default {
   title: 'molecules/BriefCard',

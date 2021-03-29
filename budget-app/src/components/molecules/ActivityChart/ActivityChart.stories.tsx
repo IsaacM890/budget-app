@@ -1,6 +1,6 @@
 import React from 'react';
-import ActivityChart from './ActivityChart';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import ActivityChart from './ActivityChart';
 
 export default {
   title: 'molecules/ActivityChart',

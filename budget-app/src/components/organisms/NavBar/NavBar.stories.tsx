@@ -1,13 +1,13 @@
 import React from 'react';
-import NavBar from './NavBar';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import NavBar from './NavBar';
 
 export default {
   title: 'organism/NavBar',
   component: NavBar,
 } as Meta;
 
-const Template: Story = (args) => <NavBar {...args}></NavBar>;
+const Template: Story = (args) => <NavBar {...args} />;
 
 export const Example = Template.bind({});
 Example.args = {};

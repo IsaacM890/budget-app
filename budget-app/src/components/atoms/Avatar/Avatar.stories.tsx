@@ -1,7 +1,7 @@
 import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
 import Avatar from './Avatar';
 import { IAvatarProps } from '../../../models/index';
-import { Story, Meta } from '@storybook/react/types-6-0';
 
 export default {
   title: 'atoms/Avatar',

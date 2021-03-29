@@ -1,6 +1,6 @@
 import React from 'react';
-import HomePage from './HomePage';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import HomePage from './HomePage';
 
 export default {
   title: 'pages/HomePage',

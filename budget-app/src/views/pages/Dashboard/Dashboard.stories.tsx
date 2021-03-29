@@ -1,6 +1,6 @@
 import React from 'react';
-import Dashboard from './Dashboard';
 import { Story, Meta } from '@storybook/react/types-6-0';
+import Dashboard from './Dashboard';
 
 export default {
   title: 'pages/Dashboard',

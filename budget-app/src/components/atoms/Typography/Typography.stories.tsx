@@ -1,8 +1,8 @@
 import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
 import Typography from './Typography';
 import { ITypographyProps } from '../../../models/index';
 import { FontSize } from '../../../enums/index';
-import { Story, Meta } from '@storybook/react/types-6-0';
 
 export default {
   title: 'atoms/Typography',

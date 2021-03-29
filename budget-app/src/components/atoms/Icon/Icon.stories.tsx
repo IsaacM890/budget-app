@@ -1,8 +1,8 @@
 import React from 'react';
+import { Story, Meta } from '@storybook/react/types-6-0';
 import Icon from './Icon';
 import { IIconProps } from '../../../models/index';
 import { IconSize } from '../../../enums/index';
-import { Story, Meta } from '@storybook/react/types-6-0';
 
 export default {
   title: 'atoms/Icon',
