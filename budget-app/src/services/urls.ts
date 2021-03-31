@@ -4,3 +4,8 @@ export const userEndPoints = {
   basic: `users/`,
   create: `users/register/`,
 };
+
+export const transactionEndPoints = {
+  basic: `transactions/`,
+  all: `transactions/all/`,
+};
