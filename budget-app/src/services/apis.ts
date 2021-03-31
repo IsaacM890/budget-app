@@ -1,11 +1,17 @@
 import axios from 'axios';
-import { baseURL, userEndPoints } from './urls';
+import { baseURL, userEndPoints, transactionEndPoints } from './urls';
 
-const userAPIS = {
+export const userAPIS = {
   createUser: (params: string) => axios.post(`${baseURL + userEndPoints.create}${params}`),
   getUser: (id: string) => axios.get(`${baseURL + userEndPoints.basic}:${id}`),
-  updateUser: (id: string, params: string) => axios.put(`${baseURL + userEndPoints.basic}:${id}${params}`),
+  updateUser: (id: string, params: string) => axios.put(`${baseURL + userEndPoints.basic}:${id}/${params}`),
   deleteUser: (id: string) => axios.delete(`${baseURL + userEndPoints.basic}:${id}`),
 };
 
-export default userAPIS;
+export const transactionAPIS = {
+  createTransaction: (params: string) => axios.post(`${baseURL + transactionEndPoints.basic}${params}`),
+  getAllTransactions: axios.get(`${baseURL + transactionEndPoints.all}`),
+  updateTransaction: (id: string, params: string) =>
+    axios.put(`${baseURL + transactionEndPoints.basic}:${id}/${params}`),
+  deleteTransaction: (id: string) => axios.delete(`${baseURL + transactionEndPoints.basic}:${id}`),
+};
