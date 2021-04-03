@@ -6,10 +6,10 @@ class BudgetServiceApi {
     baseURL,
   });
 
-  createUser = async (params: string) => {
+  createUser = async (userPayload: string) => {
     try {
-      await this.axiosInstance.post(`${userEndPoints.create}`, params);
-      return { msg: 'User Created successfully', data: params };
+      await this.axiosInstance.post(`${userEndPoints.Create}`, userPayload);
+      return { msg: 'User Created successfully' };
     } catch (err) {
       return err.message;
     }
@@ -17,7 +17,7 @@ class BudgetServiceApi {
 
   getUser = async (id: string) => {
     try {
-      const user = await this.axiosInstance.get(`${userEndPoints.basic}:${id}`);
+      const user = await this.axiosInstance.get(`${userEndPoints.Base}:${id}`);
       return { msg: 'GET req successfully', data: user };
     } catch (err) {
       return err.message;
@@ -26,7 +26,7 @@ class BudgetServiceApi {
 
   updateUser = async (id: string) => {
     try {
-      await this.axiosInstance.put(`${userEndPoints.basic}:${id}`);
+      await this.axiosInstance.put(`${userEndPoints.Base}:${id}`);
       return { msg: 'User Updated successfully' };
     } catch (err) {
       return err.message;
@@ -35,17 +35,17 @@ class BudgetServiceApi {
 
   deleteUser = async (id: string) => {
     try {
-      await this.axiosInstance.delete(`${userEndPoints.basic}:${id}`);
+      await this.axiosInstance.delete(`${userEndPoints.Base}:${id}`);
       return { msg: 'User Deleted successfully' };
     } catch (err) {
       return err.message;
     }
   };
 
-  createTransaction = async (params: string) => {
+  createTransaction = async (transactionPayload: string) => {
     try {
-      await this.axiosInstance.post(`${transactionEndPoints.basic}`, params);
-      return { msg: 'Transaction Created successfully', data: params };
+      await this.axiosInstance.post(`${transactionEndPoints.Base}`, transactionPayload);
+      return { msg: 'Transaction Created successfully' };
     } catch (err) {
       return err.message;
     }
@@ -53,7 +53,7 @@ class BudgetServiceApi {
 
   getAllTransactions = async () => {
     try {
-      const transactions = await this.axiosInstance.get(`${transactionEndPoints.all}`);
+      const transactions = await this.axiosInstance.get(`${transactionEndPoints.All}`);
       return { msg: 'GET req successfully', data: transactions };
     } catch (err) {
       return err.message;
@@ -62,7 +62,7 @@ class BudgetServiceApi {
 
   updateTransaction = async (id: string) => {
     try {
-      await this.axiosInstance.put(`${transactionEndPoints.basic}:${id}`);
+      await this.axiosInstance.put(`${transactionEndPoints.Base}:${id}`);
       return { msg: 'Transaction Updated successfully' };
     } catch (err) {
       return err.message;
@@ -71,7 +71,7 @@ class BudgetServiceApi {
 
   deleteTransaction = async (id: string) => {
     try {
-      await this.axiosInstance.delete(`${transactionEndPoints.basic}:${id}`);
+      await this.axiosInstance.delete(`${transactionEndPoints.Base}:${id}`);
       return { msg: 'Transaction Deleted successfully' };
     } catch (err) {
       return err.message;

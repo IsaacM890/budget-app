@@ -1,11 +1,11 @@
-export const baseURL = `https://budget-application-services-isaacm890.vercel.app/api/`;
+export const baseURL = process.env.BASE_URL;
 
 export const userEndPoints = {
-  basic: `users/`,
-  create: `users/register/`,
+  Base: `users/`,
+  Create: `users/register/`,
 };
 
 export const transactionEndPoints = {
-  basic: `transactions/`,
-  all: `transactions/all/`,
+  Base: `transactions/`,
+  All: `transactions/all/`,
 };
