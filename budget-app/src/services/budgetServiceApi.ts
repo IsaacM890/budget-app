@@ -1,27 +1,48 @@
-export {}; // import axios from 'axios';
-// import { baseURL, userEndPoints, transactionEndPoints } from './urls';
+import axios from 'axios';
+import { baseURL, userEndPoints } from './urls';
 
-// export default class BudgetServiceApi{
-//   init:any
+class BudgetServiceApi {
+  axiosInstance = axios.create({
+    baseURL,
+  });
 
-//   constructor(param:string){
-//     this.init=param
-//   }
+  createUser = async (params: string) => {
+    try {
+      await this.axiosInstance.post(`${userEndPoints.create}/${params}`);
+      return { msg: 'User Created successfully', data: params };
+    } catch (err) {
+      return err.message;
+    }
+  };
 
-//   axiosInstance = axios.create({
-//   baseURL,
-//   });
+  getUser = async (id: string) => {
+    try {
+      const user = await this.axiosInstance.get(`${userEndPoints.basic}:${id}`);
+      return { msg: 'get User successfully', data: user };
+    } catch (err) {
+      return err.message;
+    }
+  };
 
-// }
+  updateUser = async (id: string, params: string) => {
+    try {
+      await this.axiosInstance.put(`${userEndPoints.basic}:${id}/${params}`);
+      return { msg: 'User Updated successfully', data: params };
+    } catch (err) {
+      return err.message;
+    }
+  };
 
-//   const createUser= async (params: string) =>{ try {
-//     await this.axiosInstance.post(`${userEndPoints.create}${params}`)
-//   } catch (error) {
-//     return error.message}
-//   } ;
+  deleteUser = async (id: string) => {
+    try {
+      await this.axiosInstance.delete(`${userEndPoints.basic}:${id}`);
+      return { msg: 'User Deleted successfully' };
+    } catch (err) {
+      return err.message;
+    }
+  };
+}
 
-//   const getUser = async (id: string) => this.axiosInstance.get(`${baseURL + userEndPoints.basic}:${id}`),
-//   updateUser: (id: string, params: string) => axios.put(`${baseURL + userEndPoints.basic}:${id}/${params}`),
 //   deleteUser: (id: string) => axios.delete(`${baseURL + userEndPoints.basic}:${id}`),
 
 // export const transactionAPIS = {
@@ -31,3 +52,5 @@ export {}; // import axios from 'axios';
 //     axios.put(`${baseURL + transactionEndPoints.basic}:${id}/${params}`),
 //   deleteTransaction: (id: string) => axios.delete(`${baseURL + transactionEndPoints.basic}:${id}`),
 // };
+
+export default BudgetServiceApi;
