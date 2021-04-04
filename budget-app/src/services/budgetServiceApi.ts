@@ -1,12 +1,43 @@
 import axios from 'axios';
 import { baseURL, userEndPoints, transactionEndPoints } from './urls';
 
+interface IUserProps {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  avatar: string;
+  currentBalance: string;
+  currentBalanceCurrency: string;
+}
+
+interface ITransactionProps {
+  paymentType: string;
+  paymentMethod: string;
+  cancelled: boolean;
+  time: string;
+  date: string;
+  currency: string;
+  category: string;
+  company: string;
+  amount: {
+    from: Number;
+    to: Number;
+  };
+  location: {
+    country: string;
+    city: string;
+    lat: string;
+    lng: string;
+  };
+}
+
 class BudgetServiceApi {
   axiosInstance = axios.create({
     baseURL,
   });
 
-  createUser = async (userPayload: string) => {
+  createUser = async (userPayload: IUserProps) => {
     try {
       await this.axiosInstance.post(`${userEndPoints.Create}`, userPayload);
       return { msg: 'User Created successfully' };
@@ -42,7 +73,7 @@ class BudgetServiceApi {
     }
   };
 
-  createTransaction = async (transactionPayload: string) => {
+  createTransaction = async (transactionPayload: ITransactionProps) => {
     try {
       await this.axiosInstance.post(`${transactionEndPoints.Base}`, transactionPayload);
       return { msg: 'Transaction Created successfully' };
