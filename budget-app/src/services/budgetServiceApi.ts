@@ -1,14 +1,15 @@
 import axios from 'axios';
-import { baseURL, userEndPoints, transactionEndPoints } from './urls';
+
+const baseURL = process.env.BASE_URL;
 
 interface IUserProps {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
   avatar: string;
-  currentBalance: string;
-  currentBalanceCurrency: string;
+  current_balance: string;
+  current_balance_currency: string;
 }
 
 interface ITransactionProps {
@@ -27,8 +28,9 @@ interface ITransactionProps {
   location: {
     country: string;
     city: string;
-    lat: string;
-    lng: string;
+    street:string,
+    lat: number;
+    lng: number;
   };
 }
 
@@ -39,7 +41,7 @@ class BudgetServiceApi {
 
   createUser = async (userPayload: IUserProps) => {
     try {
-      await this.axiosInstance.post(`${userEndPoints.Create}`, userPayload);
+      await this.axiosInstance.post(`users/register/`, userPayload);
       return { msg: 'User Created successfully' };
     } catch (err) {
       return err.message;
@@ -48,16 +50,16 @@ class BudgetServiceApi {
 
   getUser = async (id: string) => {
     try {
-      const user = await this.axiosInstance.get(`${userEndPoints.Base}:${id}`);
-      return { msg: 'GET req successfully', data: user };
+      const user = await this.axiosInstance.get(`users/${id}`);
+      return user.data ;
     } catch (err) {
       return err.message;
     }
   };
 
-  updateUser = async (id: string) => {
+  updateUser = async (id: string,userPayload: IUserProps) => {
     try {
-      await this.axiosInstance.put(`${userEndPoints.Base}:${id}`);
+      await this.axiosInstance.put(`users/${id}`, userPayload);
       return { msg: 'User Updated successfully' };
     } catch (err) {
       return err.message;
@@ -66,17 +68,8 @@ class BudgetServiceApi {
 
   deleteUser = async (id: string) => {
     try {
-      await this.axiosInstance.delete(`${userEndPoints.Base}:${id}`);
+      await this.axiosInstance.delete(`users/${id}`);
       return { msg: 'User Deleted successfully' };
-    } catch (err) {
-      return err.message;
-    }
-  };
-
-  createTransaction = async (transactionPayload: ITransactionProps) => {
-    try {
-      await this.axiosInstance.post(`${transactionEndPoints.Base}`, transactionPayload);
-      return { msg: 'Transaction Created successfully' };
     } catch (err) {
       return err.message;
     }
@@ -84,16 +77,16 @@ class BudgetServiceApi {
 
   getAllTransactions = async () => {
     try {
-      const transactions = await this.axiosInstance.get(`${transactionEndPoints.All}`);
-      return { msg: 'GET req successfully', data: transactions };
+      const transactions = await this.axiosInstance.get(`transactions/all/`);
+      return transactions.data ;
     } catch (err) {
       return err.message;
     }
   };
 
-  updateTransaction = async (id: string) => {
+  updateTransaction = async (id: string, transactionPayload: ITransactionProps) => {
     try {
-      await this.axiosInstance.put(`${transactionEndPoints.Base}:${id}`);
+      await this.axiosInstance.put(`transactions/${id}`,transactionPayload);
       return { msg: 'Transaction Updated successfully' };
     } catch (err) {
       return err.message;
@@ -102,12 +95,22 @@ class BudgetServiceApi {
 
   deleteTransaction = async (id: string) => {
     try {
-      await this.axiosInstance.delete(`${transactionEndPoints.Base}:${id}`);
+      await this.axiosInstance.delete(`transactions/${id}`);
       return { msg: 'Transaction Deleted successfully' };
     } catch (err) {
       return err.message;
     }
   };
+
+  createTransaction = async (transactionPayload: ITransactionProps) => {
+    try {
+      await this.axiosInstance.post(`transactions/`, transactionPayload);
+      return { msg: 'Transaction Created successfully' };
+    } catch (err) {
+      return err.message;
+    }
+  };
+
 }
 
-export default BudgetServiceApi;
+export default new BudgetServiceApi();
