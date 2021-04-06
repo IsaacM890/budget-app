@@ -1,38 +1,7 @@
 import axios from 'axios';
+import { IUserProps, ITransactionProps } from '../models/index';
 
 const baseURL = process.env.BASE_URL;
-
-interface IUserProps {
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  avatar: string;
-  current_balance: string;
-  current_balance_currency: string;
-}
-
-interface ITransactionProps {
-  paymentType: string;
-  paymentMethod: string;
-  cancelled: boolean;
-  time: string;
-  date: string;
-  currency: string;
-  category: string;
-  company: string;
-  amount: {
-    from: Number;
-    to: Number;
-  };
-  location: {
-    country: string;
-    city: string;
-    street:string,
-    lat: number;
-    lng: number;
-  };
-}
 
 class BudgetServiceApi {
   axiosInstance = axios.create({
@@ -51,13 +20,13 @@ class BudgetServiceApi {
   getUser = async (id: string) => {
     try {
       const user = await this.axiosInstance.get(`users/${id}`);
-      return user.data ;
+      return user.data;
     } catch (err) {
       return err.message;
     }
   };
 
-  updateUser = async (id: string,userPayload: IUserProps) => {
+  updateUser = async (id: string, userPayload: IUserProps) => {
     try {
       await this.axiosInstance.put(`users/${id}`, userPayload);
       return { msg: 'User Updated successfully' };
@@ -78,7 +47,7 @@ class BudgetServiceApi {
   getAllTransactions = async () => {
     try {
       const transactions = await this.axiosInstance.get(`transactions/all/`);
-      return transactions.data ;
+      return transactions.data;
     } catch (err) {
       return err.message;
     }
@@ -86,7 +55,7 @@ class BudgetServiceApi {
 
   updateTransaction = async (id: string, transactionPayload: ITransactionProps) => {
     try {
-      await this.axiosInstance.put(`transactions/${id}`,transactionPayload);
+      await this.axiosInstance.put(`transactions/${id}`, transactionPayload);
       return { msg: 'Transaction Updated successfully' };
     } catch (err) {
       return err.message;
@@ -110,7 +79,6 @@ class BudgetServiceApi {
       return err.message;
     }
   };
-
 }
 
 export default new BudgetServiceApi();
