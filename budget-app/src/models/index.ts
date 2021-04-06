@@ -1,4 +1,37 @@
+/* eslint-disable camelcase */
 import { AvatarSize, FontSize, IconSize } from '../enums';
+
+export interface IUserProps {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  avatar: string;
+  current_balance: string;
+  current_balance_currency: string;
+}
+
+export interface ITransactionProps {
+  paymentType: string;
+  paymentMethod: string;
+  cancelled: boolean;
+  time: string;
+  date: string;
+  currency: string;
+  category: string;
+  company: string;
+  amount: {
+    from: number;
+    to: number;
+  };
+  location: {
+    country: string;
+    city: string;
+    street: string;
+    lat: number;
+    lng: number;
+  };
+}
 
 export interface ITypographyProps {
   color?: string;
