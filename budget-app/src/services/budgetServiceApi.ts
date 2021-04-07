@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IUserProps, ITransactionProps } from '../models/index';
 
-const baseURL = process.env.BASE_URL;
+const baseURL = process.env.REACT_APP_API_URL;
 
 class BudgetServiceApi {
   axiosInstance = axios.create({
@@ -44,9 +44,18 @@ class BudgetServiceApi {
     }
   };
 
-  getAllTransactions = async () => {
+  // getTransactionByID = async (id: string) => {
+  //   try {
+  //     const user = await this.axiosInstance.get(`transactions/${id}`);
+  //     return user.data;
+  //   } catch (err) {
+  //     return err.message;
+  //   }
+  // };
+
+  getAllTransactions = async (limit: number) => {
     try {
-      const transactions = await this.axiosInstance.get(`transactions/all/`);
+      const transactions = await this.axiosInstance.get(`transactions/all?limit=${limit}`);
       return transactions.data;
     } catch (err) {
       return err.message;

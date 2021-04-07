@@ -1,13 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavBar from '../../../components/organisms/NavBar/NavBar';
-import Main from '../Dashboard/Dashboard';
+import Dashboard from '../Dashboard/Dashboard';
 import PaymentBar from '../../../components/organisms/PaymentBar/PaymentBar';
 import theme from '../../../style/theme/theme';
 import Transactions from '../Transactions/Transactions';
 import Cards from '../Cards/Cards';
 import Charts from '../Charts/Charts';
+import BudgetServiceApi from '../../../services/budgetServiceApi';
 
 const SHomePageContainer = styled.div`
   display: grid;
@@ -33,18 +34,36 @@ const SHomePageContainer = styled.div`
   }
 `;
 
-const HomePage: FC = () => (
-  <Router>
-    <SHomePageContainer>
-      <NavBar />
-      <Switch>
-        <Route path="/" exact component={Main} />
-        <Route path="/transactions" component={Transactions} />
-        <Route path="/charts" component={Charts} />
-        <Route path="/cards" component={Cards} />
-      </Switch>
-      <PaymentBar />
-    </SHomePageContainer>
-  </Router>
-);
+const HomePage: FC = () => {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await BudgetServiceApi.getAllTransactions(10);
+      console.log('data:', data);
+
+      setTransactions(data);
+    };
+    fetchData();
+  }, []);
+
+  console.log('transactions:', transactions);
+  return (
+    <Router>
+      <SHomePageContainer>
+        <NavBar />
+        <Switch>
+          <Route path="/" exact>
+            <Dashboard transactions={transactions} />
+          </Route>
+          <Route path="/transactions" component={Transactions} />
+          <Route path="/charts" component={Charts} />
+          <Route path="/cards" component={Cards} />
+        </Switch>
+        <PaymentBar transactions={transactions} />
+      </SHomePageContainer>
+    </Router>
+  );
+};
+
 export default HomePage;

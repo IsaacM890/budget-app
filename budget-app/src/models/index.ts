@@ -100,4 +100,5 @@ export interface IPaymentListProps {
   paymentdate?: string;
   currency?: string;
   iconBackground?: string;
+  transactions?: [];
 }

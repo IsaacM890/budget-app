@@ -21,7 +21,7 @@ const STitleWrapper = styled.div`
   margin: 10px;
 `;
 
-const PaymentBar: FC = () => (
+const PaymentBar: FC<any> = ({ transactions }) => (
   <SPaymentBarContainer>
     <UserDetails
       FirstName="yaron"
@@ -34,7 +34,7 @@ const PaymentBar: FC = () => (
         Payment History
       </Typography>
     </STitleWrapper>
-    <PaymentList paymentdate="4 march,18:33" currency="USD" />
+    <PaymentList transactions={transactions} paymentdate="4 march,18:33" currency="USD" />
   </SPaymentBarContainer>
 );
 

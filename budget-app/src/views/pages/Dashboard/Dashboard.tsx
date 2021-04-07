@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { faArchive, faChartLine } from '@fortawesome/free-solid-svg-icons';
+// eslint-disable-next-line spaced-comment
+import { faArchive /*faChartLine */ } from '@fortawesome/free-solid-svg-icons';
 import BriefCard from '../../../components/molecules/BriefCard/BriefCard';
 import CreditCard from '../../../components/molecules/CreditCard/CreditCard';
 import IncomeChart from '../../../components/molecules/IncomeChart/IncomeChart';
@@ -35,7 +36,7 @@ const SFlexWrapper = styled.div`
   }
 `;
 
-const Dashboard: FC = () => (
+const Dashboard: FC<any> = ({ transactions }) => (
   <SMainContainer>
     <SFlexWrapper>
       <CreditCard FirstName="itzhak" LastName="Maharat" last4Digits={1589} expMonth={11} expYear={25} />
@@ -43,26 +44,20 @@ const Dashboard: FC = () => (
     <SFlexWrapper>
       <IncomeChart />
     </SFlexWrapper>
-    <SFlexWrapper>
-      <BriefCard
-        title="Investments"
-        revenue="90,854"
-        profit="+5.08%"
-        iconbackgroundcolor={theme.colors.blue.medium}
-        iconcolor={theme.colors.white.primary}
-        icon={faArchive}
-      />
-    </SFlexWrapper>
-    <SFlexWrapper>
-      <BriefCard
-        title="Sales"
-        revenue="90,854"
-        profit="+5.08%"
-        iconbackgroundcolor={theme.colors.blue.dark}
-        iconcolor={theme.colors.white.primary}
-        icon={faChartLine}
-      />
-    </SFlexWrapper>
+
+    {transactions.length &&
+      transactions.map((item: any) => (
+        <SFlexWrapper key={item.id}>
+          <BriefCard
+            title={item.paymentType}
+            revenue={item.amount.to}
+            profit="+5.08%"
+            iconbackgroundcolor={theme.colors.blue.medium}
+            iconcolor={theme.colors.white.primary}
+            icon={faArchive}
+          />
+        </SFlexWrapper>
+      ))}
     <ActivityChart />
   </SMainContainer>
 );
