@@ -27,7 +27,7 @@ const PaymentBar: FC<any> = ({ transactions }) => (
       FirstName="yaron"
       LastName="avraham"
       email="yaron2324@gmail.com"
-      avatar="https://www.itu.cet.ac.il/uploads/2017/08/default-avatar-1.jpg"
+      avatar="https://png.pngtree.com/png-vector/20190909/ourmid/pngtree-outline-user-icon-png-image_1727916.jpg"
     />
     <STitleWrapper>
       <Typography fontsize={FontSize.heading2} margin="5px 0" fontweight="bold">

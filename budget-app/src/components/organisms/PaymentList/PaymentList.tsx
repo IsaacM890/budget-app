@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IPaymentListProps } from '../../../models/index';
-import { getStyledData } from '../../../constants/PayGroup';
+import getStyledData from '../../../constants/PayGroup';
 import ListItem from '../../molecules/ListItem/ListItem';
 import ListItemText from '../../molecules/ListItemText/ListItemText';
 
@@ -42,18 +42,17 @@ const getSymbol = (amount: number) => (amount > 0 ? '+' : '');
 
 const PaymentList: FC<IPaymentListProps> = ({ currency, transactions }) => (
   <PaymentListWrapper>
-    {/* {transactions?.length && transactions?.map((d) => console.log(getStyledData(d)?.icon))} */}
-    {transactions?.map((data, index) => (
+    {transactions?.map((transaction, index) => (
       // eslint-disable-next-line react/no-array-index-key
       <ListItem margin="5px 3px" padding="5px 0" key={index}>
-        <SIconWrapper iconBackground={getStyledData(data)?.backgroundcolor}>
-          <FontAwesomeIcon icon="check" color={getStyledData(data)?.color} />
+        <SIconWrapper iconBackground={getStyledData(transaction)?.backgroundcolor}>
+          <FontAwesomeIcon icon="check" color={getStyledData(transaction)?.color} />
         </SIconWrapper>
-        <ListItemText title={getStyledData(data)?.text} subtitle={getStyledData(data)?.date} />
+        <ListItemText title={getStyledData(transaction)?.text} subtitle={getStyledData(transaction)?.date} />
         <ListItemText
           fontweight="bold"
-          color={getAmountColor(getStyledData(data)?.amount)}
-          title={`${getSymbol(getStyledData(data)?.amount)}  ${getStyledData(data)?.amount}`}
+          color={getAmountColor(getStyledData(transaction)?.amount)}
+          title={`${getSymbol(getStyledData(transaction)?.amount)}  ${getStyledData(transaction)?.amount}`}
           subtitle={currency}
         />
       </ListItem>
