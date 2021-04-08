@@ -1,31 +1,6 @@
 import { faCheck, faTimes, faSyncAlt, faReply } from '@fortawesome/free-solid-svg-icons';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
 
-// {
-//   "amount": {
-//       "from": 70,
-//       "to": 200
-//   },
-//   "location": {
-//       "country": "China",
-//       "city": "Lidian",
-//       "lat": "32.272766",
-//       "lng": "119.579153"
-//   },
-//   "_id": "606dd9faf0d98b0008b04b70",
-//   "paymentType": "Expenses",
-//   "paymentMethod": "test123",
-//   "cancelled": true,
-//   "time": "8:09 PM",
-//   "date": "2023-09-06T00:00:00.000Z",
-//   "currency": "CNY",
-//   "category": "Grocery",
-//   "company": "Browsecat",
-//   "__v": 0
-
-// credit card ATM
-// },
-
 // eslint-disable-next-line consistent-return
 export const getStyledData = (transactionType: any) => {
   switch (transactionType.paymentMethod) {
@@ -47,7 +22,7 @@ export const getStyledData = (transactionType: any) => {
         text: 'Cancelled',
         icon: faCheck.iconName,
         color: 'white',
-        backgroundcolor: '#8a7be5',
+        backgroundcolor: '#FF8788',
         amount: transactionType.amount.to,
         date: transactionType.date,
         id: 1,
@@ -80,7 +55,7 @@ export const getStyledData = (transactionType: any) => {
     case 'paypal':
       return {
         name: 'paypal',
-        text: 'Deposit PayPal',
+        text: 'Deposit from PayPal',
         icon: faPaypal,
         color: 'white',
         backgroundcolor: '#8a7be5',

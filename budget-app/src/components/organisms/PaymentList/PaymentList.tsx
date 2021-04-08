@@ -43,17 +43,17 @@ const getSymbol = (amount: number) => (amount > 0 ? '+' : '');
 const PaymentList: FC<IPaymentListProps> = ({ currency, transactions }) => (
   <PaymentListWrapper>
     {/* {transactions?.length && transactions?.map((d) => console.log(getStyledData(d)?.icon))} */}
-    {transactions?.map((d, index) => (
+    {transactions?.map((data, index) => (
       // eslint-disable-next-line react/no-array-index-key
       <ListItem margin="5px 3px" padding="5px 0" key={index}>
-        <SIconWrapper iconBackground={getStyledData(d)?.backgroundcolor}>
-          <FontAwesomeIcon icon="check" color={getStyledData(d)?.color} />
+        <SIconWrapper iconBackground={getStyledData(data)?.backgroundcolor}>
+          <FontAwesomeIcon icon="check" color={getStyledData(data)?.color} />
         </SIconWrapper>
-        <ListItemText title={getStyledData(d)?.text} subtitle={getStyledData(d)?.date} />
+        <ListItemText title={getStyledData(data)?.text} subtitle={getStyledData(data)?.date} />
         <ListItemText
           fontweight="bold"
-          color={getAmountColor(getStyledData(d)?.amount)}
-          title={`${getSymbol(getStyledData(d)?.amount)}  ${getStyledData(d)?.amount}`}
+          color={getAmountColor(getStyledData(data)?.amount)}
+          title={`${getSymbol(getStyledData(data)?.amount)}  ${getStyledData(data)?.amount}`}
           subtitle={currency}
         />
       </ListItem>

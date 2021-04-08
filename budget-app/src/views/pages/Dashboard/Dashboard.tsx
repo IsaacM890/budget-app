@@ -46,7 +46,7 @@ const Dashboard: FC<any> = () => (
     </SFlexWrapper>
     <SFlexWrapper>
       <BriefCard
-        title="Expenses"
+        title="Revenue "
         revenue="20952"
         profit="+5.08%"
         iconbackgroundcolor={theme.colors.blue.medium}
@@ -56,7 +56,7 @@ const Dashboard: FC<any> = () => (
     </SFlexWrapper>
     <SFlexWrapper>
       <BriefCard
-        title="Income"
+        title="Averages"
         revenue="15236"
         profit="+5.08%"
         iconbackgroundcolor={theme.colors.blue.medium}

@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import BudgetServiceApi from '../../../services/budgetServiceApi';
 import NavBar from '../../../components/organisms/NavBar/NavBar';
 import Dashboard from '../Dashboard/Dashboard';
 import PaymentBar from '../../../components/organisms/PaymentBar/PaymentBar';
@@ -8,7 +9,6 @@ import theme from '../../../style/theme/theme';
 import Transactions from '../Transactions/Transactions';
 import Cards from '../Cards/Cards';
 import Charts from '../Charts/Charts';
-import BudgetServiceApi from '../../../services/budgetServiceApi';
 
 const SHomePageContainer = styled.div`
   display: grid;
