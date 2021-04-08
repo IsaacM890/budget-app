@@ -21,7 +21,7 @@ const SHomePageContainer = styled.div`
   max-height: 95vh;
   margin: 10px auto;
   border-radius: 20px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   @media (max-width: ${theme.breakpoints.strechBreak}) {
     width: 95%;

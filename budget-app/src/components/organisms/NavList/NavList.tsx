@@ -20,8 +20,8 @@ const NavListWrapper = styled.ul`
 const NavList: FC = () => (
   <NavListWrapper>
     {navGroup.map(({ id, icon, color, label, route }) => (
-      <Link to={route}>
-        <ListItem key={id}>
+      <Link key={id} to={route}>
+        <ListItem>
           <Icon margin="0 5px" padding="0 5px" size={IconSize.medium}>
             <FontAwesomeIcon icon={icon} color={color} />
           </Icon>

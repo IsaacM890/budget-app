@@ -34,7 +34,7 @@ const PaymentBar: FC<any> = ({ transactions }) => (
         Payment History
       </Typography>
     </STitleWrapper>
-    <PaymentList transactions={transactions} paymentdate="4 march,18:33" currency="USD" />
+    <PaymentList transactions={transactions} currency="USD" />
   </SPaymentBarContainer>
 );
 

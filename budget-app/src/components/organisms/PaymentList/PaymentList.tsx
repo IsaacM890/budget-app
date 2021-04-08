@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IPaymentListProps } from '../../../models/index';
-import payGroup from '../../../constants/PayGroup';
+import { getStyledData } from '../../../constants/PayGroup';
 import ListItem from '../../molecules/ListItem/ListItem';
 import ListItemText from '../../molecules/ListItemText/ListItemText';
 
@@ -37,20 +37,23 @@ const getAmountColor = (amount: number) => {
   }
   return 'black';
 };
+
 const getSymbol = (amount: number) => (amount > 0 ? '+' : '');
 
-const PaymentList: FC<IPaymentListProps> = ({ paymentdate, currency }) => (
+const PaymentList: FC<IPaymentListProps> = ({ currency, transactions }) => (
   <PaymentListWrapper>
-    {payGroup.map(({ amount, backgroundcolor, icon, color, text, id }) => (
-      <ListItem margin="5px 3px" padding="5px 0" key={id}>
-        <SIconWrapper iconBackground={backgroundcolor}>
-          <FontAwesomeIcon icon={icon} color={color} />
+    {/* {transactions?.length && transactions?.map((d) => console.log(getStyledData(d)?.icon))} */}
+    {transactions?.map((d, index) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <ListItem margin="5px 3px" padding="5px 0" key={index}>
+        <SIconWrapper iconBackground={getStyledData(d)?.backgroundcolor}>
+          <FontAwesomeIcon icon="check" color={getStyledData(d)?.color} />
         </SIconWrapper>
-        <ListItemText title={text} subtitle={paymentdate} />
+        <ListItemText title={getStyledData(d)?.text} subtitle={getStyledData(d)?.date} />
         <ListItemText
           fontweight="bold"
-          color={getAmountColor(amount)}
-          title={`${getSymbol(amount)}  ${amount}`}
+          color={getAmountColor(getStyledData(d)?.amount)}
+          title={`${getSymbol(getStyledData(d)?.amount)}  ${getStyledData(d)?.amount}`}
           subtitle={currency}
         />
       </ListItem>
@@ -59,3 +62,19 @@ const PaymentList: FC<IPaymentListProps> = ({ paymentdate, currency }) => (
 );
 
 export default PaymentList;
+
+//  {/* {transactions?.length && transactions?.map((d) => console.log(getIcon(d)))}
+//     {payGroup.map(({ amount, backgroundcolor, text, id, color }) => (
+//       <ListItem margin="5px 3px" padding="5px 0" key={id}>
+//         <SIconWrapper iconBackground={backgroundcolor}>
+//           <FontAwesomeIcon icon="check" color={color} />
+//         </SIconWrapper>
+//         <ListItemText title={text} subtitle={paymentdate} />
+//         <ListItemText
+//           fontweight="bold"
+//           color={getAmountColor(amount)}
+//           title={`${getSymbol(amount)}  ${amount}`}
+//           subtitle={currency}
+//         />
+//       </ListItem>
+//     ))} */}
