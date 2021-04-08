@@ -7,6 +7,22 @@ export enum FontSize {
   subtitle2 = 'subtitle2',
 }
 
+export enum PaymentType {
+  paypal = 'paypal',
+  ATM = 'ATM',
+  Cancelled = 'Cancelled',
+  cycle = 'cycle',
+  refund = 'refund',
+}
+
+export enum PaymentTypeMsg {
+  paypal = 'Deposit from PayPal',
+  ATM = 'Deposit from ATM',
+  Cancelled = 'Cancelled',
+  cycle = 'Deposit from ATL',
+  refund = 'Refund',
+}
+
 export enum IconSize {
   Xlarge = 'xlarge',
   large = 'large',

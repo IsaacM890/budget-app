@@ -81,6 +81,13 @@ export interface IBriefCardProps {
   icon?: any;
 }
 
+// export interface IPayGroupProps {
+//   text?: string ;
+//   icon?: IconDefinition;
+//   color?: string;
+//   backgroundColor?: string;
+// }
+
 export interface IUserDetailsProps {
   FirstName: string;
   LastName: string;

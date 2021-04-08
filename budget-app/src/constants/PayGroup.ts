@@ -1,62 +1,49 @@
 import { faCheck, faTimes, faSyncAlt, faReply } from '@fortawesome/free-solid-svg-icons';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
+import { ITransactionProps } from '../models/index';
+import { PaymentType, PaymentTypeMsg } from '../enums/index';
 
 // eslint-disable-next-line consistent-return
-const getStyledData = (transactionType: any) => {
-  switch (transactionType.paymentMethod) {
-    case 'ATM':
+const getUiMockProps = (transaction: ITransactionProps) => {
+  switch (transaction.paymentMethod) {
+    case PaymentType.ATM:
       return {
-        name: 'ATM',
-        text: 'Deposit from ATM',
-        icon: faCheck.iconName,
+        text: PaymentTypeMsg.ATM,
+        icon: faCheck,
         color: 'white',
-        backgroundcolor: '#8a7be5',
-        amount: transactionType.amount.to,
-        date: transactionType.date,
+        backgroundColor: '#8a7be5',
       };
 
-    case 'Cancelled':
+    case PaymentType.Cancelled:
       return {
-        name: 'Cancelled',
-        text: 'Cancelled',
+        text: PaymentTypeMsg.Cancelled,
         icon: faTimes,
         color: 'white',
-        backgroundcolor: '#FF8788',
-        amount: transactionType.amount.to,
-        date: transactionType.date,
+        backgroundColor: '#FF8788',
       };
 
-    case 'cycle':
+    case PaymentType.cycle:
       return {
-        name: 'sync',
-        text: 'Deposit from ATL',
+        text: PaymentTypeMsg.cycle,
         icon: faSyncAlt,
         color: 'black',
-        backgroundcolor: 'white',
-        amount: transactionType.amount.to,
-        date: transactionType.date,
+        backgroundColor: 'white',
       };
 
-    case 'refund':
+    case PaymentType.refund:
       return {
-        name: 'refund',
-        text: 'Refund',
+        text: PaymentTypeMsg.refund,
         icon: faReply,
         color: 'black',
-        backgroundcolor: transactionType.amount.to,
-        amount: transactionType.amount.to,
-        date: transactionType.date,
+        backgroundColor: 'white',
       };
 
-    case 'paypal':
+    case PaymentType.paypal:
       return {
-        name: 'paypal',
-        text: 'Deposit from PayPal',
+        text: PaymentTypeMsg.paypal,
         icon: faPaypal,
         color: 'white',
-        backgroundcolor: '#8a7be5',
-        amount: transactionType.amount.to,
-        date: transactionType.date,
+        backgroundColor: '#8a7be5',
       };
 
     default:
@@ -64,47 +51,4 @@ const getStyledData = (transactionType: any) => {
   }
 };
 
-export default getStyledData;
-
-// export const payGroup = [
-//   {
-//     name: 'ATM',
-//     text: 'Deposit from ATM',
-//     icon: faCheck,
-//     color: 'white',
-//     backgroundcolor: '#8a7be5',
-//     id: 1,
-//   },
-//   {
-//     name: 'Cancelled',
-//     text: 'Cancelled',
-//     icon: faTimes,
-//     color: 'white',
-//     backgroundcolor: '#FF8788',
-//     id: 2,
-//   },
-//   {
-//     name: 'sync',
-//     text: 'Deposit from ATL',
-//     icon: faSyncAlt,
-//     color: 'black',
-//     backgroundcolor: 'white',
-//     id: 3,
-//   },
-//   {
-//     name: 'refund',
-//     text: 'Refund',
-//     icon: faReply,
-//     color: 'black',
-//     backgroundcolor: 'white',
-//     id: 4,
-//   },
-//   {
-//     name: 'paypal',
-//     text: 'Deposit from PayPal',
-//     icon: faPaypal,
-//     color: 'white',
-//     backgroundcolor: '#8a7be5',
-//     id: 5,
-//   },
-// ];
+export default getUiMockProps;

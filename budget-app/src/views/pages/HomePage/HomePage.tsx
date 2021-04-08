@@ -6,7 +6,7 @@ import NavBar from '../../../components/organisms/NavBar/NavBar';
 import Dashboard from '../Dashboard/Dashboard';
 import PaymentBar from '../../../components/organisms/PaymentBar/PaymentBar';
 import theme from '../../../style/theme/theme';
-import Transactions from '../Transactions/Transactions';
+import transactionsList from '../Transactions/Transactions';
 import Cards from '../Cards/Cards';
 import Charts from '../Charts/Charts';
 
@@ -21,7 +21,6 @@ const SHomePageContainer = styled.div`
   max-height: 95vh;
   margin: 10px auto;
   border-radius: 20px;
-  overflow: visible;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   @media (max-width: ${theme.breakpoints.strechBreak}) {
     width: 95%;
@@ -39,15 +38,12 @@ const HomePage: FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await BudgetServiceApi.getAllTransactions(10);
-      console.log('data:', data);
+      const transactionsData = await BudgetServiceApi.getAllTransactions(10);
 
-      setTransactions(data);
+      setTransactions(transactionsData);
     };
     fetchData();
   }, []);
-
-  console.log('transactions:', transactions);
   return (
     <Router>
       <SHomePageContainer>
@@ -56,7 +52,7 @@ const HomePage: FC = () => {
           <Route path="/" exact>
             <Dashboard transactions={transactions} />
           </Route>
-          <Route path="/transactions" component={Transactions} />
+          <Route path="/transactions" component={transactionsList} />
           <Route path="/charts" component={Charts} />
           <Route path="/cards" component={Cards} />
         </Switch>

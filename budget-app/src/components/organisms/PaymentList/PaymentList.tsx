@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IPaymentListProps } from '../../../models/index';
-import getStyledData from '../../../constants/PayGroup';
+import { IPaymentListProps, ITransactionProps } from '../../../models/index';
+import getUiMockProps from '../../../constants/PayGroup';
 import ListItem from '../../molecules/ListItem/ListItem';
 import ListItemText from '../../molecules/ListItemText/ListItemText';
 
@@ -40,40 +40,28 @@ const getAmountColor = (amount: number) => {
 
 const getSymbol = (amount: number) => (amount > 0 ? '+' : '');
 
+const getDateFormat = (date: string) => new Date(date).toLocaleDateString();
+
 const PaymentList: FC<IPaymentListProps> = ({ currency, transactions }) => (
   <PaymentListWrapper>
-    {transactions?.map((transaction, index) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <ListItem margin="5px 3px" padding="5px 0" key={index}>
-        <SIconWrapper iconBackground={getStyledData(transaction)?.backgroundcolor}>
-          <FontAwesomeIcon icon="check" color={getStyledData(transaction)?.color} />
-        </SIconWrapper>
-        <ListItemText title={getStyledData(transaction)?.text} subtitle={getStyledData(transaction)?.date} />
-        <ListItemText
-          fontweight="bold"
-          color={getAmountColor(getStyledData(transaction)?.amount)}
-          title={`${getSymbol(getStyledData(transaction)?.amount)}  ${getStyledData(transaction)?.amount}`}
-          subtitle={currency}
-        />
-      </ListItem>
-    ))}
+    {transactions?.map((transaction: ITransactionProps) => {
+      const { backgroundColor, color, text, icon } = getUiMockProps(transaction) || {};
+      return (
+        <ListItem margin="5px 3px" padding="5px 0">
+          <SIconWrapper iconBackground={backgroundColor}>
+            <FontAwesomeIcon icon={icon || 'check'} color={color} />
+          </SIconWrapper>
+          <ListItemText title={text} subtitle={getDateFormat(transaction.date)} />
+          <ListItemText
+            fontweight="bold"
+            color={getAmountColor(transaction.amount.to)}
+            title={`${getSymbol(transaction.amount.to)}  ${transaction.amount.to}`}
+            subtitle={currency}
+          />
+        </ListItem>
+      );
+    })}
   </PaymentListWrapper>
 );
 
 export default PaymentList;
-
-//  {/* {transactions?.length && transactions?.map((d) => console.log(getIcon(d)))}
-//     {payGroup.map(({ amount, backgroundcolor, text, id, color }) => (
-//       <ListItem margin="5px 3px" padding="5px 0" key={id}>
-//         <SIconWrapper iconBackground={backgroundcolor}>
-//           <FontAwesomeIcon icon="check" color={color} />
-//         </SIconWrapper>
-//         <ListItemText title={text} subtitle={paymentdate} />
-//         <ListItemText
-//           fontweight="bold"
-//           color={getAmountColor(amount)}
-//           title={`${getSymbol(amount)}  ${amount}`}
-//           subtitle={currency}
-//         />
-//       </ListItem>
-//     ))} */}
