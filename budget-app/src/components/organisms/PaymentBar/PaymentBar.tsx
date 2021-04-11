@@ -13,6 +13,7 @@ const SPaymentBarContainer = styled.div`
   @media (max-width: ${theme.breakpoints.desktop}) {
     display: none;
   }
+  overflow-y: auto;
 `;
 
 const STitleWrapper = styled.div`

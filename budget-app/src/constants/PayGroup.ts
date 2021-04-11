@@ -2,7 +2,7 @@ import { faCheck, faTimes, faSyncAlt, faReply } from '@fortawesome/free-solid-sv
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
 import { ITransactionProps } from '../models/index';
 import { PaymentType, PaymentTypeMsg } from '../enums/index';
-
+// import theme from '../style/theme/theme'
 // eslint-disable-next-line consistent-return
 const getUiMockProps = (transaction: ITransactionProps) => {
   switch (transaction.paymentMethod) {
@@ -52,3 +52,43 @@ const getUiMockProps = (transaction: ITransactionProps) => {
 };
 
 export default getUiMockProps;
+
+// case PaymentType.ATM:
+//   return {
+//     text: PaymentTypeMsg.ATM,
+//     icon: faCheck,
+//     color: theme.colors.white,
+//     backgroundColor: theme.colors.purple,
+//   };
+
+// case PaymentType.Cancelled:
+//   return {
+//     text: PaymentTypeMsg.Cancelled,
+//     icon: faTimes,
+//     color: theme.colors.white,
+//     backgroundColor: theme.colors.pink.primary,
+//   };
+
+// case PaymentType.cycle:
+//   return {
+//     text: PaymentTypeMsg.cycle,
+//     icon: faSyncAlt,
+//     color: theme.colors.black,
+//     backgroundColor: theme.colors.white,
+//   };
+
+// case PaymentType.refund:
+//   return {
+//     text: PaymentTypeMsg.refund,
+//     icon: faReply,
+//     color: theme.colors.black,
+//     backgroundColor: theme.colors.white,
+//   };
+
+// case PaymentType.paypal:
+//   return {
+//     text: PaymentTypeMsg.paypal,
+//     icon: faPaypal,
+//     color: theme.colors.white,
+//     backgroundColor: theme.colors.purple,
+//   };

@@ -20,10 +20,7 @@ export interface ITransactionProps {
   currency: string;
   category: string;
   company: string;
-  amount: {
-    from: number;
-    to: number;
-  };
+  amount: number;
   location: {
     country: string;
     city: string;
@@ -103,8 +100,6 @@ export interface IListItemTextProps {
 }
 
 export interface IPaymentListProps {
-  payment?: string;
-  paymentdate?: string;
   currency?: string;
   iconBackground?: string;
   transactions?: [];

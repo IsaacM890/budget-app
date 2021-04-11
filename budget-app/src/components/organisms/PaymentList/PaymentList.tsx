@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TransactionsContext } from '../../../constexts/transactionsContext';
 import { IPaymentListProps, ITransactionProps } from '../../../models/index';
 import getUiMockProps from '../../../constants/PayGroup';
 import ListItem from '../../molecules/ListItem/ListItem';
@@ -42,26 +43,29 @@ const getSymbol = (amount: number) => (amount > 0 ? '+' : '');
 
 const getDateFormat = (date: string) => new Date(date).toLocaleDateString();
 
-const PaymentList: FC<IPaymentListProps> = ({ currency, transactions }) => (
-  <PaymentListWrapper>
-    {transactions?.map((transaction: ITransactionProps) => {
-      const { backgroundColor, color, text, icon } = getUiMockProps(transaction) || {};
-      return (
-        <ListItem margin="5px 3px" padding="5px 0">
-          <SIconWrapper iconBackground={backgroundColor}>
-            <FontAwesomeIcon icon={icon || 'check'} color={color} />
-          </SIconWrapper>
-          <ListItemText title={text} subtitle={getDateFormat(transaction.date)} />
-          <ListItemText
-            fontweight="bold"
-            color={getAmountColor(transaction.amount.to)}
-            title={`${getSymbol(transaction.amount.to)}  ${transaction.amount.to}`}
-            subtitle={currency}
-          />
-        </ListItem>
-      );
-    })}
-  </PaymentListWrapper>
-);
+const PaymentList: FC<IPaymentListProps> = ({ currency }) => {
+  const { transactions } = useContext(TransactionsContext);
+  return (
+    <PaymentListWrapper>
+      {transactions?.map((transaction: ITransactionProps) => {
+        const { backgroundColor, color, text, icon } = getUiMockProps(transaction) || {};
+        return (
+          <ListItem margin="5px 3px" padding="5px 0">
+            <SIconWrapper iconBackground={backgroundColor}>
+              <FontAwesomeIcon icon={icon || 'check'} color={color} />
+            </SIconWrapper>
+            <ListItemText title={text} subtitle={getDateFormat(transaction.date)} />
+            <ListItemText
+              fontweight="bold"
+              color={getAmountColor(transaction.amount)}
+              title={`${getSymbol(transaction.amount)}  ${transaction.amount}`}
+              subtitle={currency}
+            />
+          </ListItem>
+        );
+      })}
+    </PaymentListWrapper>
+  );
+};
 
 export default PaymentList;
