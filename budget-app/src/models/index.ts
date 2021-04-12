@@ -71,19 +71,12 @@ export interface ICreditCardProps {
 
 export interface IBriefCardProps {
   title?: string;
-  revenue?: string;
+  revenue?: number;
   profit?: string;
   iconbackgroundcolor: string;
   iconcolor?: string;
   icon?: any;
 }
-
-// export interface IPayGroupProps {
-//   text?: string ;
-//   icon?: IconDefinition;
-//   color?: string;
-//   backgroundColor?: string;
-// }
 
 export interface IUserDetailsProps {
   FirstName: string;
@@ -100,7 +93,5 @@ export interface IListItemTextProps {
 }
 
 export interface IPaymentListProps {
-  currency?: string;
   iconBackground?: string;
-  transactions?: [];
 }

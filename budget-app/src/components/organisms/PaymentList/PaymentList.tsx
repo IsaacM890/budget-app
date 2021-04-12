@@ -2,7 +2,7 @@ import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
-import { IPaymentListProps, ITransactionProps } from '../../../models/index';
+import { IPaymentListProps } from '../../../models/index';
 import getUiMockProps from '../../../constants/PayGroup';
 import ListItem from '../../molecules/ListItem/ListItem';
 import ListItemText from '../../molecules/ListItemText/ListItemText';
@@ -43,22 +43,22 @@ const getSymbol = (amount: number) => (amount > 0 ? '+' : '');
 
 const getDateFormat = (date: string) => new Date(date).toLocaleDateString();
 
-const PaymentList: FC<IPaymentListProps> = ({ currency }) => {
+const PaymentList: FC = () => {
   const { transactions } = useContext(TransactionsContext);
   return (
     <PaymentListWrapper>
-      {transactions?.map((transaction: ITransactionProps) => {
-        const { backgroundColor, color, text, icon } = getUiMockProps(transaction) || {};
+      {transactions?.map(({ paymentMethod, date, amount, currency }) => {
+        const { backgroundColor, color, text, icon } = getUiMockProps(paymentMethod);
         return (
           <ListItem margin="5px 3px" padding="5px 0">
             <SIconWrapper iconBackground={backgroundColor}>
-              <FontAwesomeIcon icon={icon || 'check'} color={color} />
+              <FontAwesomeIcon icon={icon} color={color} />
             </SIconWrapper>
-            <ListItemText title={text} subtitle={getDateFormat(transaction.date)} />
+            <ListItemText title={text} subtitle={getDateFormat(date)} />
             <ListItemText
               fontweight="bold"
-              color={getAmountColor(transaction.amount)}
-              title={`${getSymbol(transaction.amount)}  ${transaction.amount}`}
+              color={getAmountColor(amount)}
+              title={`${getSymbol(amount)}${amount}`}
               subtitle={currency}
             />
           </ListItem>

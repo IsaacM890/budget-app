@@ -22,7 +22,7 @@ const STitleWrapper = styled.div`
   margin: 10px;
 `;
 
-const PaymentBar: FC<any> = ({ transactions }) => (
+const PaymentBar: FC = () => (
   <SPaymentBarContainer>
     <UserDetails
       FirstName="yaron"
@@ -35,7 +35,7 @@ const PaymentBar: FC<any> = ({ transactions }) => (
         Payment History
       </Typography>
     </STitleWrapper>
-    <PaymentList transactions={transactions} currency="USD" />
+    <PaymentList />
   </SPaymentBarContainer>
 );
 

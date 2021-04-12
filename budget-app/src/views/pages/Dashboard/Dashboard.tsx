@@ -55,7 +55,7 @@ const getAverage = (transactions: { paymentType: string; amount: number }[]) => 
   return { expenses: expenses / expCounter, income: income / incCounter };
 };
 
-const Dashboard: FC<any> = () => {
+const Dashboard: FC = () => {
   const { transactions } = useContext(TransactionsContext);
 
   return (
@@ -69,7 +69,7 @@ const Dashboard: FC<any> = () => {
       <SFlexWrapper>
         <BriefCard
           title="Income"
-          revenue={`${getAverage(transactions).income}`}
+          revenue={getAverage(transactions).income}
           profit="+5.08%"
           iconbackgroundcolor={theme.colors.blue.medium}
           iconcolor={theme.colors.white.primary}
@@ -79,7 +79,7 @@ const Dashboard: FC<any> = () => {
       <SFlexWrapper>
         <BriefCard
           title="Expenses"
-          revenue={`${getAverage(transactions).expenses}`}
+          revenue={getAverage(transactions).expenses}
           profit="+5.08%"
           iconbackgroundcolor={theme.colors.blue.medium}
           iconcolor={theme.colors.white.primary}

@@ -7,7 +7,7 @@ export enum FontSize {
   subtitle2 = 'subtitle2',
 }
 
-export enum PaymentType {
+export enum PaymentMethod {
   paypal = 'paypal',
   ATM = 'ATM',
   Cancelled = 'Cancelled',
@@ -15,7 +15,7 @@ export enum PaymentType {
   refund = 'refund',
 }
 
-export enum PaymentTypeMsg {
+export enum PaymentMethodMsg {
   paypal = 'Deposit from PayPal',
   ATM = 'Deposit from ATM',
   Cancelled = 'Cancelled',
