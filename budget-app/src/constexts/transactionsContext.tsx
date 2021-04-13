@@ -1,12 +1,13 @@
-import React, { useState, createContext } from 'react';
-import { ITransactionProps } from '../models/index';
+import React, { useReducer, createContext } from 'react';
+import { ITransactionProps, ITransactionsState, ITransactionsContext } from '../models/index';
+import transactionsReducer from '../reducers/transactionsReducer';
 
 const initialtransactions: ITransactionProps[] = [];
 
-interface ITransactionsContext {
-  transactions: ITransactionProps[];
-  setTransactions: (transactions: ITransactionProps[]) => void;
-}
+const initialState: ITransactionsState = {
+  transactions: initialtransactions,
+};
+
 const initialContext: ITransactionsContext = {
   transactions: initialtransactions,
   setTransactions: () => {},
@@ -15,12 +16,16 @@ const initialContext: ITransactionsContext = {
 export const TransactionsContext = createContext<ITransactionsContext>(initialContext);
 
 const TransactionsProvider: React.FC = ({ children }) => {
-  const [transactions, setTransactions] = useState<ITransactionProps[]>(initialtransactions);
+  const [state, dispatch] = useReducer(transactionsReducer, initialState);
+
+  const setTransactions = (transactions: ITransactionProps[]) => {
+    dispatch({ type: 'GET_LATEST_TRANSACTIONS', data: transactions });
+  };
 
   return (
     <TransactionsContext.Provider
       value={{
-        transactions,
+        transactions: state.transactions,
         setTransactions,
       }}
     >

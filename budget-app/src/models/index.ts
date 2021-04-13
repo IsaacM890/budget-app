@@ -11,6 +11,14 @@ export interface IUserProps {
   current_balance_currency: string;
 }
 
+export interface ITransactionsContext {
+  transactions: ITransactionProps[];
+  setTransactions: (transactions: ITransactionProps[]) => void;
+}
+export interface ITransactionsState {
+  transactions: ITransactionProps[];
+}
+
 export interface ITransactionProps {
   paymentType: string;
   paymentMethod: string;
