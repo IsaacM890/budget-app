@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ApexCharts from 'react-apexcharts';
+import { TransactionsContext } from '../../../constexts/transactionsContext';
 import theme from '../../../style/theme/theme';
 
 const ActivityChart = () => {
+  const { transactions } = useContext(TransactionsContext);
+
   const chartObj = {
     series: [
       {
-        name: 'Arrival',
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+        name: 'Income',
+        data: transactions.filter((item) => item.paymentType === 'Income').map(({ amount }) => amount),
       },
       {
-        name: 'Spending',
+        name: 'Expenses',
         data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
       },
     ],
@@ -42,7 +45,7 @@ const ActivityChart = () => {
         position: 'top',
       },
       xaxis: {
-        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        categories: transactions.map(({ date }) => new Date(date).toLocaleString('default', { month: 'short' })),
       },
       fill: {
         opacity: 1,
