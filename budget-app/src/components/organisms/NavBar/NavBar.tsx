@@ -11,10 +11,10 @@ interface IIsshowProps {
 }
 const SNavBarWrapper = styled.div<IIsshowProps>(
   ({ isShow }) => `
-  background-color: #4333a0;
+  background-color: ${theme.colors.blue.dark};
   width: 200px;
   padding: 40px 10px;
-  @media (max-width: ${theme.breakpoints.tablet}) {
+  @media (max-width: ${theme.breakpoints.laptop}) {
     /* display: none; */
     position: absolute;
     left: ${isShow ? 0 : `-220px`} ;
@@ -27,7 +27,7 @@ const SNavBarWrapper = styled.div<IIsshowProps>(
 
 const SmenuIconWrapper = styled.div`
   display: none;
-  @media (max-width: ${theme.breakpoints.tablet}) {
+  @media (max-width: ${theme.breakpoints.laptop}) {
     position: absolute;
     left: 35px;
     top: 20px;

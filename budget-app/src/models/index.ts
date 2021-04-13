@@ -71,7 +71,7 @@ export interface ICreditCardProps {
 
 export interface IBriefCardProps {
   title?: string;
-  revenue?: number;
+  revenue?: string;
   profit?: string;
   iconbackgroundcolor: string;
   iconcolor?: string;

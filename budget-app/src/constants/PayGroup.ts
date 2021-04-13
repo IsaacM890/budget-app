@@ -1,52 +1,57 @@
 import { faCheck, faTimes, faSyncAlt, faReply } from '@fortawesome/free-solid-svg-icons';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
-import { PaymentMethod, PaymentMethodMsg } from '../enums/index';
-// import theme from '../style/theme/theme';
+import { PAYMENTMETHOD, PAYMENTMETHODTEXT } from '../enums/index';
+import theme from '../style/theme/theme';
 
-// eslint-disable-next-line consistent-return
-const getUiMockProps = (paymentMethod: string) => {
+const getStyleByPaymentMethod = (paymentMethod: string) => {
   switch (paymentMethod) {
-    case PaymentMethod.ATM:
+    case PAYMENTMETHOD.ATM:
       return {
-        text: PaymentMethodMsg.ATM,
+        text: PAYMENTMETHODTEXT.ATM,
         icon: faCheck,
-        color: 'white',
-        backgroundColor: '#8a7be5',
+        color: theme.colors.white.primary,
+        backgroundColor: theme.colors.purple,
       };
 
-    case PaymentMethod.Cancelled:
+    case PAYMENTMETHOD.CANCELLED:
       return {
-        text: PaymentMethodMsg.Cancelled,
+        text: PAYMENTMETHODTEXT.CANCELLED,
         icon: faTimes,
-        color: 'white',
-        backgroundColor: '#FF8788',
+        color: theme.colors.white.primary,
+        backgroundColor: theme.colors.pink.primary,
       };
 
-    case PaymentMethod.cycle:
+    case PAYMENTMETHOD.CYCLE:
       return {
-        text: PaymentMethodMsg.cycle,
+        text: PAYMENTMETHODTEXT.CYCLE,
         icon: faSyncAlt,
-        color: 'black',
-        backgroundColor: 'white',
+        color: theme.colors.black,
+        backgroundColor: theme.colors.white.primary,
       };
 
-    case PaymentMethod.refund:
+    case PAYMENTMETHOD.REFUND:
       return {
-        text: PaymentMethodMsg.refund,
+        text: PAYMENTMETHODTEXT.REFUND,
         icon: faReply,
-        color: 'black',
-        backgroundColor: 'white',
+        color: theme.colors.black,
+        backgroundColor: theme.colors.white.primary,
       };
 
-    case PaymentMethod.paypal:
+    case PAYMENTMETHOD.PAYPAL:
+      return {
+        text: PAYMENTMETHODTEXT.PAYPAL,
+        icon: faPaypal,
+        color: theme.colors.white.primary,
+        backgroundColor: theme.colors.purple,
+      };
     default:
       return {
-        text: PaymentMethodMsg.paypal,
-        icon: faPaypal,
-        color: 'white',
-        backgroundColor: '#8a7be5',
+        text: ' Withdrawals from Credit Card',
+        icon: faCheck,
+        color: theme.colors.white.primary,
+        backgroundColor: theme.colors.purple,
       };
   }
 };
 
-export default getUiMockProps;
+export default getStyleByPaymentMethod;

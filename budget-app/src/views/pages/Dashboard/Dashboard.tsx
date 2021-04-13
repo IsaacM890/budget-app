@@ -7,6 +7,7 @@ import CreditCard from '../../../components/molecules/CreditCard/CreditCard';
 import IncomeChart from '../../../components/molecules/IncomeChart/IncomeChart';
 import ActivityChart from '../../../components/molecules/ActivityChart/ActivityChart';
 import theme from '../../../style/theme/theme';
+import getAverage from '../../../helpers/mathFuncs';
 
 const SMainContainer = styled.div`
   display: flex;
@@ -28,36 +29,18 @@ const SFlexWrapper = styled.div`
   @media (max-width: ${theme.breakpoints.desktop}) {
     width: 50%;
   }
-  @media (max-width: ${theme.breakpoints.tablet}) {
+  @media (max-width: ${theme.breakpoints.laptop}) {
     width: 50%;
   }
-  @media (max-width: ${theme.breakpoints.middlesize}) {
+  @media (max-width: ${theme.breakpoints.tablet}) {
     width: 50%;
   }
 `;
 
-const getAverage = (transactions: { paymentType: string; amount: number }[]) => {
-  let expenses = 0;
-  let expCounter = 0;
-  let income = 0;
-  let incCounter = 0;
-
-  transactions.forEach((item: { paymentType: string; amount: number }) => {
-    if (item.paymentType === 'Expenses') {
-      expCounter += 1;
-      expenses += item.amount;
-    } else {
-      incCounter += 1;
-      income += item.amount;
-    }
-  });
-
-  return { expenses: expenses / expCounter, income: income / incCounter };
-};
-
 const Dashboard: FC = () => {
   const { transactions } = useContext(TransactionsContext);
-
+  const incomes = transactions.filter((t) => t.paymentType === 'Income');
+  const expenses = transactions.filter((t) => t.paymentType === 'Expenses');
   return (
     <SMainContainer>
       <SFlexWrapper>
@@ -69,7 +52,7 @@ const Dashboard: FC = () => {
       <SFlexWrapper>
         <BriefCard
           title="Income"
-          revenue={getAverage(transactions).income}
+          revenue={getAverage(incomes)}
           profit="+5.08%"
           iconbackgroundcolor={theme.colors.blue.medium}
           iconcolor={theme.colors.white.primary}
@@ -79,7 +62,7 @@ const Dashboard: FC = () => {
       <SFlexWrapper>
         <BriefCard
           title="Expenses"
-          revenue={getAverage(transactions).expenses}
+          revenue={getAverage(expenses)}
           profit="+5.08%"
           iconbackgroundcolor={theme.colors.blue.medium}
           iconcolor={theme.colors.white.primary}

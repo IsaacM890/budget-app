@@ -1,5 +1,6 @@
 import React from 'react';
 import ApexCharts from 'react-apexcharts';
+import theme from '../../../style/theme/theme';
 
 const ActivityChart = () => {
   const chartObj = {
@@ -46,7 +47,7 @@ const ActivityChart = () => {
       fill: {
         opacity: 1,
       },
-      colors: ['#4333A0', '#FF8788'],
+      colors: [theme.colors.blue.dark, theme.colors.pink.primary],
       tooltip: {
         y: {
           formatter: {

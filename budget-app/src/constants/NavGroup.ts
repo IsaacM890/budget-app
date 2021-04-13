@@ -1,41 +1,43 @@
 import { faThLarge, faExchangeAlt, faChartPie, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
+import theme from '../style/theme/theme';
+import { NAVGROUPELABEL, NAVGROUPEROUTE } from '../enums';
 
 const navGroup = [
   {
     icon: faThLarge,
-    label: 'Dashboard',
-    route: '/',
+    label: NAVGROUPELABEL.DASHBOARD,
+    route: NAVGROUPEROUTE.DASHBOARD,
     id: 1,
-    color: 'white',
+    color: theme.colors.white.primary,
   },
   {
     icon: faExchangeAlt,
-    label: 'Transactions',
-    route: '/transactions',
+    label: NAVGROUPELABEL.TRANSACTIONS,
+    route: NAVGROUPEROUTE.TRANSACTIONS,
     id: 2,
-    color: 'white',
+    color: theme.colors.white.primary,
   },
   {
     icon: faChartPie,
-    label: 'Charts',
-    route: '/charts',
+    label: NAVGROUPELABEL.CHARTS,
+    route: NAVGROUPEROUTE.CHARTS,
     id: 3,
-    color: 'white',
+    color: theme.colors.white.primary,
   },
   {
     icon: faCreditCard,
-    label: 'Cards',
-    route: '/cards',
+    label: NAVGROUPELABEL.CARDS,
+    route: NAVGROUPEROUTE.CARDS,
     id: 4,
-    color: 'white',
+    color: theme.colors.white.primary,
   },
   {
     icon: faUser,
-    label: 'User Profile',
-    route: '/profile',
+    label: NAVGROUPELABEL.USERPROFILE,
+    route: NAVGROUPEROUTE.USERPROFILE,
     id: 5,
-    color: 'white',
+    color: theme.colors.white.primary,
   },
 ];
 

@@ -12,6 +12,7 @@ const theme = {
     },
     pink: {
       primary: '#FF8788',
+      secondery: '#fcedd8',
       dark: '#f18374',
       light: '#F2C2BE',
     },
@@ -19,15 +20,16 @@ const theme = {
       primary: 'white',
       medium: 'rgba(255, 255, 255, 0.3)',
       light: 'rgba(0,0,0,0.1)',
+      whiteSmoke: '#f3f3f3',
     },
     red: '#f18374',
   },
   breakpoints: {
     mobile: '320px',
-    middlesize: '600',
-    tablet: '847px',
+    tablet: '600',
+    laptop: '847px',
     desktop: '1087px',
-    strechBreak: '1360px',
+    XLScreen: '1360px',
   },
 };
 

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
 import { IPaymentListProps } from '../../../models/index';
-import getUiMockProps from '../../../constants/PayGroup';
+import { getAmountColor, getAmountSymbol, getDateFormat } from '../../../helpers/designFuncs';
+import getStyleByPaymentMethod from '../../../constants/PayGroup';
 import ListItem from '../../molecules/ListItem/ListItem';
 import ListItemText from '../../molecules/ListItemText/ListItemText';
 
@@ -29,36 +30,22 @@ const SIconWrapper = styled.div<IPaymentListProps>(
 `
 );
 
-const getAmountColor = (amount: number) => {
-  if (amount > 0) {
-    return `#8a7be5`;
-  }
-  if (amount < 0) {
-    return `#62CCF7`;
-  }
-  return 'black';
-};
-
-const getSymbol = (amount: number) => (amount > 0 ? '+' : '');
-
-const getDateFormat = (date: string) => new Date(date).toLocaleDateString();
-
 const PaymentList: FC = () => {
   const { transactions } = useContext(TransactionsContext);
   return (
     <PaymentListWrapper>
-      {transactions?.map(({ paymentMethod, date, amount, currency }) => {
-        const { backgroundColor, color, text, icon } = getUiMockProps(paymentMethod);
+      {transactions?.map(({ paymentMethod, date, time, amount, currency }) => {
+        const { backgroundColor, color, text, icon } = getStyleByPaymentMethod(paymentMethod);
         return (
-          <ListItem margin="5px 3px" padding="5px 0">
+          <ListItem>
             <SIconWrapper iconBackground={backgroundColor}>
               <FontAwesomeIcon icon={icon} color={color} />
             </SIconWrapper>
-            <ListItemText title={text} subtitle={getDateFormat(date)} />
+            <ListItemText title={text} subtitle={getDateFormat(date, time)} />
             <ListItemText
               fontweight="bold"
               color={getAmountColor(amount)}
-              title={`${getSymbol(amount)}${amount}`}
+              title={`${getAmountSymbol(amount)}`}
               subtitle={currency}
             />
           </ListItem>

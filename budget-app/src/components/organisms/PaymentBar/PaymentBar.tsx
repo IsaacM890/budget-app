@@ -7,7 +7,7 @@ import Typography from '../../atoms/Typography/Typography';
 import theme from '../../../style/theme/theme';
 
 const SPaymentBarContainer = styled.div`
-  background-color: #fcedd8;
+  background-color: ${theme.colors.pink.secondery};
   width: 200px;
   padding: 40px 10px;
   @media (max-width: ${theme.breakpoints.desktop}) {

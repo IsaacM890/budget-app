@@ -24,13 +24,13 @@ const SHomePageContainer = styled.div`
   overflow: hidden;
   border-radius: 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  @media (max-width: ${theme.breakpoints.strechBreak}) {
+  @media (max-width: ${theme.breakpoints.XLScreen}) {
     width: 95%;
   }
   @media (max-width: ${theme.breakpoints.desktop}) {
     grid-template-columns: 1fr 4fr;
   }
-  @media (max-width: ${theme.breakpoints.tablet}) {
+  @media (max-width: ${theme.breakpoints.laptop}) {
     grid-template-columns: 4fr;
   }
 `;
@@ -39,7 +39,7 @@ const HomePage: FC = () => {
   const { setTransactions } = useContext(TransactionsContext);
   useEffect(() => {
     const fetchData = async () => {
-      const transactionsData = await BudgetServiceApi.getAllTransactions(10);
+      const transactionsData = await BudgetServiceApi.getLatestTransactionsByLimit(10);
 
       setTransactions(transactionsData);
     };

@@ -7,7 +7,8 @@ import { FontSize } from '../../../enums';
 const SListItemTextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
+  padding: 2px;
+  margin: 5px 2px;
 `;
 
 const ListItemText: FC<IListItemTextProps> = ({ fontweight, title, subtitle, color }) => (

@@ -44,16 +44,16 @@ class BudgetServiceApi {
     }
   };
 
-  // getTransactionByID = async (id: string) => {
-  //   try {
-  //     const user = await this.axiosInstance.get(`transactions/${id}`);
-  //     return user.data;
-  //   } catch (err) {
-  //     return err.message;
-  //   }
-  // };
+  getAllTransactions = async () => {
+    try {
+      const transactions = await this.axiosInstance.get(`transactions/all`);
+      return transactions.data;
+    } catch (err) {
+      return err.message;
+    }
+  };
 
-  getAllTransactions = async (limit: number) => {
+  getLatestTransactionsByLimit = async (limit: number) => {
     try {
       const transactions = await this.axiosInstance.get(`transactions/all?limit=${limit}`);
       return transactions.data;

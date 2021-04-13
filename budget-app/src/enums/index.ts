@@ -7,20 +7,35 @@ export enum FontSize {
   subtitle2 = 'subtitle2',
 }
 
-export enum PaymentMethod {
-  paypal = 'paypal',
-  ATM = 'ATM',
-  Cancelled = 'Cancelled',
-  cycle = 'cycle',
-  refund = 'refund',
+export enum NAVGROUPELABEL {
+  DASHBOARD = 'Dashboard',
+  TRANSACTIONS = 'Transactions',
+  CHARTS = 'Charts',
+  CARDS = 'Cards',
+  USERPROFILE = 'User Profile',
+}
+export enum NAVGROUPEROUTE {
+  DASHBOARD = '/',
+  TRANSACTIONS = '/transactions',
+  CHARTS = '/charts',
+  CARDS = '/cards',
+  USERPROFILE = '/profile',
 }
 
-export enum PaymentMethodMsg {
-  paypal = 'Deposit from PayPal',
+export enum PAYMENTMETHOD {
+  PAYPAL = 'paypal',
+  ATM = 'ATM',
+  CANCELLED = 'Cancelled',
+  CYCLE = 'cycle',
+  REFUND = 'refund',
+}
+
+export enum PAYMENTMETHODTEXT {
+  PAYPAL = 'Deposit from PayPal',
   ATM = 'Deposit from ATM',
-  Cancelled = 'Cancelled',
-  cycle = 'Deposit from ATL',
-  refund = 'Refund',
+  CANCELLED = 'Cancelled',
+  CYCLE = 'Deposit from ATL',
+  REFUND = 'Refund',
 }
 
 export enum IconSize {
