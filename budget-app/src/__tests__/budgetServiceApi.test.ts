@@ -68,10 +68,7 @@ describe('testing budget Api', () => {
       currency: 'CNY',
       category: 'Grocery',
       company: 'Browsecat',
-      amount: {
-        from: 70,
-        to: 200,
-      },
+      amount: 125,
       location: {
         country: 'China',
         city: 'Lidian',
@@ -93,10 +90,7 @@ describe('testing budget Api', () => {
       currency: 'CNY',
       category: 'Grocery',
       company: 'Browsecat',
-      amount: {
-        from: 70,
-        to: 200,
-      },
+      amount: 125,
       location: {
         country: 'China',
         city: 'Lidian',

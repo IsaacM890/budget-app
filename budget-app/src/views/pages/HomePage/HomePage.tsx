@@ -9,7 +9,7 @@ import BudgetServiceApi from '../../../services/budgetServiceApi';
 import NavBar from '../../../components/organisms/NavBar/NavBar';
 import Dashboard from '../Dashboard/Dashboard';
 import PaymentBar from '../../../components/organisms/PaymentBar/PaymentBar';
-import theme from '../../../style/theme/theme';
+import { breakpoints } from '../../../style/theme/theme';
 
 const SHomePageContainer = styled.div`
   display: grid;
@@ -24,13 +24,13 @@ const SHomePageContainer = styled.div`
   overflow: hidden;
   border-radius: 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  @media (max-width: ${theme.breakpoints.XLScreen}) {
+  @media (max-width: ${breakpoints.XLScreen}) {
     width: 95%;
   }
-  @media (max-width: ${theme.breakpoints.desktop}) {
+  @media (max-width: ${breakpoints.desktop}) {
     grid-template-columns: 1fr 4fr;
   }
-  @media (max-width: ${theme.breakpoints.laptop}) {
+  @media (max-width: ${breakpoints.laptop}) {
     grid-template-columns: 4fr;
   }
 `;

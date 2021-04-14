@@ -2,29 +2,33 @@ import React, { useContext } from 'react';
 import ApexCharts from 'react-apexcharts';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
 import { ITransactionProps } from '../../../models';
-import theme from '../../../style/theme/theme';
+import { colors } from '../../../style/theme/theme';
 import { CHARTS_NAMES } from '../../../enums/index';
 
 const ActivityChart = () => {
   const { transactions } = useContext(TransactionsContext);
 
-  const incomeTransactions = transactions.filter((item) => item.paymentType === 'Income');
+  // const incomeTransactions = transactions.filter((item) => item.paymentType === 'Income');
 
-  const expensesTransactions = transactions.filter((item) => item.paymentType === 'Expenses');
+  // const expensesTransactions = transactions.filter((item) => item.paymentType === 'Expenses');
 
-  const getAmountByType = (filteredTransactions: ITransactionProps[]) => {
-    filteredTransactions.map(({ amount }) => amount);
+  const getAmountByType = (Transactions: ITransactionProps[], type: string) => {
+    Transactions.forEach((t) => {
+      if (t.paymentType === type) {
+        Transactions.map((amount) => amount);
+      }
+    });
   };
 
   const chartObj = {
     series: [
       {
         name: CHARTS_NAMES.Income,
-        data: getAmountByType(incomeTransactions),
+        data: getAmountByType(transactions, 'Income'),
       },
       {
         name: CHARTS_NAMES.Expenses,
-        data: getAmountByType(expensesTransactions),
+        data: getAmountByType(transactions, 'Expenses'),
       },
     ],
     options: {
@@ -60,7 +64,7 @@ const ActivityChart = () => {
       fill: {
         opacity: 1,
       },
-      colors: [theme.colors.blue.dark, theme.colors.pink.primary],
+      colors: [colors.blue.dark, colors.pink.primary],
       tooltip: {
         y: {
           formatter: {

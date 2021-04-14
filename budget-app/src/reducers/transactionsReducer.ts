@@ -1,13 +1,12 @@
-import { ITransactionProps, ITransactionsState } from '../models/index';
+import { ITransactionsState } from '../models/index';
 import { REDUCER_ACTIONS } from '../enums/index';
 
-const initialtransactions: ITransactionProps[] = [];
+interface IAction {
+  type: string;
+  payload: any;
+}
 
-const initialState: ITransactionsState = {
-  transactions: initialtransactions,
-};
-
-const transactionsReducer = (state: ITransactionsState = initialState, action: any) => {
+const transactionsReducer = (state: ITransactionsState, action: IAction) => {
   switch (action.type) {
     case REDUCER_ACTIONS.GET_LATEST_TRANSACTIONS:
       return {

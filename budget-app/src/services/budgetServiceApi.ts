@@ -55,7 +55,7 @@ class BudgetServiceApi {
 
   getLatestTransactionsByLimit = async (limit: number) => {
     try {
-      const transactions = await this.axiosInstance.get(`transactions/all?limit=${limit}`);
+      const transactions = await this.axiosInstance.get(`transactions/latest?limit=${limit}`);
       return transactions.data;
     } catch (err) {
       return err.message;

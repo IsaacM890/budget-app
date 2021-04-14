@@ -4,17 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import NavList from '../NavList/NavList';
 import CurrentBalance from '../../molecules/CurrentBalance/CurrentBalance';
-import theme from '../../../style/theme/theme';
+import { colors, breakpoints } from '../../../style/theme/theme';
 
 interface IIsshowProps {
   isShow?: boolean;
 }
 const SNavBarWrapper = styled.div<IIsshowProps>(
   ({ isShow }) => `
-  background-color: ${theme.colors.blue.dark};
+  background-color: ${colors.blue.dark};
   width: 200px;
   padding: 40px 10px;
-  @media (max-width: ${theme.breakpoints.laptop}) {
+  @media (max-width: ${breakpoints.laptop}) {
     position: absolute;
     left: ${isShow ? 0 : `-220px`} ;
     transition: 0.3s left;
@@ -26,7 +26,7 @@ const SNavBarWrapper = styled.div<IIsshowProps>(
 
 const SmenuIconWrapper = styled.div`
   display: none;
-  @media (max-width: ${theme.breakpoints.laptop}) {
+  @media (max-width: ${breakpoints.laptop}) {
     position: absolute;
     left: 35px;
     top: 20px;

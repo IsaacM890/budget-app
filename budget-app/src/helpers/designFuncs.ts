@@ -1,8 +1,8 @@
-import theme from '../style/theme/theme';
+import { colors } from '../style/theme/theme';
 
 export const getAmountColor = (amount: number) => {
-  if (amount === 0) return theme.colors.black;
-  return amount > 0 ? theme.colors.purple : theme.colors.blue.lightblue;
+  if (amount === 0) return colors.black;
+  return amount > 0 ? colors.purple : colors.blue.lightblue;
 };
 
 export const getAmountSymbol = (amount: number) => (amount > 0 ? `+${amount}` : `${amount}`);

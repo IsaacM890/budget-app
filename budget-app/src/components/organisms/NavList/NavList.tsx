@@ -7,7 +7,7 @@ import ListItem from '../../molecules/ListItem/ListItem';
 import Icon from '../../atoms/Icon/Icon';
 import Typography from '../../atoms/Typography/Typography';
 import { FontSize, IconSize } from '../../../enums/index';
-import theme from '../../../style/theme/theme';
+import { colors } from '../../../style/theme/theme';
 
 const NavListWrapper = styled.ul`
   list-style-type: none;
@@ -25,7 +25,7 @@ const NavList: FC = () => (
           <Icon margin="0 5px" padding="0 5px" size={IconSize.medium}>
             <FontAwesomeIcon icon={icon} color={color} />
           </Icon>
-          <Typography fontsize={FontSize.caption} color={theme.colors.white.primary}>
+          <Typography fontsize={FontSize.caption} color={colors.white.primary}>
             {label}
           </Typography>
         </ListItem>

@@ -5,7 +5,7 @@ import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { FontSize } from '../../../enums';
 import { IBriefCardProps } from '../../../models/index';
 import Typography from '../../atoms/Typography/Typography';
-import theme from '../../../style/theme/theme';
+import { colors } from '../../../style/theme/theme';
 
 const SBriefCardContainer = styled.div`
   border-radius: 10px;
@@ -62,23 +62,23 @@ const BriefCard: FC<IBriefCardProps> = ({ title, profit, revenue, backgroundcolo
       {title}
     </Typography>
     <SRevenueWrapper>
-      <Typography fontsize={FontSize.caption} color={theme.colors.grey.primary}>
+      <Typography fontsize={FontSize.caption} color={colors.grey.primary}>
         Revenue
       </Typography>
-      <Typography fontsize={FontSize.heading2} color={theme.colors.blue.lightblue}>
+      <Typography fontsize={FontSize.heading2} color={colors.blue.lightblue}>
         {revenue}
       </Typography>
     </SRevenueWrapper>
     <SProfitBox>
       <Typography fontsize={FontSize.subtitle}>{profit}</Typography>
       <SProfitCaptionWrapper>
-        <Typography fontsize={FontSize.subtitle} color={theme.colors.grey.primary}>
+        <Typography fontsize={FontSize.subtitle} color={colors.grey.primary}>
           Since last month
         </Typography>
       </SProfitCaptionWrapper>
     </SProfitBox>
     <SMenuIconWrapper>
-      <FontAwesomeIcon icon={faEllipsisH} color={theme.colors.grey.primary} />
+      <FontAwesomeIcon icon={faEllipsisH} color={colors.grey.primary} />
     </SMenuIconWrapper>
     <SCardIconWrapper backgroundcolor={backgroundcolor}>
       <FontAwesomeIcon icon={icon} color={color} />

@@ -6,7 +6,7 @@ import BriefCard from '../../../components/molecules/BriefCard/BriefCard';
 import CreditCard from '../../../components/molecules/CreditCard/CreditCard';
 import IncomeChart from '../../../components/molecules/IncomeChart/IncomeChart';
 import ActivityChart from '../../../components/molecules/ActivityChart/ActivityChart';
-import theme from '../../../style/theme/theme';
+import { colors, breakpoints } from '../../../style/theme/theme';
 import getAverage from '../../../helpers/mathFuncs';
 
 const SMainContainer = styled.div`
@@ -26,13 +26,13 @@ const SFlexWrapper = styled.div`
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
-  @media (max-width: ${theme.breakpoints.desktop}) {
+  @media (max-width: ${breakpoints.desktop}) {
     width: 50%;
   }
-  @media (max-width: ${theme.breakpoints.laptop}) {
+  @media (max-width: ${breakpoints.laptop}) {
     width: 50%;
   }
-  @media (max-width: ${theme.breakpoints.tablet}) {
+  @media (max-width: ${breakpoints.tablet}) {
     width: 50%;
   }
 `;
@@ -54,8 +54,8 @@ const Dashboard: FC = () => {
           title="Income"
           revenue={getAverage(incomes)}
           profit="+5.08%"
-          backgroundcolor={theme.colors.blue.medium}
-          color={theme.colors.white.primary}
+          backgroundcolor={colors.blue.medium}
+          color={colors.white.primary}
           icon={faArchive}
         />
       </SFlexWrapper>
@@ -64,8 +64,8 @@ const Dashboard: FC = () => {
           title="Expenses"
           revenue={getAverage(expenses)}
           profit="+5.08%"
-          backgroundcolor={theme.colors.blue.medium}
-          color={theme.colors.white.primary}
+          backgroundcolor={colors.blue.medium}
+          color={colors.white.primary}
           icon={faChartLine}
         />
       </SFlexWrapper>

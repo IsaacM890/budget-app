@@ -4,14 +4,14 @@ import UserDetails from '../../molecules/UserDetails/UserDetails';
 import PaymentList from '../PaymentList/PaymentList';
 import { FontSize } from '../../../enums/index';
 import Typography from '../../atoms/Typography/Typography';
-import theme from '../../../style/theme/theme';
+import { breakpoints, colors } from '../../../style/theme/theme';
 
 const SPaymentBarContainer = styled.div`
-  background-color: ${theme.colors.pink.secondery};
+  background-color: ${colors.pink.secondery};
   width: 200px;
   padding: 40px 10px;
   overflow-y: auto;
-  @media (max-width: ${theme.breakpoints.desktop}) {
+  @media (max-width: ${breakpoints.desktop}) {
     display: none;
   }
 `;
