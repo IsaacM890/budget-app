@@ -15,7 +15,6 @@ const SNavBarWrapper = styled.div<IIsshowProps>(
   width: 200px;
   padding: 40px 10px;
   @media (max-width: ${theme.breakpoints.laptop}) {
-    /* display: none; */
     position: absolute;
     left: ${isShow ? 0 : `-220px`} ;
     transition: 0.3s left;

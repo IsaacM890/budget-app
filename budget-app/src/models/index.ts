@@ -81,8 +81,8 @@ export interface IBriefCardProps {
   title?: string;
   revenue?: string;
   profit?: string;
-  iconbackgroundcolor: string;
-  iconcolor?: string;
+  backgroundcolor: string;
+  color?: string;
   icon?: any;
 }
 

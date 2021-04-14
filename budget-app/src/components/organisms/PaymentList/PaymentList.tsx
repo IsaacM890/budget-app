@@ -45,7 +45,7 @@ const PaymentList: FC = () => {
             <ListItemText
               fontweight="bold"
               color={getAmountColor(amount)}
-              title={`${getAmountSymbol(amount)}`}
+              title={getAmountSymbol(amount)}
               subtitle={currency}
             />
           </ListItem>

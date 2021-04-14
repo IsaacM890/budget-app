@@ -1,45 +1,45 @@
 import { faCheck, faTimes, faSyncAlt, faReply } from '@fortawesome/free-solid-svg-icons';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
-import { PAYMENTMETHOD, PAYMENTMETHODTEXT } from '../enums/index';
+import { PAYMENT_METHOD, PAYMENT_METHOD_TEXT } from '../enums/index';
 import theme from '../style/theme/theme';
 
 const getStyleByPaymentMethod = (paymentMethod: string) => {
   switch (paymentMethod) {
-    case PAYMENTMETHOD.ATM:
+    case PAYMENT_METHOD.ATM:
       return {
-        text: PAYMENTMETHODTEXT.ATM,
+        text: PAYMENT_METHOD_TEXT.ATM,
         icon: faCheck,
         color: theme.colors.white.primary,
         backgroundColor: theme.colors.purple,
       };
 
-    case PAYMENTMETHOD.CANCELLED:
+    case PAYMENT_METHOD.CANCELLED:
       return {
-        text: PAYMENTMETHODTEXT.CANCELLED,
+        text: PAYMENT_METHOD_TEXT.CANCELLED,
         icon: faTimes,
         color: theme.colors.white.primary,
         backgroundColor: theme.colors.pink.primary,
       };
 
-    case PAYMENTMETHOD.CYCLE:
+    case PAYMENT_METHOD.CYCLE:
       return {
-        text: PAYMENTMETHODTEXT.CYCLE,
+        text: PAYMENT_METHOD_TEXT.CYCLE,
         icon: faSyncAlt,
         color: theme.colors.black,
         backgroundColor: theme.colors.white.primary,
       };
 
-    case PAYMENTMETHOD.REFUND:
+    case PAYMENT_METHOD.REFUND:
       return {
-        text: PAYMENTMETHODTEXT.REFUND,
+        text: PAYMENT_METHOD_TEXT.REFUND,
         icon: faReply,
         color: theme.colors.black,
         backgroundColor: theme.colors.white.primary,
       };
 
-    case PAYMENTMETHOD.PAYPAL:
+    case PAYMENT_METHOD.PAYPAL:
       return {
-        text: PAYMENTMETHODTEXT.PAYPAL,
+        text: PAYMENT_METHOD_TEXT.PAYPAL,
         icon: faPaypal,
         color: theme.colors.white.primary,
         backgroundColor: theme.colors.purple,

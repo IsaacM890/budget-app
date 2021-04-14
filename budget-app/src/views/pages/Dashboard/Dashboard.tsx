@@ -54,8 +54,8 @@ const Dashboard: FC = () => {
           title="Income"
           revenue={getAverage(incomes)}
           profit="+5.08%"
-          iconbackgroundcolor={theme.colors.blue.medium}
-          iconcolor={theme.colors.white.primary}
+          backgroundcolor={theme.colors.blue.medium}
+          color={theme.colors.white.primary}
           icon={faArchive}
         />
       </SFlexWrapper>
@@ -64,8 +64,8 @@ const Dashboard: FC = () => {
           title="Expenses"
           revenue={getAverage(expenses)}
           profit="+5.08%"
-          iconbackgroundcolor={theme.colors.blue.medium}
-          iconcolor={theme.colors.white.primary}
+          backgroundcolor={theme.colors.blue.medium}
+          color={theme.colors.white.primary}
           icon={faChartLine}
         />
       </SFlexWrapper>

@@ -10,10 +10,10 @@ const SPaymentBarContainer = styled.div`
   background-color: ${theme.colors.pink.secondery};
   width: 200px;
   padding: 40px 10px;
+  overflow-y: auto;
   @media (max-width: ${theme.breakpoints.desktop}) {
     display: none;
   }
-  overflow-y: auto;
 `;
 
 const STitleWrapper = styled.div`

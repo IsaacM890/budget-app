@@ -50,12 +50,10 @@ const HomePage: FC = () => {
       <SHomePageContainer>
         <NavBar />
         <Switch>
-          <Route path="/" exact>
-            <Dashboard />
-          </Route>
-          <Route path="/transactions" component={transactionsList} />
-          <Route path="/charts" component={Charts} />
-          <Route path="/cards" component={Cards} />
+          <Route path="/" component={Dashboard} exact />
+          <Route path="/transactions" component={transactionsList} exact />
+          <Route path="/charts" component={Charts} exact />
+          <Route path="/cards" component={Cards} exact />
         </Switch>
         <PaymentBar />
       </SHomePageContainer>

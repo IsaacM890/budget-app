@@ -1,20 +1,30 @@
 import React, { useContext } from 'react';
 import ApexCharts from 'react-apexcharts';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
+import { ITransactionProps } from '../../../models';
 import theme from '../../../style/theme/theme';
+import { CHARTS_NAMES } from '../../../enums/index';
 
 const ActivityChart = () => {
   const { transactions } = useContext(TransactionsContext);
 
+  const incomeTransactions = transactions.filter((item) => item.paymentType === 'Income');
+
+  const expensesTransactions = transactions.filter((item) => item.paymentType === 'Expenses');
+
+  const getAmountByType = (filteredTransactions: ITransactionProps[]) => {
+    filteredTransactions.map(({ amount }) => amount);
+  };
+
   const chartObj = {
     series: [
       {
-        name: 'Income',
-        data: transactions.filter((item) => item.paymentType === 'Income').map(({ amount }) => amount),
+        name: CHARTS_NAMES.Income,
+        data: getAmountByType(incomeTransactions),
       },
       {
-        name: 'Expenses',
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+        name: CHARTS_NAMES.Expenses,
+        data: getAmountByType(expensesTransactions),
       },
     ],
     options: {

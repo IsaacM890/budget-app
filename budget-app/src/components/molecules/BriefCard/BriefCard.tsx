@@ -42,8 +42,8 @@ const SMenuIconWrapper = styled.div`
 `;
 
 const SCardIconWrapper = styled.div<IBriefCardProps>(
-  ({ iconbackgroundcolor }) => `
-  background-color:${iconbackgroundcolor};
+  ({ backgroundcolor }) => `
+  background-color:${backgroundcolor};
   width: 45px;
   height: 45px;
   border-radius: 50px;
@@ -56,7 +56,7 @@ const SCardIconWrapper = styled.div<IBriefCardProps>(
 `
 );
 
-const BriefCard: FC<IBriefCardProps> = ({ title, profit, revenue, iconbackgroundcolor, icon, iconcolor }) => (
+const BriefCard: FC<IBriefCardProps> = ({ title, profit, revenue, backgroundcolor, icon, color }) => (
   <SBriefCardContainer>
     <Typography fontsize={FontSize.heading2} margin="5px 0" fontweight="bold">
       {title}
@@ -80,8 +80,8 @@ const BriefCard: FC<IBriefCardProps> = ({ title, profit, revenue, iconbackground
     <SMenuIconWrapper>
       <FontAwesomeIcon icon={faEllipsisH} color={theme.colors.grey.primary} />
     </SMenuIconWrapper>
-    <SCardIconWrapper iconbackgroundcolor={iconbackgroundcolor}>
-      <FontAwesomeIcon icon={icon} color={iconcolor} />
+    <SCardIconWrapper backgroundcolor={backgroundcolor}>
+      <FontAwesomeIcon icon={icon} color={color} />
     </SCardIconWrapper>
   </SBriefCardContainer>
 );

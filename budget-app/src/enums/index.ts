@@ -7,14 +7,23 @@ export enum FontSize {
   subtitle2 = 'subtitle2',
 }
 
-export enum NAVGROUPELABEL {
+export enum CHARTS_NAMES {
+  Income = 'Income',
+  Expenses = 'Expenses',
+}
+
+export enum REDUCER_ACTIONS {
+  GET_LATEST_TRANSACTIONS = 'GET_LATEST_TRANSACTIONS',
+}
+
+export enum NAV_GROUPE_LABEL {
   DASHBOARD = 'Dashboard',
   TRANSACTIONS = 'Transactions',
   CHARTS = 'Charts',
   CARDS = 'Cards',
   USERPROFILE = 'User Profile',
 }
-export enum NAVGROUPEROUTE {
+export enum NAV_GROUPE_ROUTE {
   DASHBOARD = '/',
   TRANSACTIONS = '/transactions',
   CHARTS = '/charts',
@@ -22,7 +31,7 @@ export enum NAVGROUPEROUTE {
   USERPROFILE = '/profile',
 }
 
-export enum PAYMENTMETHOD {
+export enum PAYMENT_METHOD {
   PAYPAL = 'paypal',
   ATM = 'ATM',
   CANCELLED = 'Cancelled',
@@ -30,7 +39,7 @@ export enum PAYMENTMETHOD {
   REFUND = 'refund',
 }
 
-export enum PAYMENTMETHODTEXT {
+export enum PAYMENT_METHOD_TEXT {
   PAYPAL = 'Deposit from PayPal',
   ATM = 'Deposit from ATM',
   CANCELLED = 'Cancelled',
@@ -39,7 +48,7 @@ export enum PAYMENTMETHODTEXT {
 }
 
 export enum IconSize {
-  Xlarge = 'xlarge',
+  Xlarge = 'Xlarge',
   large = 'large',
   medium = 'medium',
   small = 'small',
