@@ -8,22 +8,31 @@ const setSize = (size?: IconSize) => {
     case IconSize.Xlarge:
       return `
       font-size: 40px;
+      margin: 0 5px;
+      padding:0 5px;
+
       `;
 
     case IconSize.large:
       return `
       font-size: 30px;
-
+      margin: 0 5px;
+      padding:0 5px;
       `;
 
     case IconSize.medium:
       return `
       font-size: 20px;
+      margin: 0 5px;
+      padding:0 5px;
       `;
 
     case IconSize.small:
       return `
       font-size: 15px;
+      margin: 0 5px;
+      padding:0 5px;
+
       `;
 
     default:
@@ -33,14 +42,12 @@ const setSize = (size?: IconSize) => {
 
 const SIcon = styled.div<IIconProps>`
   ${({ size }) => setSize(size)};
-  ${({ padding }) => `padding:${padding};`};
   ${({ backgroundcolor }) => `background-color:${backgroundcolor};`};
   ${({ borderradius }) => `border-radius:${borderradius};`};
-  ${({ margin }) => `margin:${margin};`};
 `;
 
-const Icon: React.FC<IIconProps> = ({ size, padding, children, backgroundcolor, borderradius, margin }) => (
-  <SIcon margin={margin} size={size} padding={padding} backgroundcolor={backgroundcolor} borderradius={borderradius}>
+const Icon: React.FC<IIconProps> = ({ size, children, backgroundcolor, borderradius }) => (
+  <SIcon size={size} backgroundcolor={backgroundcolor} borderradius={borderradius}>
     {children}
   </SIcon>
 );

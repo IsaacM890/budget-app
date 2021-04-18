@@ -45,8 +45,6 @@ export interface ITypographyProps {
 
 export interface IIconProps {
   size: IconSize;
-  margin: string;
-  padding: string;
   borderradius?: string;
   backgroundcolor?: string;
 }
