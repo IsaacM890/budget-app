@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IUserProps, ITransactionProps } from '../models/index';
+import { IUser, ITransaction } from '../models/index';
 
 const baseURL = process.env.REACT_APP_API_URL;
 
@@ -8,7 +8,7 @@ class BudgetServiceApi {
     baseURL,
   });
 
-  createUser = async (userPayload: IUserProps) => {
+  createUser = async (userPayload: IUser) => {
     try {
       await this.axiosInstance.post(`users/register/`, userPayload);
       return { msg: 'User Created successfully' };
@@ -26,7 +26,7 @@ class BudgetServiceApi {
     }
   };
 
-  updateUser = async (id: string, userPayload: IUserProps) => {
+  updateUser = async (id: string, userPayload: IUser) => {
     try {
       await this.axiosInstance.put(`users/${id}`, userPayload);
       return { msg: 'User Updated successfully' };
@@ -62,7 +62,7 @@ class BudgetServiceApi {
     }
   };
 
-  updateTransaction = async (id: string, transactionPayload: ITransactionProps) => {
+  updateTransaction = async (id: string, transactionPayload: ITransaction) => {
     try {
       await this.axiosInstance.put(`transactions/${id}`, transactionPayload);
       return { msg: 'Transaction Updated successfully' };
@@ -80,7 +80,7 @@ class BudgetServiceApi {
     }
   };
 
-  createTransaction = async (transactionPayload: ITransactionProps) => {
+  createTransaction = async (transactionPayload: ITransaction) => {
     try {
       await this.axiosInstance.post(`transactions/`, transactionPayload);
       return { msg: 'Transaction Created successfully' };

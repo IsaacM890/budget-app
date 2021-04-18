@@ -1,9 +1,9 @@
-import { ITransactionProps } from '../models/index';
+import { ITransaction } from '../models/index';
 
-const getAverage = (transactions: ITransactionProps[]) => {
+const getAverage = (transactions: ITransaction[]) => {
   let total = 0;
 
-  transactions.forEach((transaction: ITransactionProps) => {
+  transactions.forEach((transaction: ITransaction) => {
     total += transaction.amount;
   });
 

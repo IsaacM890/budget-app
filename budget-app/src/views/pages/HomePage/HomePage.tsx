@@ -2,6 +2,7 @@ import React, { FC, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
+import { UserContext } from '../../../constexts/userContext';
 import transactionsList from '../Transactions/Transactions';
 import Cards from '../Cards/Cards';
 import Charts from '../Charts/Charts';
@@ -37,11 +38,13 @@ const SHomePageContainer = styled.div`
 
 const HomePage: FC = () => {
   const { setTransactions } = useContext(TransactionsContext);
+  const { setUser } = useContext(UserContext);
   useEffect(() => {
     const fetchData = async () => {
       const transactionsData = await BudgetServiceApi.getLatestTransactionsByLimit(10);
-
+      const userData = await BudgetServiceApi.getUser('606b12feba47160009dce5fb');
       setTransactions(transactionsData);
+      setUser(userData);
     };
     fetchData();
   }, []);

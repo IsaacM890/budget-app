@@ -1,22 +1,38 @@
-import React, { useState, createContext } from 'react';
-import { IUserDetailsProps } from '../models/index';
+import React, { useReducer, createContext } from 'react';
+import { IUser, IUserState } from '../models/index';
+import { REDUCER_ACTIONS } from '../enums/index';
+import userReducer from '../reducers/userReducer';
 
-export const initialUserContext = {
-  FirstName: '',
-  LastName: '',
-  email: '',
-  avatar: '',
+const initialState = {
+  user: {
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    avatar: '',
+    current_balance: '',
+    current_balance_currency: '',
+  },
+  setUser: () => {},
 };
 
-export const UserContext = createContext<IUserDetailsProps>(initialUserContext);
-export const UserDispatchContext = createContext<Function>(() => {});
+export const UserContext = createContext<IUserState>(initialState);
 
 const UserContextProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState<IUserDetailsProps>(initialUserContext);
+  const [state, dispatch] = useReducer(userReducer, initialState);
+
+  const setUser = (user: IUser) => {
+    dispatch({ type: REDUCER_ACTIONS.GET_USER_BY_ID, payload: user });
+  };
 
   return (
-    <UserContext.Provider value={{ ...user }}>
-      <UserDispatchContext.Provider value={setUser}>{children}</UserDispatchContext.Provider>
+    <UserContext.Provider
+      value={{
+        ...state,
+        setUser,
+      }}
+    >
+      {children}
     </UserContext.Provider>
   );
 };

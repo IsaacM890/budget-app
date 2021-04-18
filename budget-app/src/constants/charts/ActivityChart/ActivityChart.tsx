@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ApexCharts from 'react-apexcharts';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
-import { ITransactionProps } from '../../../models';
+import { ITransaction } from '../../../models';
 import { colors } from '../../../style/theme/theme';
 import { CHARTS_NAMES } from '../../../enums/index';
 
@@ -12,7 +12,7 @@ const ActivityChart = () => {
 
   // const expensesTransactions = transactions.filter((item) => item.paymentType === 'Expenses');
 
-  const getAmountByType = (Transactions: ITransactionProps[], type: string) => {
+  const getAmountByType = (Transactions: ITransaction[], type: string) => {
     Transactions.forEach((t) => {
       if (t.paymentType === type) {
         Transactions.map((amount) => amount);

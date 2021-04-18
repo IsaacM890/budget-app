@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { AvatarSize, FontSize, IconSize } from '../enums';
 
-export interface IUserProps {
+export interface IUser {
   first_name: string;
   last_name: string;
   email: string;
@@ -10,13 +10,17 @@ export interface IUserProps {
   current_balance: string;
   current_balance_currency: string;
 }
-
-export interface ITransactionsState {
-  transactions: ITransactionProps[];
-  setTransactions: (transactions: ITransactionProps[]) => void;
+export interface IUserState {
+  user: IUser;
+  setUser: (user: IUser) => void;
 }
 
-export interface ITransactionProps {
+export interface ITransactionsState {
+  transactions: ITransaction[];
+  setTransactions: (transactions: ITransaction[]) => void;
+}
+
+export interface ITransaction {
   paymentType: string;
   paymentMethod: string;
   cancelled: boolean;

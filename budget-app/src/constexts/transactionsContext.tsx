@@ -1,5 +1,5 @@
 import React, { useReducer, createContext } from 'react';
-import { ITransactionProps, ITransactionsState } from '../models/index';
+import { ITransaction, ITransactionsState } from '../models/index';
 import transactionsReducer from '../reducers/transactionsReducer';
 import { REDUCER_ACTIONS } from '../enums/index';
 
@@ -13,7 +13,7 @@ export const TransactionsContext = createContext<ITransactionsState>(initialStat
 const TransactionsContextProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(transactionsReducer, initialState);
 
-  const setTransactions = (transactions: ITransactionProps[]) => {
+  const setTransactions = (transactions: ITransaction[]) => {
     dispatch({ type: REDUCER_ACTIONS.GET_LATEST_TRANSACTIONS, payload: transactions });
   };
 
