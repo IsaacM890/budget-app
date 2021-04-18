@@ -1,24 +1,12 @@
 import React, { useContext } from 'react';
 import ApexCharts from 'react-apexcharts';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
-import { ITransaction } from '../../../models';
 import { colors } from '../../../style/theme/theme';
 import { CHARTS_NAMES } from '../../../enums/index';
+import { getAmountByType } from '../../../helpers/mathFuncs';
 
 const ActivityChart = () => {
   const { transactions } = useContext(TransactionsContext);
-
-  // const incomeTransactions = transactions.filter((item) => item.paymentType === 'Income');
-
-  // const expensesTransactions = transactions.filter((item) => item.paymentType === 'Expenses');
-
-  const getAmountByType = (Transactions: ITransaction[], type: string) => {
-    Transactions.forEach((t) => {
-      if (t.paymentType === type) {
-        Transactions.map((amount) => amount);
-      }
-    });
-  };
 
   const chartObj = {
     series: [
