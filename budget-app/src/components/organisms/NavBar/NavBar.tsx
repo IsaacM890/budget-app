@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import NavList from '../NavList/NavList';
 import CurrentBalance from '../../molecules/CurrentBalance/CurrentBalance';
 import { colors, breakpoints } from '../../../style/theme/theme';
+import { UserContext } from '../../../constexts/userContext';
 
 interface IIsshowProps {
   isShow?: boolean;
@@ -38,6 +39,8 @@ const SmenuIconWrapper = styled.div`
 `;
 
 const NavBar: FC = () => {
+  const { user } = useContext(UserContext);
+
   const [isShow, setIsShow] = useState(false);
 
   return (
@@ -46,7 +49,7 @@ const NavBar: FC = () => {
         <FontAwesomeIcon icon={faBars} color="grey" />
       </SmenuIconWrapper>
       <SNavBarWrapper isShow={isShow}>
-        <CurrentBalance currentBalance="15654" />
+        <CurrentBalance currentBalance={user.current_balance} />
         <NavList />
       </SNavBarWrapper>
     </>

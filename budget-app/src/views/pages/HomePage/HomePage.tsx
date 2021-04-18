@@ -42,7 +42,7 @@ const HomePage: FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const transactionsData = await BudgetServiceApi.getLatestTransactionsByLimit(10);
-      const userData = await BudgetServiceApi.getUser('606b12feba47160009dce5fb');
+      const userData = await BudgetServiceApi.getUser('607c50f2d630f70008c20608');
       setTransactions(transactionsData);
       setUser(userData);
     };
