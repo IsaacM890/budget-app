@@ -25,11 +25,9 @@ const STitleWrapper = styled.div`
 
 const PaymentBar: FC = () => {
   const { user } = useContext(UserContext);
-  console.log('user:', user);
-
   return (
     <SPaymentBarContainer>
-      <UserDetails FirstName={user.first_name} LastName={user.last_name} email={user.email} avatar={user.avatar} />
+      <UserDetails FirstName={user.FirstName} LastName={user.LastName} email={user.email} avatar={user.avatar} />
       <STitleWrapper>
         <Typography fontsize={FontSize.heading2} margin="5px 0" fontweight="bold">
           Payment History

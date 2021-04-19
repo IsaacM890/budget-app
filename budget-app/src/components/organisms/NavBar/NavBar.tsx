@@ -49,7 +49,7 @@ const NavBar: FC = () => {
         <FontAwesomeIcon icon={faBars} color="grey" />
       </SmenuIconWrapper>
       <SNavBarWrapper isShow={isShow}>
-        <CurrentBalance currentBalance={user.current_balance} />
+        <CurrentBalance currentBalance={user.currentBalance} />
         <NavList />
       </SNavBarWrapper>
     </>

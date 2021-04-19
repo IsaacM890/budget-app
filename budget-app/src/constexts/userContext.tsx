@@ -5,13 +5,22 @@ import userReducer from '../reducers/userReducer';
 
 const initialState = {
   user: {
-    first_name: '',
-    last_name: '',
+    FirstName: '',
+    LastName: '',
     email: '',
     password: '',
     avatar: '',
-    current_balance: '',
-    current_balance_currency: '',
+    currentBalance: '',
+    currentBalanceCurrency: '',
+    creditCard: [
+      {
+        FirstName: '',
+        LastName: '',
+        last4Digits: 0,
+        expMonth: 0,
+        expYear: 0,
+      },
+    ],
   },
   setUser: () => {},
 };

@@ -1,14 +1,21 @@
-/* eslint-disable camelcase */
 import { AvatarSize, FontSize, IconSize } from '../enums';
 
 export interface IUser {
-  first_name: string;
-  last_name: string;
+  FirstName: string;
+  LastName: string;
   email: string;
   password: string;
   avatar: string;
-  current_balance: string;
-  current_balance_currency: string;
+  currentBalance: string;
+  currentBalanceCurrency: string;
+  creditCard: ICreditCardProps[];
+}
+export interface ICreditCardProps {
+  FirstName: string;
+  LastName: string;
+  last4Digits: number;
+  expMonth: number;
+  expYear: number;
 }
 export interface IUserState {
   user: IUser;
@@ -66,14 +73,6 @@ export interface IAvatarProps {
   size: AvatarSize;
   src: string;
   borderRadius: string;
-}
-
-export interface ICreditCardProps {
-  FirstName: string;
-  LastName: string;
-  last4Digits: number;
-  expMonth: number;
-  expYear: number;
 }
 
 export interface IBriefCardProps {

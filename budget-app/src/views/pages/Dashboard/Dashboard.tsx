@@ -8,6 +8,7 @@ import IncomeChart from '../../../components/molecules/IncomeChart/IncomeChart';
 import ActivityChart from '../../../components/molecules/ActivityChart/ActivityChart';
 import { colors, breakpoints } from '../../../style/theme/theme';
 import getAverage from '../../../helpers/mathFuncs';
+import { UserContext } from '../../../constexts/userContext';
 
 const SMainContainer = styled.div`
   display: flex;
@@ -38,13 +39,20 @@ const SFlexWrapper = styled.div`
 `;
 
 const Dashboard: FC = () => {
+  const { user } = useContext(UserContext);
   const { transactions } = useContext(TransactionsContext);
   const incomes = transactions.filter((t) => t.paymentType === 'Income');
   const expenses = transactions.filter((t) => t.paymentType === 'Expenses');
   return (
     <SMainContainer>
       <SFlexWrapper>
-        <CreditCard FirstName="itzhak" LastName="Maharat" last4Digits={1589} expMonth={11} expYear={25} />
+        <CreditCard
+          FirstName={user.FirstName}
+          LastName={user.LastName}
+          last4Digits={user.creditCard[0].last4Digits}
+          expMonth={user.creditCard[0].expMonth}
+          expYear={user.creditCard[0].expYear}
+        />
       </SFlexWrapper>
       <SFlexWrapper>
         <IncomeChart />
