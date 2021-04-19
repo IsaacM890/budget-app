@@ -3,20 +3,22 @@ import ApexCharts from 'react-apexcharts';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
 import { colors } from '../../../style/theme/theme';
 import { CHARTS_NAMES } from '../../../enums/index';
-import { getAmountByType } from '../../../helpers/mathFuncs';
+import { getTotalAmountPerMonthByType } from '../../../helpers/mathFuncs';
 
 const ActivityChart = () => {
   const { transactions } = useContext(TransactionsContext);
+  const incomesData = getTotalAmountPerMonthByType(transactions, 'Income');
+  const expensesData = getTotalAmountPerMonthByType(transactions, 'Expenses');
 
   const chartObj = {
     series: [
       {
         name: CHARTS_NAMES.Income,
-        data: getAmountByType(transactions, 'Income'),
+        data: incomesData,
       },
       {
         name: CHARTS_NAMES.Expenses,
-        data: getAmountByType(transactions, 'Expenses'),
+        data: expensesData,
       },
     ],
     options: {
@@ -46,9 +48,9 @@ const ActivityChart = () => {
       legend: {
         position: 'top',
       },
-      xaxis: {
-        categories: transactions.map(({ date }) => new Date(date).toLocaleString('default', { month: 'short' })),
-      },
+      // xaxis: {
+      //   categories: xaxisCategories,
+      // },
       fill: {
         opacity: 1,
       },
