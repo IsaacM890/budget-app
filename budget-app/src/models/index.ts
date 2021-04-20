@@ -46,6 +46,11 @@ export interface ITransaction {
   };
 }
 
+export interface IAction {
+  type: string;
+  payload: any;
+}
+
 export interface ITypographyProps {
   color?: string;
   fontsize: FontSize;

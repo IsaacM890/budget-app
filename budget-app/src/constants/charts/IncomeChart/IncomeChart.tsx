@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ApexCharts from 'react-apexcharts';
+import { TransactionsContext } from '../../../constexts/transactionsContext';
 import { colors } from '../../../style/theme/theme';
+import { getTotalAmountPerMonthByType } from '../../../helpers/mathFuncs';
 
 const IncomeChart = () => {
+  const { transactions } = useContext(TransactionsContext);
+  const incomesData = getTotalAmountPerMonthByType(transactions, 'Income');
+
   const chartObj = {
     series: [
       {
         name: 'Desktops',
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+        data: incomesData,
       },
     ],
     options: {
@@ -31,12 +36,9 @@ const IncomeChart = () => {
       },
       grid: {
         row: {
-          colors: [colors.white.whiteSmoke, 'transparent'], // takes an array which will be repeated on columns
+          colors: [colors.white.whiteSmoke, 'transparent'],
           opacity: 0.5,
         },
-      },
-      xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
       },
     },
   };

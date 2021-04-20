@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable no-console */
 /* eslint-disable no-undef */
 import BudgetServiceApi from '../services/budgetServiceApi';
 
@@ -14,13 +13,22 @@ describe('testing budget Api', () => {
 
   it('Create user successfully', async () => {
     const newUser = await BudgetServiceApi.createUser({
-      first_name: 'gogo',
-      last_name: 'maharat',
+      FirstName: 'gogo',
+      LastName: 'maharat',
       email: 'test66689448@gmail.com',
       password: 'lolososo',
       avatar: 'avatar',
-      current_balance: '20,487',
-      current_balance_currency: 'USD',
+      currentBalance: '20,487',
+      currentBalanceCurrency: 'USD',
+      creditCard: [
+        {
+          FirstName: 'gogo',
+          LastName: 'maharat',
+          expMonth: 6,
+          expYear: 28,
+          last4Digits: 2658,
+        },
+      ],
     });
 
     expect(newUser.msg).toBe('User Created successfully');
@@ -28,13 +36,22 @@ describe('testing budget Api', () => {
 
   it('update user successfully', async () => {
     const successMsg = await BudgetServiceApi.updateUser('606ca2fc46e10c0008b2e363', {
-      first_name: 'Almog',
-      last_name: 'maharat',
+      FirstName: 'Almog',
+      LastName: 'maharat',
       email: 'test555666@gmail.com',
       password: '$2a$10$k2NM10Yp/EXB99WRIG9CSuaOVXr5kXHxp4o8ATL7JO83tDFo4.C4a',
       avatar: 'avatar',
-      current_balance: '20,487',
-      current_balance_currency: 'USD',
+      currentBalance: '20,487',
+      currentBalanceCurrency: 'USD',
+      creditCard: [
+        {
+          FirstName: 'gogo',
+          LastName: 'maharat',
+          expMonth: 6,
+          expYear: 28,
+          last4Digits: 2658,
+        },
+      ],
     });
 
     const user = await BudgetServiceApi.getUser('606ca2fc46e10c0008b2e363');

@@ -1,10 +1,5 @@
-import { IUserState } from '../models/index';
+import { IUserState, IAction } from '../models/index';
 import { REDUCER_ACTIONS } from '../enums/index';
-
-interface IAction {
-  type: string;
-  payload: any;
-}
 
 const userReducer = (state: IUserState, action: IAction) => {
   switch (action.type) {
