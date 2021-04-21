@@ -1,4 +1,5 @@
 const colors = {
+  default: 'white',
   purple: '#8a7be5',
   blue: {
     dark: '#4333A0',
@@ -16,7 +17,6 @@ const colors = {
     light: '#F2C2BE',
   },
   white: {
-    primary: 'white',
     medium: 'rgba(255, 255, 255, 0.3)',
     light: 'rgba(0,0,0,0.1)',
     whiteSmoke: '#f3f3f3',

@@ -12,7 +12,7 @@ export enum CHARTS_NAMES {
   Expenses = 'Expenses',
 }
 
-export enum REDUCER_ACTIONS {
+export enum ACTIONS {
   GET_LATEST_TRANSACTIONS = 'GET_LATEST_TRANSACTIONS',
   GET_USER_BY_ID = 'GET_USER_BY_ID',
 }
@@ -22,14 +22,14 @@ export enum NAV_GROUPE_LABEL {
   TRANSACTIONS = 'Transactions',
   CHARTS = 'Charts',
   CARDS = 'Cards',
-  USERPROFILE = 'User Profile',
+  USER_PROFILE = 'User Profile',
 }
 export enum NAV_GROUPE_ROUTE {
   DASHBOARD = '/',
   TRANSACTIONS = '/transactions',
   CHARTS = '/charts',
   CARDS = '/cards',
-  USERPROFILE = '/profile',
+  USER_PROFILE = '/profile',
 }
 
 export enum PAYMENT_METHOD {

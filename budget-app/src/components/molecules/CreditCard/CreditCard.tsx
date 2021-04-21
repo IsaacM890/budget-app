@@ -41,30 +41,30 @@ const SCardDataBox = styled.div`
   }
 `;
 
-const CreditCard: FC<ICreditCardProps> = ({ FirstName, LastName, last4Digits, expMonth, expYear }) => (
+const CreditCard: FC<ICreditCardProps> = ({ firstName, lastName, last4Digits, expMonth, expYear }) => (
   <SCreditCardContainer>
-    <Typography fontsize={FontSize.heading2} color={colors.white.primary} margin="5px 0" fontweight="bold">
+    <Typography fontsize={FontSize.heading2} color={colors.default} fontweight="bold">
       Card
     </Typography>
     <SDigitsWrapper>
-      <Typography fontsize={FontSize.heading3} color={colors.white.primary} margin="5px 0">
+      <Typography fontsize={FontSize.heading3} color={colors.default}>
         {`**** **** **** ${last4Digits}`}
       </Typography>
     </SDigitsWrapper>
     <SCardDataBox>
       <SCardHolderWrapper>
-        <Typography fontsize={FontSize.subtitle} color={colors.white.primary} opacity="0.5">
+        <Typography fontsize={FontSize.subtitle} color={colors.white.medium}>
           CARD HOLDER
         </Typography>
-        <Typography fontsize={FontSize.caption} color={colors.white.primary}>
-          {`${FirstName}  ${LastName}`}
+        <Typography fontsize={FontSize.caption} color={colors.default}>
+          {`${firstName}  ${lastName}`}
         </Typography>
       </SCardHolderWrapper>
       <SCardExpDateWrapper>
-        <Typography fontsize={FontSize.subtitle} color={colors.white.primary} opacity="0.5">
+        <Typography fontsize={FontSize.subtitle} color={colors.white.medium}>
           VALID THRU
         </Typography>
-        <Typography fontsize={FontSize.caption} color={colors.white.primary}>
+        <Typography fontsize={FontSize.caption} color={colors.default}>
           {`${expMonth} / ${expYear}`}
         </Typography>
       </SCardExpDateWrapper>

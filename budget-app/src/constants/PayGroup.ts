@@ -9,7 +9,7 @@ const getStyleByPaymentMethod = (paymentMethod: string) => {
       return {
         text: PAYMENT_METHOD_TEXT.ATM,
         icon: faCheck,
-        color: colors.white.primary,
+        color: colors.default,
         backgroundColor: colors.purple,
       };
 
@@ -17,7 +17,7 @@ const getStyleByPaymentMethod = (paymentMethod: string) => {
       return {
         text: PAYMENT_METHOD_TEXT.CANCELLED,
         icon: faTimes,
-        color: colors.white.primary,
+        color: colors.default,
         backgroundColor: colors.pink.primary,
       };
 
@@ -26,7 +26,7 @@ const getStyleByPaymentMethod = (paymentMethod: string) => {
         text: PAYMENT_METHOD_TEXT.CYCLE,
         icon: faSyncAlt,
         color: colors.black,
-        backgroundColor: colors.white.primary,
+        backgroundColor: colors.default,
       };
 
     case PAYMENT_METHOD.REFUND:
@@ -34,21 +34,21 @@ const getStyleByPaymentMethod = (paymentMethod: string) => {
         text: PAYMENT_METHOD_TEXT.REFUND,
         icon: faReply,
         color: colors.black,
-        backgroundColor: colors.white.primary,
+        backgroundColor: colors.default,
       };
 
     case PAYMENT_METHOD.PAYPAL:
       return {
         text: PAYMENT_METHOD_TEXT.PAYPAL,
         icon: faPaypal,
-        color: colors.white.primary,
+        color: colors.default,
         backgroundColor: colors.purple,
       };
     default:
       return {
         text: ' Withdrawals from Credit Card',
         icon: faCheck,
-        color: colors.white.primary,
+        color: colors.default,
         backgroundColor: colors.purple,
       };
   }

@@ -1,8 +1,8 @@
 import { AvatarSize, FontSize, IconSize } from '../enums';
 
 export interface IUser {
-  FirstName: string;
-  LastName: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   avatar: string;
@@ -11,8 +11,8 @@ export interface IUser {
   creditCard: ICreditCardProps[];
 }
 export interface ICreditCardProps {
-  FirstName: string;
-  LastName: string;
+  firstName: string;
+  lastName: string;
   last4Digits: number;
   expMonth: number;
   expYear: number;
@@ -61,8 +61,8 @@ export interface ITypographyProps {
 
 export interface IIconProps {
   size: IconSize;
-  borderradius?: string;
-  backgroundcolor?: string;
+  borderRadius?: string;
+  backgroundColor?: string;
 }
 
 export interface IListItemProps {
@@ -84,7 +84,7 @@ export interface IBriefCardProps {
   title?: string;
   revenue?: string;
   profit?: string;
-  backgroundcolor: string;
+  backgroundColor: string;
   color?: string;
   icon?: any;
 }

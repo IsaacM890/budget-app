@@ -40,6 +40,7 @@ const SFlexWrapper = styled.div`
 
 const Dashboard: FC = () => {
   const { user } = useContext(UserContext);
+  const { creditCard, firstName, lastName } = user;
   const { transactions } = useContext(TransactionsContext);
   const incomes = transactions.filter((t) => t.paymentType === 'Income');
   const expenses = transactions.filter((t) => t.paymentType === 'Expenses');
@@ -47,11 +48,11 @@ const Dashboard: FC = () => {
     <SMainContainer>
       <SFlexWrapper>
         <CreditCard
-          FirstName={user.FirstName}
-          LastName={user.LastName}
-          last4Digits={user.creditCard[0].last4Digits}
-          expMonth={user.creditCard[0].expMonth}
-          expYear={user.creditCard[0].expYear}
+          firstName={firstName}
+          lastName={lastName}
+          last4Digits={creditCard[0].last4Digits}
+          expMonth={creditCard[0].expMonth}
+          expYear={creditCard[0].expYear}
         />
       </SFlexWrapper>
       <SFlexWrapper>
@@ -62,8 +63,8 @@ const Dashboard: FC = () => {
           title="Income"
           revenue={getAverage(incomes)}
           profit="+5.08%"
-          backgroundcolor={colors.blue.medium}
-          color={colors.white.primary}
+          backgroundColor={colors.blue.medium}
+          color={colors.default}
           icon={faArchive}
         />
       </SFlexWrapper>
@@ -72,8 +73,8 @@ const Dashboard: FC = () => {
           title="Expenses"
           revenue={getAverage(expenses)}
           profit="+5.08%"
-          backgroundcolor={colors.blue.medium}
-          color={colors.white.primary}
+          backgroundColor={colors.blue.medium}
+          color={colors.default}
           icon={faChartLine}
         />
       </SFlexWrapper>

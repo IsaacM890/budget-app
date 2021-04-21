@@ -25,7 +25,7 @@ const NavList: FC = () => (
           <Icon size={IconSize.medium}>
             <FontAwesomeIcon icon={icon} color={color} />
           </Icon>
-          <Typography fontsize={FontSize.caption} color={colors.white.primary}>
+          <Typography fontsize={FontSize.caption} color={colors.default}>
             {label}
           </Typography>
         </ListItem>

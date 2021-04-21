@@ -1,12 +1,12 @@
 import React, { useReducer, createContext } from 'react';
 import { IUser, IUserState } from '../models/index';
-import { REDUCER_ACTIONS } from '../enums/index';
+import { ACTIONS } from '../enums/index';
 import userReducer from '../reducers/userReducer';
 
 const initialState = {
   user: {
-    FirstName: '',
-    LastName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     avatar: '',
@@ -14,8 +14,8 @@ const initialState = {
     currentBalanceCurrency: '',
     creditCard: [
       {
-        FirstName: '',
-        LastName: '',
+        firstName: '',
+        lastName: '',
         last4Digits: 0,
         expMonth: 0,
         expYear: 0,
@@ -31,7 +31,7 @@ const UserContextProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(userReducer, initialState);
 
   const setUser = (user: IUser) => {
-    dispatch({ type: REDUCER_ACTIONS.GET_USER_BY_ID, payload: user });
+    dispatch({ type: ACTIONS.GET_USER_BY_ID, payload: user });
   };
 
   return (

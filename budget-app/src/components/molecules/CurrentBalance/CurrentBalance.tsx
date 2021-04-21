@@ -29,12 +29,12 @@ const SCaptionWrapper = styled.div`
 const CurrentBalance: FC<ICurrentBalanceProps> = ({ currentBalance }) => (
   <SCurrentBalanceWrapper>
     <SCaptionWrapper>
-      <Typography fontsize={FontSize.heading1} color={colors.white.primary} margin="5px 0" fontweight="bold">
+      <Typography fontsize={FontSize.heading1} color={colors.default} margin="5px 0" fontweight="bold">
         {currentBalance}
       </Typography>
     </SCaptionWrapper>
     <SCaptionWrapper>
-      <Typography fontsize={FontSize.caption} color={colors.white.primary} margin="5px 0">
+      <Typography fontsize={FontSize.caption} color={colors.default} margin="5px 0">
         Current balance
       </Typography>
     </SCaptionWrapper>

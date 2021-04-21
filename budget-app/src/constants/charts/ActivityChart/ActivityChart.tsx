@@ -48,9 +48,6 @@ const ActivityChart = () => {
       legend: {
         position: 'top',
       },
-      // xaxis: {
-      //   categories: xaxisCategories,
-      // },
       fill: {
         opacity: 1,
       },
