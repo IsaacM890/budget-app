@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import NavList from '../NavList/NavList';
 import CurrentBalance from '../../molecules/CurrentBalance/CurrentBalance';
-import { colors, breakpoints } from '../../../style/theme/theme';
+import { colors, breakPoints } from '../../../style/theme/theme';
 import { UserContext } from '../../../constexts/userContext';
 
 interface IIsshowProps {
@@ -15,7 +15,7 @@ const SNavBarWrapper = styled.div<IIsshowProps>(
   background-color: ${colors.blue.dark};
   width: 200px;
   padding: 40px 10px;
-  @media (max-width: ${breakpoints.laptop}) {
+  @media (max-width: ${breakPoints.laptop}) {
     position: absolute;
     left: ${isShow ? 0 : `-220px`} ;
     transition: 0.3s left;
@@ -27,7 +27,7 @@ const SNavBarWrapper = styled.div<IIsshowProps>(
 
 const SmenuIconWrapper = styled.div`
   display: none;
-  @media (max-width: ${breakpoints.laptop}) {
+  @media (max-width: ${breakPoints.laptop}) {
     position: absolute;
     left: 35px;
     top: 20px;
@@ -46,7 +46,7 @@ const NavBar: FC = () => {
   return (
     <>
       <SmenuIconWrapper onClick={() => setIsShow(true)}>
-        <FontAwesomeIcon icon={faBars} color="grey" />
+        <FontAwesomeIcon icon={faBars} color={colors.grey.primary} />
       </SmenuIconWrapper>
       <SNavBarWrapper isShow={isShow}>
         <CurrentBalance currentBalance={user.currentBalance} />

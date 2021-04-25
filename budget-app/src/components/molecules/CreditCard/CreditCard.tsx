@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ICreditCardProps } from '../../../models/index';
 import Typography from '../../atoms/Typography/Typography';
 import CreditCardBackground from '../../../assets/images/CreditCardBackground.png';
-import { colors, FontSize } from '../../../style/theme/theme';
+import { colors, fontSize } from '../../../style/theme/theme';
 
 const SCreditCardContainer = styled.div`
   background-image: url(${CreditCardBackground});
@@ -39,31 +39,30 @@ const SCardDataBox = styled.div`
     flex-direction: column;
   }
 `;
-
 const CreditCard: FC<ICreditCardProps> = ({ firstName, lastName, last4Digits, expMonth, expYear }) => (
   <SCreditCardContainer>
-    <Typography fontsize={FontSize.heading2} color={colors.default} bold>
+    <Typography fontsize={fontSize.heading2} color={colors.default} bold>
       Card
     </Typography>
     <SDigitsWrapper>
-      <Typography fontsize={FontSize.heading3} color={colors.default}>
+      <Typography fontsize={fontSize.heading3} color={colors.default}>
         {`**** **** **** ${last4Digits}`}
       </Typography>
     </SDigitsWrapper>
     <SCardDataBox>
       <SCardHolderWrapper>
-        <Typography fontsize={FontSize.subtitle} color={colors.white.medium}>
+        <Typography fontsize={fontSize.subtitle} color={colors.white.medium}>
           CARD HOLDER
         </Typography>
-        <Typography fontsize={FontSize.caption} color={colors.default}>
-          {`${firstName}  ${lastName}`}
+        <Typography fontsize={fontSize.caption} color={colors.default}>
+          {`${firstName}${' '}${lastName}`}
         </Typography>
       </SCardHolderWrapper>
       <SCardExpDateWrapper>
-        <Typography fontsize={FontSize.subtitle} color={colors.white.medium}>
+        <Typography fontsize={fontSize.subtitle} color={colors.white.medium}>
           VALID THRU
         </Typography>
-        <Typography fontsize={FontSize.caption} color={colors.default}>
+        <Typography fontsize={fontSize.caption} color={colors.default}>
           {`${expMonth} / ${expYear}`}
         </Typography>
       </SCardExpDateWrapper>

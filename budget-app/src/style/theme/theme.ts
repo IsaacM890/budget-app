@@ -23,7 +23,7 @@ export const colors = {
   },
   red: '#f18374',
 };
-export const breakpoints = {
+export const breakPoints = {
   mobile: '320px',
   tablet: '600',
   laptop: '847px',
@@ -31,7 +31,7 @@ export const breakpoints = {
   XLScreen: '1360px',
 };
 
-export enum FontSize {
+export enum fontSize {
   heading1 = 'heading1',
   heading2 = 'heading2',
   heading3 = 'heading3',
@@ -39,3 +39,12 @@ export enum FontSize {
   subtitle = 'subtitle',
   subtitle2 = 'subtitle2',
 }
+
+// export type fontSize = {
+//   heading1: string;
+//   heading2: string;
+//   heading3: string;
+//   caption: string;
+//   subtitle: string;
+//   subtitle2: string;
+// };

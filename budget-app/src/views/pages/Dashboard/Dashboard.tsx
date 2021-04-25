@@ -6,7 +6,7 @@ import BriefCard from '../../../components/molecules/BriefCard/BriefCard';
 import CreditCard from '../../../components/molecules/CreditCard/CreditCard';
 import IncomeChart from '../../../components/molecules/IncomeChart/IncomeChart';
 import ActivityChart from '../../../components/molecules/ActivityChart/ActivityChart';
-import { colors, breakpoints } from '../../../style/theme/theme';
+import { colors, breakPoints } from '../../../style/theme/theme';
 import getAverage from '../../../helpers/mathFuncs';
 import { UserContext } from '../../../constexts/userContext';
 
@@ -27,13 +27,13 @@ const SFlexWrapper = styled.div`
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
-  @media (max-width: ${breakpoints.desktop}) {
+  @media (max-width: ${breakPoints.desktop}) {
     width: 50%;
   }
-  @media (max-width: ${breakpoints.laptop}) {
+  @media (max-width: ${breakPoints.laptop}) {
     width: 50%;
   }
-  @media (max-width: ${breakpoints.tablet}) {
+  @media (max-width: ${breakPoints.tablet}) {
     width: 50%;
   }
 `;

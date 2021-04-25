@@ -10,7 +10,7 @@ import BudgetServiceApi from '../../../services/budgetServiceApi';
 import NavBar from '../../../components/organisms/NavBar/NavBar';
 import Dashboard from '../Dashboard/Dashboard';
 import PaymentBar from '../../../components/organisms/PaymentBar/PaymentBar';
-import { breakpoints } from '../../../style/theme/theme';
+import { breakPoints } from '../../../style/theme/theme';
 
 const SHomePageContainer = styled.div`
   display: grid;
@@ -25,13 +25,13 @@ const SHomePageContainer = styled.div`
   overflow: auto;
   border-radius: 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  @media (max-width: ${breakpoints.XLScreen}) {
+  @media (max-width: ${breakPoints.XLScreen}) {
     width: 95%;
   }
-  @media (max-width: ${breakpoints.desktop}) {
+  @media (max-width: ${breakPoints.desktop}) {
     grid-template-columns: 1fr 4fr;
   }
-  @media (max-width: ${breakpoints.laptop}) {
+  @media (max-width: ${breakPoints.laptop}) {
     grid-template-columns: 4fr;
   }
 `;
@@ -52,6 +52,7 @@ const HomePage: FC = () => {
           setUser(userData);
         }
       } catch (err) {
+        console.error('An error has occurred : ', err.message);
         throw new Error(err);
       }
     };

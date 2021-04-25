@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import Typography from '../../atoms/Typography/Typography';
 import { ICurrentBalanceProps } from '../../../models/index';
-import { colors, FontSize } from '../../../style/theme/theme';
+import { colors, fontSize } from '../../../style/theme/theme';
 
 export const SCurrentBalanceWrapper = styled.div`
   height: 120px;
@@ -28,12 +28,12 @@ const SCaptionWrapper = styled.div`
 const CurrentBalance: FC<ICurrentBalanceProps> = ({ currentBalance }) => (
   <SCurrentBalanceWrapper>
     <SCaptionWrapper>
-      <Typography fontsize={FontSize.heading1} color={colors.default} bold>
+      <Typography fontsize={fontSize.heading1} color={colors.default} bold>
         {currentBalance}
       </Typography>
     </SCaptionWrapper>
     <SCaptionWrapper>
-      <Typography fontsize={FontSize.caption} color={colors.default}>
+      <Typography fontsize={fontSize.caption} color={colors.default}>
         Current balance
       </Typography>
     </SCaptionWrapper>

@@ -13,6 +13,7 @@ class BudgetServiceApi {
       await this.axiosInstance.post(`users/register/`, userPayload);
       return { msg: 'User Created successfully' };
     } catch (err) {
+      console.error('An error has occurred : ', err.message);
       throw new Error(err);
     }
   };
@@ -22,6 +23,7 @@ class BudgetServiceApi {
       const user = await this.axiosInstance.get(`users/${id}`);
       return user.data;
     } catch (err) {
+      console.error('An error has occurred : ', err.message);
       throw new Error(err);
     }
   };
@@ -31,6 +33,7 @@ class BudgetServiceApi {
       await this.axiosInstance.put(`users/${id}`, userPayload);
       return { msg: 'User Updated successfully' };
     } catch (err) {
+      console.error('An error has occurred : ', err.message);
       throw new Error(err);
     }
   };
@@ -40,6 +43,7 @@ class BudgetServiceApi {
       await this.axiosInstance.delete(`users/${id}`);
       return { msg: 'User Deleted successfully' };
     } catch (err) {
+      console.error('An error has occurred : ', err.message);
       throw new Error(err);
     }
   };
@@ -49,6 +53,7 @@ class BudgetServiceApi {
       const transactions = await this.axiosInstance.get(`transactions/all`);
       return transactions.data;
     } catch (err) {
+      console.error('An error has occurred : ', err.message);
       throw new Error(err);
     }
   };
@@ -58,6 +63,7 @@ class BudgetServiceApi {
       const transactions = await this.axiosInstance.get(`transactions/latest?limit=${limit}`);
       return transactions.data;
     } catch (err) {
+      console.error('An error has occurred : ', err.message);
       throw new Error(err);
     }
   };
@@ -67,6 +73,7 @@ class BudgetServiceApi {
       await this.axiosInstance.put(`transactions/${id}`, transactionPayload);
       return { msg: 'Transaction Updated successfully' };
     } catch (err) {
+      console.error('An error has occurred : ', err.message);
       throw new Error(err);
     }
   };
@@ -76,6 +83,7 @@ class BudgetServiceApi {
       await this.axiosInstance.delete(`transactions/${id}`);
       return { msg: 'Transaction Deleted successfully' };
     } catch (err) {
+      console.error('An error has occurred : ', err.message);
       throw new Error(err);
     }
   };
@@ -85,6 +93,7 @@ class BudgetServiceApi {
       await this.axiosInstance.post(`transactions/`, transactionPayload);
       return { msg: 'Transaction Created successfully' };
     } catch (err) {
+      console.error('An error has occurred : ', err.message);
       throw new Error(err);
     }
   };

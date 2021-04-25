@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { AvatarSize } from '../../../enums';
 import { IUserDetailsProps } from '../../../models/index';
-import { colors, FontSize } from '../../../style/theme/theme';
+import { colors, fontSize } from '../../../style/theme/theme';
 import Avatar from '../../atoms/Avatar/Avatar';
 import Typography from '../../atoms/Typography/Typography';
 
@@ -28,12 +28,12 @@ const SCaptionWrapper = styled.div`
 
 const UserDetails: FC<IUserDetailsProps> = ({ firstName, lastName, email, avatar }) => (
   <SUserDetailsContainer>
-    <Avatar size={AvatarSize.xl} borderRadius="50px" src={avatar} />
+    <Avatar size={AvatarSize.xl} src={avatar} />
     <SCaptionWrapper>
-      <Typography fontsize={FontSize.heading3} margin="5px 0" bold>
-        {`${firstName}  ${lastName}`}
+      <Typography fontsize={fontSize.heading3} bold>
+        {`${firstName}${' '}${lastName}`}
       </Typography>
-      <Typography fontsize={FontSize.subtitle} color={colors.grey.primary}>
+      <Typography fontsize={fontSize.subtitle} color={colors.grey.primary}>
         {email}
       </Typography>
     </SCaptionWrapper>

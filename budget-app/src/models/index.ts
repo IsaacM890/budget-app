@@ -1,5 +1,5 @@
 import { AvatarSize, IconSize } from '../enums';
-import { FontSize } from '../style/theme/theme';
+import { fontSize } from '../style/theme/theme';
 
 export interface IUser {
   firstName: string;
@@ -11,6 +11,7 @@ export interface IUser {
   currentBalanceCurrency: string;
   creditCard: ICreditCardProps[];
 }
+
 export interface ICreditCardProps {
   firstName: string;
   lastName: string;
@@ -18,6 +19,7 @@ export interface ICreditCardProps {
   expMonth: number;
   expYear: number;
 }
+
 export interface IUserState {
   user: IUser;
   setUser: (user: IUser) => void;
@@ -72,8 +74,7 @@ export interface IAction {
 
 export interface ITypographyProps {
   color?: string;
-  fontsize: FontSize;
-  margin?: string;
+  fontsize: fontSize;
   bold?: boolean;
 }
 
@@ -94,7 +95,6 @@ export interface ICurrentBalanceProps {
 export interface IAvatarProps {
   size: AvatarSize;
   src: string;
-  borderRadius: string;
 }
 
 export interface IBriefCardProps {
