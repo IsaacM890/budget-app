@@ -22,7 +22,7 @@ const SHomePageContainer = styled.div`
   height: 95vh;
   max-height: 95vh;
   margin: 10px auto;
-  overflow: hidden;
+  overflow: auto;
   border-radius: 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   @media (max-width: ${breakpoints.XLScreen}) {
@@ -39,15 +39,25 @@ const SHomePageContainer = styled.div`
 const HomePage: FC = () => {
   const { setTransactions } = useContext(TransactionsContext);
   const { setUser } = useContext(UserContext);
+
   useEffect(() => {
     const fetchData = async () => {
-      const transactionsData = await BudgetServiceApi.getLatestTransactionsByLimit(10);
-      const userData = await BudgetServiceApi.getUser('60802bb5546c2d00093fd47c');
-      setTransactions(transactionsData);
-      setUser(userData);
+      try {
+        const transactionsData = await BudgetServiceApi.getLatestTransactionsByLimit(10);
+        const userData = await BudgetServiceApi.getUser('60805fac3e04b30008493f6c');
+        if (transactionsData?.length) {
+          setTransactions(transactionsData);
+        }
+        if (userData) {
+          setUser(userData);
+        }
+      } catch (err) {
+        throw new Error(err);
+      }
     };
     fetchData();
   }, []);
+
   return (
     <Router>
       <SHomePageContainer>

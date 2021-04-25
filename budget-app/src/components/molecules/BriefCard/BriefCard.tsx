@@ -2,10 +2,9 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-import { FontSize } from '../../../enums';
 import { IBriefCardProps } from '../../../models/index';
 import Typography from '../../atoms/Typography/Typography';
-import { colors } from '../../../style/theme/theme';
+import { colors, FontSize } from '../../../style/theme/theme';
 
 const SBriefCardContainer = styled.div`
   border-radius: 10px;
@@ -58,7 +57,7 @@ const SCardIconWrapper = styled.div<IBriefCardProps>(
 
 const BriefCard: FC<IBriefCardProps> = ({ title, profit, revenue, backgroundColor, icon, color }) => (
   <SBriefCardContainer>
-    <Typography fontsize={FontSize.heading2} margin="5px 0" fontweight="bold">
+    <Typography fontsize={FontSize.heading2} margin="5px 0" bold>
       {title}
     </Typography>
     <SRevenueWrapper>

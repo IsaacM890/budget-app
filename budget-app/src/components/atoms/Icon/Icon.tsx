@@ -31,15 +31,15 @@ const setSize = (size?: IconSize) => {
 };
 
 const SIcon = styled.div<IIconProps>`
+  border-radius: 50px;
   margin: 0 5px;
   padding: 0 5px;
   ${({ size }) => setSize(size)};
   ${({ backgroundColor }) => `background-color:${backgroundColor};`};
-  ${({ borderRadius }) => `border-radius:${borderRadius};`};
 `;
 
-const Icon: React.FC<IIconProps> = ({ size, children, backgroundColor, borderRadius }) => (
-  <SIcon size={size} backgroundColor={backgroundColor} borderRadius={borderRadius}>
+const Icon: React.FC<IIconProps> = ({ size, children, backgroundColor }) => (
+  <SIcon size={size} backgroundColor={backgroundColor}>
     {children}
   </SIcon>
 );

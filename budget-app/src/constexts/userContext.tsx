@@ -16,7 +16,7 @@ const initialState = {
       {
         firstName: '',
         lastName: '',
-        last4Digits: 0,
+        last4Digits: 1234,
         expMonth: 0,
         expYear: 0,
       },

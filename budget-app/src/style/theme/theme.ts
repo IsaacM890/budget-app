@@ -1,4 +1,4 @@
-const colors = {
+export const colors = {
   default: 'white',
   purple: '#8a7be5',
   blue: {
@@ -23,7 +23,7 @@ const colors = {
   },
   red: '#f18374',
 };
-const breakpoints = {
+export const breakpoints = {
   mobile: '320px',
   tablet: '600',
   laptop: '847px',
@@ -31,4 +31,11 @@ const breakpoints = {
   XLScreen: '1360px',
 };
 
-export { colors, breakpoints };
+export enum FontSize {
+  heading1 = 'heading1',
+  heading2 = 'heading2',
+  heading3 = 'heading3',
+  caption = 'caption',
+  subtitle = 'subtitle',
+  subtitle2 = 'subtitle2',
+}

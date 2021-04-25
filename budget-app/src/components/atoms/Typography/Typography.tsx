@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontSize } from '../../../enums';
 import { ITypographyProps } from '../../../models';
+import { FontSize } from '../../../style/theme/theme';
 
 const setfontSize = (size?: FontSize) => {
   switch (size) {
@@ -40,14 +40,12 @@ const setfontSize = (size?: FontSize) => {
 const STypography = styled.label<ITypographyProps>`
   ${({ fontsize }) => setfontSize(fontsize)};
   ${({ color }) => `color:${color};`}
-  ${({ fontweight }) => `font-weight:${fontweight};`}
-  ${({ opacity }) => `opacity:${opacity};`}
+  ${({ bold }) => (bold ? `font-weight:bold` : `font-weight:normal`)}
 `;
 
-const Typography: React.FC<ITypographyProps> = ({ fontweight, fontsize, children, color, opacity }) => (
-  <STypography fontsize={fontsize} fontweight={fontweight} color={color} opacity={opacity}>
+const Typography: React.FC<ITypographyProps> = ({ fontsize, children, color, bold }) => (
+  <STypography fontsize={fontsize} color={color} bold={bold}>
     {children}
   </STypography>
 );
-
 export default Typography;

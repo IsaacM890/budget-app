@@ -6,8 +6,8 @@ import navGroup from '../../../constants/NavGroup';
 import ListItem from '../../molecules/ListItem/ListItem';
 import Icon from '../../atoms/Icon/Icon';
 import Typography from '../../atoms/Typography/Typography';
-import { FontSize, IconSize } from '../../../enums/index';
-import { colors } from '../../../style/theme/theme';
+import { IconSize } from '../../../enums/index';
+import { colors, FontSize } from '../../../style/theme/theme';
 
 const NavListWrapper = styled.ul`
   list-style-type: none;

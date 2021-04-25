@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { ICreditCardProps } from '../../../models/index';
 import Typography from '../../atoms/Typography/Typography';
 import CreditCardBackground from '../../../assets/images/CreditCardBackground.png';
-import { FontSize } from '../../../enums';
-import { colors } from '../../../style/theme/theme';
+import { colors, FontSize } from '../../../style/theme/theme';
 
 const SCreditCardContainer = styled.div`
   background-image: url(${CreditCardBackground});
@@ -43,7 +42,7 @@ const SCardDataBox = styled.div`
 
 const CreditCard: FC<ICreditCardProps> = ({ firstName, lastName, last4Digits, expMonth, expYear }) => (
   <SCreditCardContainer>
-    <Typography fontsize={FontSize.heading2} color={colors.default} fontweight="bold">
+    <Typography fontsize={FontSize.heading2} color={colors.default} bold>
       Card
     </Typography>
     <SDigitsWrapper>

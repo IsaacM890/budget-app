@@ -2,9 +2,8 @@ import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import UserDetails from '../../molecules/UserDetails/UserDetails';
 import PaymentList from '../PaymentList/PaymentList';
-import { FontSize } from '../../../enums/index';
 import Typography from '../../atoms/Typography/Typography';
-import { breakpoints, colors } from '../../../style/theme/theme';
+import { breakpoints, colors, FontSize } from '../../../style/theme/theme';
 import { UserContext } from '../../../constexts/userContext';
 
 const SPaymentBarContainer = styled.div`
@@ -28,9 +27,9 @@ const PaymentBar: FC = () => {
   const { firstName, lastName, email, avatar } = user;
   return (
     <SPaymentBarContainer>
-      <UserDetails FirstName={firstName} LastName={lastName} email={email} avatar={avatar} />
+      <UserDetails firstName={firstName} lastName={lastName} email={email} avatar={avatar} />
       <STitleWrapper>
-        <Typography fontsize={FontSize.heading2} margin="5px 0" fontweight="bold">
+        <Typography fontsize={FontSize.heading2} margin="5px 0" bold>
           Payment History
         </Typography>
       </STitleWrapper>

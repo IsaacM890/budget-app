@@ -1,12 +1,3 @@
-export enum FontSize {
-  heading1 = 'heading1',
-  heading2 = 'heading2',
-  heading3 = 'heading3',
-  caption = 'caption',
-  subtitle = 'subtitle',
-  subtitle2 = 'subtitle2',
-}
-
 export enum CHARTS_NAMES {
   Income = 'Income',
   Expenses = 'Expenses',
@@ -61,4 +52,13 @@ export enum AvatarSize {
   md = 'md',
   sm = 'sm',
   xs = 'xs',
+}
+
+export enum TransactionsFileds {
+  paymentType = 'paymentType',
+  paymentMethod = 'paymentMethod',
+  amount = 'amount',
+  time = 'time',
+  date = 'date',
+  currency = 'currency',
 }

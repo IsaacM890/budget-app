@@ -42,6 +42,8 @@ const Dashboard: FC = () => {
   const { user } = useContext(UserContext);
   const { creditCard, firstName, lastName } = user;
   const { transactions } = useContext(TransactionsContext);
+  const { last4Digits, expMonth, expYear } = creditCard[0];
+
   const incomes = transactions.filter((t) => t.paymentType === 'Income');
   const expenses = transactions.filter((t) => t.paymentType === 'Expenses');
   return (
@@ -50,9 +52,9 @@ const Dashboard: FC = () => {
         <CreditCard
           firstName={firstName}
           lastName={lastName}
-          last4Digits={creditCard[0].last4Digits}
-          expMonth={creditCard[0].expMonth}
-          expYear={creditCard[0].expYear}
+          last4Digits={last4Digits}
+          expMonth={expMonth}
+          expYear={expYear}
         />
       </SFlexWrapper>
       <SFlexWrapper>

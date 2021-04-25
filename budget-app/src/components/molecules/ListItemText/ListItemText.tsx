@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import Typography from '../../atoms/Typography/Typography';
 import { IListItemTextProps } from '../../../models/index';
-import { FontSize } from '../../../enums';
+import { colors, FontSize } from '../../../style/theme/theme';
 
 const SListItemTextWrapper = styled.div`
   display: flex;
@@ -11,12 +11,12 @@ const SListItemTextWrapper = styled.div`
   margin: 5px 2px;
 `;
 
-const ListItemText: FC<IListItemTextProps> = ({ fontweight, title, subtitle, color }) => (
+const ListItemText: FC<IListItemTextProps> = ({ title, subtitle, color }) => (
   <SListItemTextWrapper>
-    <Typography fontweight={fontweight} color={color} fontsize={FontSize.subtitle2}>
+    <Typography bold color={color} fontsize={FontSize.subtitle2}>
       {title}
     </Typography>
-    <Typography fontsize={FontSize.subtitle2} opacity="0.5">
+    <Typography fontsize={FontSize.subtitle2} color={colors.grey.primary}>
       {subtitle}
     </Typography>
   </SListItemTextWrapper>
