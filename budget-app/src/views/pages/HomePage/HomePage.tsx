@@ -1,13 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import NavBar from '../../../components/organisms/NavBar/NavBar';
-import Main from '../Dashboard/Dashboard';
-import PaymentBar from '../../../components/organisms/PaymentBar/PaymentBar';
-import theme from '../../../style/theme/theme';
-import Transactions from '../Transactions/Transactions';
+import { TransactionsContext } from '../../../constexts/transactionsContext';
+import { UserContext } from '../../../constexts/userContext';
+import transactionsList from '../Transactions/Transactions';
 import Cards from '../Cards/Cards';
 import Charts from '../Charts/Charts';
+import BudgetServiceApi from '../../../services/budgetServiceApi';
+import NavBar from '../../../components/organisms/NavBar/NavBar';
+import Dashboard from '../Dashboard/Dashboard';
+import PaymentBar from '../../../components/organisms/PaymentBar/PaymentBar';
+import { breakPoints } from '../../../style/theme/theme';
 
 const SHomePageContainer = styled.div`
   display: grid;
@@ -19,32 +22,57 @@ const SHomePageContainer = styled.div`
   height: 95vh;
   max-height: 95vh;
   margin: 10px auto;
+  overflow: auto;
   border-radius: 20px;
-  overflow: hidden;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  @media (max-width: ${theme.breakpoints.strechBreak}) {
+  @media (max-width: ${breakPoints.XLScreen}) {
     width: 95%;
   }
-  @media (max-width: ${theme.breakpoints.desktop}) {
+  @media (max-width: ${breakPoints.desktop}) {
     grid-template-columns: 1fr 4fr;
   }
-  @media (max-width: ${theme.breakpoints.tablet}) {
+  @media (max-width: ${breakPoints.laptop}) {
     grid-template-columns: 4fr;
   }
 `;
 
-const HomePage: FC = () => (
-  <Router>
-    <SHomePageContainer>
-      <NavBar />
-      <Switch>
-        <Route path="/" exact component={Main} />
-        <Route path="/transactions" component={Transactions} />
-        <Route path="/charts" component={Charts} />
-        <Route path="/cards" component={Cards} />
-      </Switch>
-      <PaymentBar />
-    </SHomePageContainer>
-  </Router>
-);
+const HomePage: FC = () => {
+  const { setTransactions } = useContext(TransactionsContext);
+  const { setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const transactionsData = await BudgetServiceApi.getLatestTransactionsByLimit(10);
+        const userData = await BudgetServiceApi.getUser('60805fac3e04b30008493f6c');
+        if (transactionsData?.length) {
+          setTransactions(transactionsData);
+        }
+        if (userData) {
+          setUser(userData);
+        }
+      } catch (err) {
+        console.error('An error has occurred : ', err.message);
+        throw new Error(err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <Router>
+      <SHomePageContainer>
+        <NavBar />
+        <Switch>
+          <Route path="/" component={Dashboard} exact />
+          <Route path="/transactions" component={transactionsList} exact />
+          <Route path="/charts" component={Charts} exact />
+          <Route path="/cards" component={Cards} exact />
+        </Switch>
+        <PaymentBar />
+      </SHomePageContainer>
+    </Router>
+  );
+};
+
 export default HomePage;

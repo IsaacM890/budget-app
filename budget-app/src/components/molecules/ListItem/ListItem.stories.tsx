@@ -5,7 +5,8 @@ import { faChartLine } from '@fortawesome/free-solid-svg-icons';
 import ListItem from './ListItem';
 import Icon from '../../atoms/Icon/Icon';
 import Typography from '../../atoms/Typography/Typography';
-import { FontSize, IconSize } from '../../../enums/index';
+import { IconSize } from '../../../enums/index';
+import { fontSize } from '../../../style/theme/theme';
 
 export default {
   title: 'molecules/ListItem',
@@ -14,10 +15,10 @@ export default {
 
 const Template: Story = (args) => (
   <ListItem {...args}>
-    <Icon margin="5px 0" padding="5px 0" size={IconSize.medium}>
+    <Icon size={IconSize.medium}>
       <FontAwesomeIcon icon={faChartLine} />
     </Icon>
-    <Typography fontsize={FontSize.caption}>ListItem</Typography>
+    <Typography fontsize={fontSize.caption}>ListItem</Typography>
   </ListItem>
 );
 

@@ -1,8 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { TransactionsContext } from '../../../constexts/transactionsContext';
 import { IPaymentListProps } from '../../../models/index';
-import payGroup from '../../../constants/PayGroup';
+import { getAmountColor, getAmountSymbol, getDateFormat } from '../../../helpers/designFuncs';
+import getStyleByPaymentMethod from '../../../constants/PayGroup';
 import ListItem from '../../molecules/ListItem/ListItem';
 import ListItemText from '../../molecules/ListItemText/ListItemText';
 
@@ -28,34 +30,29 @@ const SIconWrapper = styled.div<IPaymentListProps>(
 `
 );
 
-const getAmountColor = (amount: number) => {
-  if (amount > 0) {
-    return `#8a7be5`;
-  }
-  if (amount < 0) {
-    return `#62CCF7`;
-  }
-  return 'black';
+const PaymentList: FC = () => {
+  const { transactions } = useContext(TransactionsContext);
+  return (
+    <PaymentListWrapper>
+      {transactions?.map(({ paymentMethod, date, time, amount, currency }) => {
+        const { backgroundColor, color, text, icon } = getStyleByPaymentMethod(paymentMethod);
+        return (
+          <ListItem>
+            <SIconWrapper iconBackground={backgroundColor}>
+              <FontAwesomeIcon icon={icon} color={color} />
+            </SIconWrapper>
+            <ListItemText title={text} subtitle={getDateFormat(date, time)} />
+            <ListItemText
+              fontweight="bold"
+              color={getAmountColor(amount)}
+              title={getAmountSymbol(amount)}
+              subtitle={currency}
+            />
+          </ListItem>
+        );
+      })}
+    </PaymentListWrapper>
+  );
 };
-const getSymbol = (amount: number) => (amount > 0 ? '+' : '');
-
-const PaymentList: FC<IPaymentListProps> = ({ paymentdate, currency }) => (
-  <PaymentListWrapper>
-    {payGroup.map(({ amount, backgroundcolor, icon, color, text, id }) => (
-      <ListItem margin="5px 3px" padding="5px 0" key={id}>
-        <SIconWrapper iconBackground={backgroundcolor}>
-          <FontAwesomeIcon icon={icon} color={color} />
-        </SIconWrapper>
-        <ListItemText title={text} subtitle={paymentdate} />
-        <ListItemText
-          fontweight="bold"
-          color={getAmountColor(amount)}
-          title={`${getSymbol(amount)}  ${amount}`}
-          subtitle={currency}
-        />
-      </ListItem>
-    ))}
-  </PaymentListWrapper>
-);
 
 export default PaymentList;

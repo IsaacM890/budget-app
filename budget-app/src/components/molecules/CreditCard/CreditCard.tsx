@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { ICreditCardProps } from '../../../models/index';
 import Typography from '../../atoms/Typography/Typography';
 import CreditCardBackground from '../../../assets/images/CreditCardBackground.png';
-import { FontSize } from '../../../enums';
-import theme from '../../../style/theme/theme';
+import { colors, fontSize } from '../../../style/theme/theme';
 
 const SCreditCardContainer = styled.div`
   background-image: url(${CreditCardBackground});
@@ -40,31 +39,30 @@ const SCardDataBox = styled.div`
     flex-direction: column;
   }
 `;
-
-const CreditCard: FC<ICreditCardProps> = ({ FirstName, LastName, last4Digits, expMonth, expYear }) => (
+const CreditCard: FC<ICreditCardProps> = ({ firstName, lastName, last4Digits, expMonth, expYear }) => (
   <SCreditCardContainer>
-    <Typography fontsize={FontSize.heading2} color={theme.colors.white.primary} margin="5px 0" fontweight="bold">
+    <Typography fontsize={fontSize.heading2} color={colors.default} bold>
       Card
     </Typography>
     <SDigitsWrapper>
-      <Typography fontsize={FontSize.heading3} color={theme.colors.white.primary} margin="5px 0">
+      <Typography fontsize={fontSize.heading3} color={colors.default}>
         {`**** **** **** ${last4Digits}`}
       </Typography>
     </SDigitsWrapper>
     <SCardDataBox>
       <SCardHolderWrapper>
-        <Typography fontsize={FontSize.subtitle} color={theme.colors.white.primary} opacity="0.5">
+        <Typography fontsize={fontSize.subtitle} color={colors.white.medium}>
           CARD HOLDER
         </Typography>
-        <Typography fontsize={FontSize.caption} color={theme.colors.white.primary}>
-          {`${FirstName}  ${LastName}`}
+        <Typography fontsize={fontSize.caption} color={colors.default}>
+          {`${firstName}${' '}${lastName}`}
         </Typography>
       </SCardHolderWrapper>
       <SCardExpDateWrapper>
-        <Typography fontsize={FontSize.subtitle} color={theme.colors.white.primary} opacity="0.5">
+        <Typography fontsize={fontSize.subtitle} color={colors.white.medium}>
           VALID THRU
         </Typography>
-        <Typography fontsize={FontSize.caption} color={theme.colors.white.primary}>
+        <Typography fontsize={fontSize.caption} color={colors.default}>
           {`${expMonth} / ${expYear}`}
         </Typography>
       </SCardExpDateWrapper>

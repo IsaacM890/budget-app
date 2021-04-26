@@ -15,5 +15,5 @@ Example.args = {
   f_name: 'Ian',
   l_name: 'Kelley',
   email: 'Itzhakm890@gmai.com',
-  avatar: 'https://www.itu.cet.ac.il/uploads/2017/08/default-avatar-1.jpg',
+  avatar: 'https://png.pngtree.com/png-vector/20190909/ourmid/pngtree-outline-user-icon-png-image_1727916.jpg',
 };

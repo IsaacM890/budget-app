@@ -1,17 +1,36 @@
-/* eslint-disable camelcase */
-import { AvatarSize, FontSize, IconSize } from '../enums';
+import { AvatarSize, IconSize } from '../enums';
+import { fontSize } from '../style/theme/theme';
 
-export interface IUserProps {
-  first_name: string;
-  last_name: string;
+export interface IUser {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   avatar: string;
-  current_balance: string;
-  current_balance_currency: string;
+  currentBalance: string;
+  currentBalanceCurrency: string;
+  creditCard: ICreditCardProps[];
 }
 
-export interface ITransactionProps {
+export interface ICreditCardProps {
+  firstName: string;
+  lastName: string;
+  last4Digits: number;
+  expMonth: number;
+  expYear: number;
+}
+
+export interface IUserState {
+  user: IUser;
+  setUser: (user: IUser) => void;
+}
+
+export interface ITransactionsState {
+  transactions: ITransaction[];
+  setTransactions: (transactions: ITransaction[]) => void;
+}
+
+export interface ITransaction {
   paymentType: string;
   paymentMethod: string;
   cancelled: boolean;
@@ -20,10 +39,25 @@ export interface ITransactionProps {
   currency: string;
   category: string;
   company: string;
-  amount: {
-    from: number;
-    to: number;
+  amount: number;
+  location: {
+    country: string;
+    city: string;
+    street: string;
+    lat: number;
+    lng: number;
   };
+}
+export interface ITransactionCardProps {
+  paymentType: string;
+  paymentMethod: string;
+  cancelled: boolean;
+  time: string;
+  date: string;
+  currency: string;
+  category: string;
+  company: string;
+  amount: number;
   location: {
     country: string;
     city: string;
@@ -33,20 +67,20 @@ export interface ITransactionProps {
   };
 }
 
+export interface IAction {
+  type: string;
+  payload: any;
+}
+
 export interface ITypographyProps {
   color?: string;
-  fontsize: FontSize;
-  fontweight?: string;
-  margin?: string;
-  opacity?: string;
+  fontsize: fontSize;
+  bold?: boolean;
 }
 
 export interface IIconProps {
   size: IconSize;
-  margin: string;
-  padding: string;
-  borderradius?: string;
-  backgroundcolor?: string;
+  backgroundColor?: string;
 }
 
 export interface IListItemProps {
@@ -61,29 +95,20 @@ export interface ICurrentBalanceProps {
 export interface IAvatarProps {
   size: AvatarSize;
   src: string;
-  borderRadius: string;
-}
-
-export interface ICreditCardProps {
-  FirstName: string;
-  LastName: string;
-  last4Digits: number;
-  expMonth: number;
-  expYear: number;
 }
 
 export interface IBriefCardProps {
   title?: string;
   revenue?: string;
   profit?: string;
-  iconbackgroundcolor: string;
-  iconcolor?: string;
+  backgroundColor: string;
+  color?: string;
   icon?: any;
 }
 
 export interface IUserDetailsProps {
-  FirstName: string;
-  LastName: string;
+  firstName: string;
+  lastName: string;
   email: string;
   avatar: string;
 }
@@ -96,8 +121,8 @@ export interface IListItemTextProps {
 }
 
 export interface IPaymentListProps {
-  payment?: string;
-  paymentdate?: string;
-  currency?: string;
   iconBackground?: string;
+}
+export interface ITransactionsListProps {
+  transactions?: ITransaction[];
 }

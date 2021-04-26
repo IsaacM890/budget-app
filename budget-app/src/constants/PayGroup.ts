@@ -1,52 +1,57 @@
 import { faCheck, faTimes, faSyncAlt, faReply } from '@fortawesome/free-solid-svg-icons';
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
+import { PAYMENT_METHOD, PAYMENT_METHOD_TEXT } from '../enums/index';
+import { colors } from '../style/theme/theme';
 
-const payGroup = [
-  {
-    name: 'check',
-    text: 'Deposit from ATL',
-    icon: faCheck,
-    color: 'white',
-    backgroundcolor: '#8a7be5',
-    amount: 1538,
-    id: 1,
-  },
-  {
-    name: 'Cancelled',
-    text: 'Cancelled',
-    icon: faTimes,
-    color: 'white',
-    backgroundcolor: '#FF8788',
-    amount: 5849,
-    id: 2,
-  },
-  {
-    name: 'sync',
-    text: 'Deposit from ATL',
-    icon: faSyncAlt,
-    color: 'black',
-    backgroundcolor: 'white',
-    amount: -849,
-    id: 3,
-  },
-  {
-    name: 'refund',
-    text: 'Refund',
-    icon: faReply,
-    color: 'black',
-    backgroundcolor: 'white',
-    amount: -249,
-    id: 4,
-  },
-  {
-    name: 'paypal',
-    text: 'Deposit PayPal',
-    icon: faPaypal,
-    color: 'white',
-    backgroundcolor: '#8a7be5',
-    amount: 0,
-    id: 5,
-  },
-];
+const getStyleByPaymentMethod = (paymentMethod: string) => {
+  switch (paymentMethod) {
+    case PAYMENT_METHOD.ATM:
+      return {
+        text: PAYMENT_METHOD_TEXT.ATM,
+        icon: faCheck,
+        color: colors.default,
+        backgroundColor: colors.purple,
+      };
 
-export default payGroup;
+    case PAYMENT_METHOD.CANCELLED:
+      return {
+        text: PAYMENT_METHOD_TEXT.CANCELLED,
+        icon: faTimes,
+        color: colors.default,
+        backgroundColor: colors.pink.primary,
+      };
+
+    case PAYMENT_METHOD.CYCLE:
+      return {
+        text: PAYMENT_METHOD_TEXT.CYCLE,
+        icon: faSyncAlt,
+        color: colors.black,
+        backgroundColor: colors.default,
+      };
+
+    case PAYMENT_METHOD.REFUND:
+      return {
+        text: PAYMENT_METHOD_TEXT.REFUND,
+        icon: faReply,
+        color: colors.black,
+        backgroundColor: colors.default,
+      };
+
+    case PAYMENT_METHOD.PAYPAL:
+      return {
+        text: PAYMENT_METHOD_TEXT.PAYPAL,
+        icon: faPaypal,
+        color: colors.default,
+        backgroundColor: colors.purple,
+      };
+    default:
+      return {
+        text: ' Withdrawals from Credit Card',
+        icon: faCheck,
+        color: colors.default,
+        backgroundColor: colors.purple,
+      };
+  }
+};
+
+export default getStyleByPaymentMethod;

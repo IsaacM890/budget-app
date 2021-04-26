@@ -13,7 +13,6 @@ const setSize = (size?: IconSize) => {
     case IconSize.large:
       return `
       font-size: 30px;
-
       `;
 
     case IconSize.medium:
@@ -32,15 +31,15 @@ const setSize = (size?: IconSize) => {
 };
 
 const SIcon = styled.div<IIconProps>`
+  border-radius: 50px;
+  margin: 0 5px;
+  padding: 0 5px;
   ${({ size }) => setSize(size)};
-  ${({ padding }) => `padding:${padding};`};
-  ${({ backgroundcolor }) => `background-color:${backgroundcolor};`};
-  ${({ borderradius }) => `border-radius:${borderradius};`};
-  ${({ margin }) => `margin:${margin};`};
+  ${({ backgroundColor }) => `background-color:${backgroundColor};`};
 `;
 
-const Icon: React.FC<IIconProps> = ({ size, padding, children, backgroundcolor, borderradius, margin }) => (
-  <SIcon margin={margin} size={size} padding={padding} backgroundcolor={backgroundcolor} borderradius={borderradius}>
+const Icon: React.FC<IIconProps> = ({ size, children, backgroundColor }) => (
+  <SIcon size={size} backgroundColor={backgroundColor}>
     {children}
   </SIcon>
 );

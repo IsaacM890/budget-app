@@ -1,19 +1,20 @@
 import axios from 'axios';
-import { IUserProps, ITransactionProps } from '../models/index';
+import { IUser, ITransaction } from '../models/index';
 
-const baseURL = process.env.BASE_URL;
+const baseURL = process.env.REACT_APP_API_URL;
 
 class BudgetServiceApi {
   axiosInstance = axios.create({
     baseURL,
   });
 
-  createUser = async (userPayload: IUserProps) => {
+  createUser = async (userPayload: IUser) => {
     try {
       await this.axiosInstance.post(`users/register/`, userPayload);
       return { msg: 'User Created successfully' };
     } catch (err) {
-      return err.message;
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
     }
   };
 
@@ -22,16 +23,18 @@ class BudgetServiceApi {
       const user = await this.axiosInstance.get(`users/${id}`);
       return user.data;
     } catch (err) {
-      return err.message;
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
     }
   };
 
-  updateUser = async (id: string, userPayload: IUserProps) => {
+  updateUser = async (id: string, userPayload: IUser) => {
     try {
       await this.axiosInstance.put(`users/${id}`, userPayload);
       return { msg: 'User Updated successfully' };
     } catch (err) {
-      return err.message;
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
     }
   };
 
@@ -40,25 +43,38 @@ class BudgetServiceApi {
       await this.axiosInstance.delete(`users/${id}`);
       return { msg: 'User Deleted successfully' };
     } catch (err) {
-      return err.message;
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
     }
   };
 
   getAllTransactions = async () => {
     try {
-      const transactions = await this.axiosInstance.get(`transactions/all/`);
+      const transactions = await this.axiosInstance.get(`transactions/all`);
       return transactions.data;
     } catch (err) {
-      return err.message;
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
     }
   };
 
-  updateTransaction = async (id: string, transactionPayload: ITransactionProps) => {
+  getLatestTransactionsByLimit = async (limit: number) => {
+    try {
+      const transactions = await this.axiosInstance.get(`transactions/latest?limit=${limit}`);
+      return transactions.data;
+    } catch (err) {
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
+    }
+  };
+
+  updateTransaction = async (id: string, transactionPayload: ITransaction) => {
     try {
       await this.axiosInstance.put(`transactions/${id}`, transactionPayload);
       return { msg: 'Transaction Updated successfully' };
     } catch (err) {
-      return err.message;
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
     }
   };
 
@@ -67,16 +83,18 @@ class BudgetServiceApi {
       await this.axiosInstance.delete(`transactions/${id}`);
       return { msg: 'Transaction Deleted successfully' };
     } catch (err) {
-      return err.message;
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
     }
   };
 
-  createTransaction = async (transactionPayload: ITransactionProps) => {
+  createTransaction = async (transactionPayload: ITransaction) => {
     try {
       await this.axiosInstance.post(`transactions/`, transactionPayload);
       return { msg: 'Transaction Created successfully' };
     } catch (err) {
-      return err.message;
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
     }
   };
 }

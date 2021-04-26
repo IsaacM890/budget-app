@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ApexCharts from 'react-apexcharts';
+import { TransactionsContext } from '../../../constexts/transactionsContext';
+import { colors } from '../../../style/theme/theme';
+import { CHARTS_NAMES } from '../../../enums/index';
+import { getTotalAmountPerMonthByType } from '../../../helpers/mathFuncs';
 
 const ActivityChart = () => {
+  const { transactions } = useContext(TransactionsContext);
+  const incomesData = getTotalAmountPerMonthByType(transactions, 'Income');
+  const expensesData = getTotalAmountPerMonthByType(transactions, 'Expenses');
+
   const chartObj = {
     series: [
       {
-        name: 'Arrival',
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+        name: CHARTS_NAMES.Income,
+        data: incomesData,
       },
       {
-        name: 'Spending',
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+        name: CHARTS_NAMES.Expenses,
+        data: expensesData,
       },
     ],
     options: {
@@ -40,13 +48,10 @@ const ActivityChart = () => {
       legend: {
         position: 'top',
       },
-      xaxis: {
-        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-      },
       fill: {
         opacity: 1,
       },
-      colors: ['#4333A0', '#FF8788'],
+      colors: [colors.blue.dark, colors.pink.primary],
       tooltip: {
         y: {
           formatter: {

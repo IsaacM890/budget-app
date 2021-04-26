@@ -1,16 +1,17 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import styled from 'styled-components';
 import UserDetails from '../../molecules/UserDetails/UserDetails';
 import PaymentList from '../PaymentList/PaymentList';
-import { FontSize } from '../../../enums/index';
 import Typography from '../../atoms/Typography/Typography';
-import theme from '../../../style/theme/theme';
+import { breakPoints, colors, fontSize } from '../../../style/theme/theme';
+import { UserContext } from '../../../constexts/userContext';
 
 const SPaymentBarContainer = styled.div`
-  background-color: #fcedd8;
+  background-color: ${colors.pink.secondery};
   width: 200px;
   padding: 40px 10px;
-  @media (max-width: ${theme.breakpoints.desktop}) {
+  overflow-y: auto;
+  @media (max-width: ${breakPoints.desktop}) {
     display: none;
   }
 `;
@@ -21,21 +22,20 @@ const STitleWrapper = styled.div`
   margin: 10px;
 `;
 
-const PaymentBar: FC = () => (
-  <SPaymentBarContainer>
-    <UserDetails
-      FirstName="yaron"
-      LastName="avraham"
-      email="yaron2324@gmail.com"
-      avatar="https://www.itu.cet.ac.il/uploads/2017/08/default-avatar-1.jpg"
-    />
-    <STitleWrapper>
-      <Typography fontsize={FontSize.heading2} margin="5px 0" fontweight="bold">
-        Payment History
-      </Typography>
-    </STitleWrapper>
-    <PaymentList paymentdate="4 march,18:33" currency="USD" />
-  </SPaymentBarContainer>
-);
+const PaymentBar: FC = () => {
+  const { user } = useContext(UserContext);
+  const { firstName, lastName, email, avatar } = user;
+  return (
+    <SPaymentBarContainer>
+      <UserDetails firstName={firstName} lastName={lastName} email={email} avatar={avatar} />
+      <STitleWrapper>
+        <Typography fontsize={fontSize.heading2} bold>
+          Payment History
+        </Typography>
+      </STitleWrapper>
+      <PaymentList />
+    </SPaymentBarContainer>
+  );
+};
 
 export default PaymentBar;
