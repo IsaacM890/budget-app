@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { ITransactionsListProps } from '../../../models';
 import TransactionCard from '../../molecules/TransactionCard/TransactionCard';
 
-const TransactionsListWrapper = styled.ul`
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-  margin: 0;
+const TransactionsListWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
 `;
 
 const TransactionsList: FC<ITransactionsListProps> = ({ transactions }) => (

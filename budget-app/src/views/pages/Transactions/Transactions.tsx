@@ -1,4 +1,5 @@
 import React, { FC, useContext, useState } from 'react';
+import styled from 'styled-components';
 import TransactionsList from '../../../components/organisms/TransactionsList/TransactionsList';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
 import { TransactionsFileds } from '../../../enums';
@@ -11,6 +12,19 @@ const options = [
   { value: 'date', displayName: 'Date' },
   { value: 'currency', displayName: 'Currency' },
 ];
+const STransactionsPageContainer = styled.div`
+  padding: 20px;
+`;
+const SSelect = styled.select`
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+`;
+
+const SFiltersWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const Transactions: FC = () => {
   const { transactions } = useContext(TransactionsContext);
@@ -48,20 +62,21 @@ const Transactions: FC = () => {
   };
 
   return (
-    <div>
-      <select defaultValue="SortBy" onChange={onChange}>
-        <option disabled value="SortBy">
-          Sort By
-        </option>
-        {options.map(({ value, displayName }) => (
-          <option value={value}>{displayName}</option>
-        ))}
-      </select>
-      <input type="range" onChange={filterTransactions} min={0} max={1500} step={100} />
+    <STransactionsPageContainer>
+      <SFiltersWrapper>
+        <SSelect defaultValue="SortBy" onChange={onChange}>
+          <option disabled value="SortBy">
+            Sort By
+          </option>
+          {options.map(({ value, displayName }) => (
+            <option value={value}>{displayName}</option>
+          ))}
+        </SSelect>
+        <input type="range" onChange={filterTransactions} min={0} max={1500} step={100} />
+      </SFiltersWrapper>
       <p>Amount: {filterByAmount}</p>
-
       <TransactionsList transactions={sorted} />
-    </div>
+    </STransactionsPageContainer>
   );
 };
 

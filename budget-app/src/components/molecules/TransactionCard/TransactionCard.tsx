@@ -6,21 +6,19 @@ import { colors, fontSize } from '../../../style/theme/theme';
 
 const STransactionCardContainer = styled.div`
   border-radius: 10px;
-  width: 30%;
   height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
   box-shadow: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;
-  box-sizing: border-box;
   position: relative;
 `;
 
 const SDetailsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 
 const TransactionCard: FC<ITransactionCardProps> = ({
