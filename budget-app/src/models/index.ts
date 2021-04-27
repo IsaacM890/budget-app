@@ -61,10 +61,15 @@ export interface ITransactionCardProps {
   location: {
     country: string;
     city: string;
-    street: string;
     lat: number;
     lng: number;
   };
+}
+
+export interface ITransactionPagination {
+  totalTransactions: number;
+  transactionsPerPage: number;
+  paginate: (num: number) => void;
 }
 
 export interface IAction {

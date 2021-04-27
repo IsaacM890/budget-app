@@ -21,6 +21,10 @@ const SDetailsWrapper = styled.div`
   margin-top: 5px;
 `;
 
+const STitleWrapper = styled.div`
+  margin-block: auto;
+`;
+
 const TransactionCard: FC<ITransactionCardProps> = ({
   paymentType,
   paymentMethod,
@@ -34,9 +38,11 @@ const TransactionCard: FC<ITransactionCardProps> = ({
   location,
 }) => (
   <STransactionCardContainer>
-    <Typography fontsize={fontSize.heading3} bold>
-      {paymentType}
-    </Typography>
+    <STitleWrapper>
+      <Typography fontsize={fontSize.heading3} bold>
+        {paymentType}
+      </Typography>
+    </STitleWrapper>
     <SDetailsWrapper>
       <Typography fontsize={fontSize.caption} color={colors.grey.primary}>
         Payment Method : {paymentMethod}
@@ -64,9 +70,6 @@ const TransactionCard: FC<ITransactionCardProps> = ({
       </Typography>
       <Typography fontsize={fontSize.caption} color={colors.grey.primary}>
         Country: {location.country}
-      </Typography>
-      <Typography fontsize={fontSize.caption} color={colors.grey.primary}>
-        Street: {location.street}
       </Typography>
     </SDetailsWrapper>
   </STransactionCardContainer>
