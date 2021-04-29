@@ -3,7 +3,8 @@ import { ITransactionPagination } from '../../models';
 
 const Paginataion: FC<ITransactionPagination> = ({ totalTransactions, transactionsPerPage, paginate }) => {
   const pageNumbers = [];
-  for (let i = 0; i <= Math.ceil(totalTransactions / transactionsPerPage); i += 1) {
+
+  for (let i = 1; i <= Math.ceil(totalTransactions / transactionsPerPage); i += 1) {
     pageNumbers.push(i);
   }
 

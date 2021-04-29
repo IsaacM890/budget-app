@@ -41,7 +41,7 @@ const SFlexWrapper = styled.div`
 const Dashboard: FC = () => {
   const { user } = useContext(UserContext);
   const { creditCard, firstName, lastName } = user;
-  const { transactions } = useContext(TransactionsContext);
+  const { transactions, currencyRate } = useContext(TransactionsContext);
   const { last4Digits, expMonth, expYear } = creditCard[0];
 
   const incomes = transactions.filter((t) => t.paymentType === 'Income');
@@ -63,7 +63,7 @@ const Dashboard: FC = () => {
       <SFlexWrapper>
         <BriefCard
           title="Income"
-          revenue={getAverage(incomes)}
+          revenue={getAverage(incomes, currencyRate)}
           profit="+5.08%"
           backgroundColor={colors.blue.medium}
           color={colors.default}
@@ -73,7 +73,7 @@ const Dashboard: FC = () => {
       <SFlexWrapper>
         <BriefCard
           title="Expenses"
-          revenue={getAverage(expenses)}
+          revenue={getAverage(expenses, currencyRate)}
           profit="+5.08%"
           backgroundColor={colors.blue.medium}
           color={colors.default}

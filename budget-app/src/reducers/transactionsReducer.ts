@@ -8,6 +8,17 @@ const transactionsReducer = (state: ITransactionsState, action: IAction) => {
         ...state,
         transactions: action.payload,
       };
+    case ACTIONS.GET_CURRENCY:
+      return {
+        ...state,
+        selectedCurrency: action.payload,
+      };
+    case ACTIONS.GET_CURRENCY_RATE:
+      return {
+        ...state,
+        currencyRate: action.payload,
+      };
+
     default:
       return state;
   }

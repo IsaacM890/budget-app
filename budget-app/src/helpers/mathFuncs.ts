@@ -25,11 +25,11 @@ export const getTotalAmountPerMonthByType = (transactions: ITransaction[], type:
   return incomesData;
 };
 
-const getAverage = (transactions: ITransaction[]) => {
+const getAverage = (transactions: ITransaction[], currencyRates: any) => {
   let total = 0;
 
   transactions.forEach((transaction: ITransaction) => {
-    total += transaction.amount;
+    total += transaction.amount / currencyRates[transaction.currency];
   });
 
   const average = total / transactions.length;

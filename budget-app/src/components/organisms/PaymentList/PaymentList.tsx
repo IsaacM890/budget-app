@@ -31,7 +31,7 @@ const SIconWrapper = styled.div<IPaymentListProps>(
 );
 
 const PaymentList: FC = () => {
-  const { transactions } = useContext(TransactionsContext);
+  const { transactions, currencyRate } = useContext(TransactionsContext);
   return (
     <PaymentListWrapper>
       {transactions?.map(({ paymentMethod, date, time, amount, currency }) => {
@@ -44,8 +44,8 @@ const PaymentList: FC = () => {
             <ListItemText title={text} subtitle={getDateFormat(date, time)} />
             <ListItemText
               fontweight="bold"
-              color={getAmountColor(amount)}
-              title={getAmountSymbol(amount)}
+              color={getAmountColor(amount / currencyRate[currency])}
+              title={getAmountSymbol(amount / currencyRate[currency])}
               subtitle={currency}
             />
           </ListItem>

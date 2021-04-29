@@ -36,7 +36,6 @@ const Transactions: FC = () => {
   const [transactionsPerPage] = useState(4);
   const indexOfLastTransactions = currentPage * transactionsPerPage;
   const indexOfFirstTransactions = indexOfLastTransactions - transactionsPerPage;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const currentTrasactions = sorted.slice(indexOfFirstTransactions, indexOfLastTransactions);
 
   const sortTransactions = (value: any) => {
@@ -85,7 +84,7 @@ const Transactions: FC = () => {
         <input type="range" onChange={filterTransactions} min={0} max={1500} step={50} />
       </SFiltersWrapper>
       <p>Amount: {filterByAmount}</p>
-      <TransactionsList transactions={sorted} />
+      <TransactionsList transactions={currentTrasactions} />
       <Paginataion paginate={paginate} transactionsPerPage={transactionsPerPage} totalTransactions={sorted.length} />
     </STransactionsPageContainer>
   );

@@ -37,7 +37,7 @@ const SHomePageContainer = styled.div`
 `;
 
 const HomePage: FC = () => {
-  const { setTransactions } = useContext(TransactionsContext);
+  const { setTransactions, selectedCurrency, setCurrencyRates } = useContext(TransactionsContext);
   const { setUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -45,6 +45,7 @@ const HomePage: FC = () => {
       try {
         const transactionsData = await BudgetServiceApi.getLatestTransactionsByLimit(10);
         const userData = await BudgetServiceApi.getUser('60805fac3e04b30008493f6c');
+
         if (transactionsData?.length) {
           setTransactions(transactionsData);
         }
@@ -58,6 +59,20 @@ const HomePage: FC = () => {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const currenciesData = await BudgetServiceApi.getCurrency(selectedCurrency);
+        setCurrencyRates(currenciesData.conversion_rates);
+        console.log(currenciesData);
+      } catch (err) {
+        console.error('An error has occurred : ', err.message);
+        throw new Error(err);
+      }
+    };
+    fetchData();
+  }, [selectedCurrency]);
 
   return (
     <Router>

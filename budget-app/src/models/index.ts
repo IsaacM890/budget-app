@@ -26,8 +26,12 @@ export interface IUserState {
 }
 
 export interface ITransactionsState {
+  currencyRate: any;
+  selectedCurrency: string;
   transactions: ITransaction[];
   setTransactions: (transactions: ITransaction[]) => void;
+  setSelectedCurrency: (currency: string) => void;
+  setCurrencyRates: (currencyRate: object) => void;
 }
 
 export interface ITransaction {
@@ -130,4 +134,12 @@ export interface IPaymentListProps {
 }
 export interface ITransactionsListProps {
   transactions?: ITransaction[];
+}
+
+export interface ICurrencyRowProps {
+  onChange: () => void;
+}
+export interface INavBarProps {
+  currencyCode: string;
+  onChange: () => void;
 }
