@@ -9,6 +9,7 @@ import ActivityChart from '../../../components/molecules/ActivityChart/ActivityC
 import { colors, breakPoints } from '../../../style/theme/theme';
 import getAverage from '../../../helpers/mathFuncs';
 import { UserContext } from '../../../constexts/userContext';
+import { CurrencyContext } from '../../../constexts/currencyContext';
 
 const SMainContainer = styled.div`
   display: flex;
@@ -41,7 +42,8 @@ const SFlexWrapper = styled.div`
 const Dashboard: FC = () => {
   const { user } = useContext(UserContext);
   const { creditCard, firstName, lastName } = user;
-  const { transactions, currencyRate } = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
+  const { currencyRates } = useContext(CurrencyContext);
   const { last4Digits, expMonth, expYear } = creditCard[0];
 
   const incomes = transactions.filter((t) => t.paymentType === 'Income');
@@ -63,7 +65,7 @@ const Dashboard: FC = () => {
       <SFlexWrapper>
         <BriefCard
           title="Income"
-          revenue={getAverage(incomes, currencyRate)}
+          revenue={getAverage(incomes, currencyRates)}
           profit="+5.08%"
           backgroundColor={colors.blue.medium}
           color={colors.default}
@@ -73,7 +75,7 @@ const Dashboard: FC = () => {
       <SFlexWrapper>
         <BriefCard
           title="Expenses"
-          revenue={getAverage(expenses, currencyRate)}
+          revenue={getAverage(expenses, currencyRates)}
           profit="+5.08%"
           backgroundColor={colors.blue.medium}
           color={colors.default}

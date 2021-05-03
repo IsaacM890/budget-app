@@ -2,6 +2,7 @@ import React, { FC, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
+import { CurrencyContext } from '../../../constexts/currencyContext';
 import { UserContext } from '../../../constexts/userContext';
 import transactionsList from '../Transactions/Transactions';
 import Cards from '../Cards/Cards';
@@ -37,8 +38,9 @@ const SHomePageContainer = styled.div`
 `;
 
 const HomePage: FC = () => {
-  const { setTransactions, selectedCurrency, setCurrencyRates } = useContext(TransactionsContext);
+  const { setTransactions } = useContext(TransactionsContext);
   const { setUser } = useContext(UserContext);
+  const { selectedCurrency, setCurrencyRates } = useContext(CurrencyContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,7 +67,7 @@ const HomePage: FC = () => {
       try {
         const currenciesData = await BudgetServiceApi.getCurrency(selectedCurrency);
         setCurrencyRates(currenciesData.conversion_rates);
-        console.log(currenciesData);
+        console.log('currenciesData : ', currenciesData);
       } catch (err) {
         console.error('An error has occurred : ', err.message);
         throw new Error(err);

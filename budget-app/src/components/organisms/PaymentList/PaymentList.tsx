@@ -7,6 +7,7 @@ import { getAmountColor, getAmountSymbol, getDateFormat } from '../../../helpers
 import getStyleByPaymentMethod from '../../../constants/PayGroup';
 import ListItem from '../../molecules/ListItem/ListItem';
 import ListItemText from '../../molecules/ListItemText/ListItemText';
+import { CurrencyContext } from '../../../constexts/currencyContext';
 
 const PaymentListWrapper = styled.ul`
   list-style-type: none;
@@ -31,7 +32,8 @@ const SIconWrapper = styled.div<IPaymentListProps>(
 );
 
 const PaymentList: FC = () => {
-  const { transactions, currencyRate } = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
+  const { currencyRates, selectedCurrency } = useContext(CurrencyContext);
   return (
     <PaymentListWrapper>
       {transactions?.map(({ paymentMethod, date, time, amount, currency }) => {
@@ -44,9 +46,9 @@ const PaymentList: FC = () => {
             <ListItemText title={text} subtitle={getDateFormat(date, time)} />
             <ListItemText
               fontweight="bold"
-              color={getAmountColor(amount / currencyRate[currency])}
-              title={getAmountSymbol(amount / currencyRate[currency])}
-              subtitle={currency}
+              color={getAmountColor(amount)}
+              title={getAmountSymbol(amount / currencyRates[currency])}
+              subtitle={selectedCurrency}
             />
           </ListItem>
         );

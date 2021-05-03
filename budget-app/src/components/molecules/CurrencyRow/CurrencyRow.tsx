@@ -1,18 +1,20 @@
 import React, { FC, useContext } from 'react';
-import { TransactionsContext } from '../../../constexts/transactionsContext';
+import { CurrencyContext } from '../../../constexts/currencyContext';
 import { ICurrencyRowProps } from '../../../models';
 
 const CurrencyRow: FC<ICurrencyRowProps> = () => {
-  const { setSelectedCurrency, currencyRate } = useContext(TransactionsContext);
+  const { setSelectedCurrency, currencyRates } = useContext(CurrencyContext);
 
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
     setSelectedCurrency(value);
   };
+  console.log('currencyRate', currencyRates);
+
   return (
     <div>
       <select onChange={onChange}>
-        {Object.keys(currencyRate).map((option: string) => (
+        {Object.keys(currencyRates).map((option: string) => (
           <option key={option} value={option}>
             {option}
           </option>

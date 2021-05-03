@@ -26,10 +26,13 @@ export interface IUserState {
 }
 
 export interface ITransactionsState {
-  currencyRate: any;
-  selectedCurrency: string;
   transactions: ITransaction[];
   setTransactions: (transactions: ITransaction[]) => void;
+}
+
+export interface ICurrencyState {
+  currencyRates: any;
+  selectedCurrency: string;
   setSelectedCurrency: (currency: string) => void;
   setCurrencyRates: (currencyRate: object) => void;
 }

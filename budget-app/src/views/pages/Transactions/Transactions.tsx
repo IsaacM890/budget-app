@@ -1,18 +1,10 @@
 import React, { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
-import Paginataion from '../../../helpers/TransactionPaginataion/TransactionPaginataion';
+import Pagination from '../../../helpers/Pagination';
 import TransactionsList from '../../../components/organisms/TransactionsList/TransactionsList';
 import { TransactionsContext } from '../../../constexts/transactionsContext';
-import { TransactionsFileds } from '../../../enums';
+import { sort, options } from '../../../helpers/SortAndFilter';
 
-const options = [
-  { value: 'paymentType', displayName: 'Payment Type' },
-  { value: 'paymentMethod', displayName: 'Payment Method ' },
-  { value: 'amount', displayName: 'Amount' },
-  { value: 'time', displayName: 'Time' },
-  { value: 'date', displayName: 'Date' },
-  { value: 'currency', displayName: 'Currency' },
-];
 const STransactionsPageContainer = styled.div`
   padding: 20px;
 `;
@@ -38,22 +30,6 @@ const Transactions: FC = () => {
   const indexOfFirstTransactions = indexOfLastTransactions - transactionsPerPage;
   const currentTrasactions = sorted.slice(indexOfFirstTransactions, indexOfLastTransactions);
 
-  const sortTransactions = (value: any) => {
-    const key: TransactionsFileds = value;
-    const sortedTransactions = tempTransactions.sort((a, b) => {
-      const valueA = a[key];
-      const valueB = b[key];
-      if (valueA < valueB) {
-        return -1;
-      }
-      if (valueA > valueB) {
-        return 1;
-      }
-      return 0;
-    });
-    setSorted(sortedTransactions);
-  };
-
   const filterTransactions = (e: React.ChangeEvent<HTMLInputElement>) => {
     const key = e.target.value;
     const filteredTransactions = tempTransactions.filter(({ amount }) => amount >= +key);
@@ -63,7 +39,8 @@ const Transactions: FC = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
-    sortTransactions(value);
+    const sortTrnsactions = sort(value, tempTransactions);
+    setSorted(sortTrnsactions);
   };
 
   const paginate = (pageNumber: number) => {
@@ -77,7 +54,7 @@ const Transactions: FC = () => {
           <option disabled value="SortBy">
             Sort By
           </option>
-          {options.map(({ value, displayName }) => (
+          {options?.map(({ value, displayName }) => (
             <option value={value}>{displayName}</option>
           ))}
         </SSelect>
@@ -85,7 +62,7 @@ const Transactions: FC = () => {
       </SFiltersWrapper>
       <p>Amount: {filterByAmount}</p>
       <TransactionsList transactions={currentTrasactions} />
-      <Paginataion paginate={paginate} transactionsPerPage={transactionsPerPage} totalTransactions={sorted.length} />
+      <Pagination paginate={paginate} transactionsPerPage={transactionsPerPage} totalTransactions={sorted.length} />
     </STransactionsPageContainer>
   );
 };

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ITransactionPagination } from '../../models';
+import { ITransactionPagination } from '../models';
 
 const Paginataion: FC<ITransactionPagination> = ({ totalTransactions, transactionsPerPage, paginate }) => {
   const pageNumbers = [];
