@@ -4,6 +4,10 @@ import transactionsReducer from '../reducers/transactionsReducer';
 import { ACTIONS } from '../enums/index';
 
 const initialState = {
+  currencyRate: {},
+  setCurrencyRates: () => {},
+  selectedCurrency: 'USD',
+  setSelectedCurrency: () => {},
   transactions: [],
   setTransactions: () => {},
 };
@@ -16,7 +20,6 @@ const TransactionsContextProvider: React.FC = ({ children }) => {
   const setTransactions = (transactions: ITransaction[]) => {
     dispatch({ type: ACTIONS.GET_LATEST_TRANSACTIONS, payload: transactions });
   };
-
   return (
     <TransactionsContext.Provider
       value={{

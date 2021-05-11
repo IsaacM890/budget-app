@@ -8,6 +8,7 @@ const transactionsReducer = (state: ITransactionsState, action: IAction) => {
         ...state,
         transactions: action.payload,
       };
+
     default:
       return state;
   }

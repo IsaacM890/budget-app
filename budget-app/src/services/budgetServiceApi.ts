@@ -8,6 +8,18 @@ class BudgetServiceApi {
     baseURL,
   });
 
+  getCurrency = async (currencyCode: string) => {
+    try {
+      const currencies = await axios.get(
+        ` https://v6.exchangerate-api.com/v6/6eec34279d4900b11c746caf/latest/${currencyCode}`
+      );
+      return currencies.data;
+    } catch (err) {
+      console.error('An error has occurred : ', err.message);
+      throw new Error(err);
+    }
+  };
+
   createUser = async (userPayload: IUser) => {
     try {
       await this.axiosInstance.post(`users/register/`, userPayload);

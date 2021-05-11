@@ -6,6 +6,7 @@ import NavList from '../NavList/NavList';
 import CurrentBalance from '../../molecules/CurrentBalance/CurrentBalance';
 import { colors, breakPoints } from '../../../style/theme/theme';
 import { UserContext } from '../../../constexts/userContext';
+import CurrencyRow from '../../molecules/CurrencyRow/CurrencyRow';
 
 interface IIsshowProps {
   isShow?: boolean;
@@ -40,7 +41,6 @@ const SmenuIconWrapper = styled.div`
 
 const NavBar: FC = () => {
   const { user } = useContext(UserContext);
-
   const [isShow, setIsShow] = useState(false);
 
   return (
@@ -51,6 +51,7 @@ const NavBar: FC = () => {
       <SNavBarWrapper isShow={isShow}>
         <CurrentBalance currentBalance={user.currentBalance} />
         <NavList />
+        <CurrencyRow onChange={() => {}} />
       </SNavBarWrapper>
     </>
   );

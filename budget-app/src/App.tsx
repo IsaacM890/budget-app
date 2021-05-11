@@ -1,17 +1,19 @@
 import React from 'react';
 import UserContextProvider from './constexts/userContext';
 import TransactionsContextProvider from './constexts/transactionsContext';
-import './App.css';
-
+import CurrencyContextProvider from './constexts/currencyContext';
 import HomePage from './views/pages/HomePage/HomePage';
+import './App.css';
 
 function App() {
   return (
-    <TransactionsContextProvider>
-      <UserContextProvider>
-        <HomePage />
-      </UserContextProvider>
-    </TransactionsContextProvider>
+    <CurrencyContextProvider>
+      <TransactionsContextProvider>
+        <UserContextProvider>
+          <HomePage />
+        </UserContextProvider>
+      </TransactionsContextProvider>
+    </CurrencyContextProvider>
   );
 }
 

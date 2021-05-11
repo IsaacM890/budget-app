@@ -30,6 +30,13 @@ export interface ITransactionsState {
   setTransactions: (transactions: ITransaction[]) => void;
 }
 
+export interface ICurrencyState {
+  currencyRates: any;
+  selectedCurrency: string;
+  setSelectedCurrency: (currency: string) => void;
+  setCurrencyRates: (currencyRate: object) => void;
+}
+
 export interface ITransaction {
   paymentType: string;
   paymentMethod: string;
@@ -61,10 +68,15 @@ export interface ITransactionCardProps {
   location: {
     country: string;
     city: string;
-    street: string;
     lat: number;
     lng: number;
   };
+}
+
+export interface ITransactionPagination {
+  totalTransactions: number;
+  transactionsPerPage: number;
+  paginate: (num: number) => void;
 }
 
 export interface IAction {
@@ -125,4 +137,12 @@ export interface IPaymentListProps {
 }
 export interface ITransactionsListProps {
   transactions?: ITransaction[];
+}
+
+export interface ICurrencyRowProps {
+  onChange: () => void;
+}
+export interface INavBarProps {
+  currencyCode: string;
+  onChange: () => void;
 }
