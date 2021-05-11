@@ -48,6 +48,7 @@ const Dashboard: FC = () => {
 
   const incomes = transactions.filter((t) => t.paymentType === 'Income');
   const expenses = transactions.filter((t) => t.paymentType === 'Expenses');
+
   return (
     <SMainContainer>
       <SFlexWrapper>

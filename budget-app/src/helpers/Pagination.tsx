@@ -1,5 +1,12 @@
 import React, { FC } from 'react';
+import styled from 'styled-components';
 import { ITransactionPagination } from '../models';
+
+const SButtonList = styled.ul`
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+`;
 
 const Paginataion: FC<ITransactionPagination> = ({ totalTransactions, transactionsPerPage, paginate }) => {
   const pageNumbers = [];
@@ -10,7 +17,7 @@ const Paginataion: FC<ITransactionPagination> = ({ totalTransactions, transactio
 
   return (
     <div>
-      <ul>
+      <SButtonList>
         {pageNumbers.map((number) => (
           <li key={number}>
             <button onClick={() => paginate(number)} type="button">
@@ -18,7 +25,7 @@ const Paginataion: FC<ITransactionPagination> = ({ totalTransactions, transactio
             </button>
           </li>
         ))}
-      </ul>
+      </SButtonList>
     </div>
   );
 };
