@@ -9,7 +9,6 @@ const CurrencyRow: FC<ICurrencyRowProps> = () => {
     const { value } = e.target;
     setSelectedCurrency(value);
   };
-  console.log('currencyRate', currencyRates);
 
   return (
     <div>
