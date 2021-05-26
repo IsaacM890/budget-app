@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/budget-app/static/css/main.b3c31ee0.chunk.css",
+    "main.js": "/budget-app/static/js/main.d19af6ac.chunk.js",
+    "main.js.map": "/budget-app/static/js/main.d19af6ac.chunk.js.map",
+    "runtime-main.js": "/budget-app/static/js/runtime-main.e7da029f.js",
+    "runtime-main.js.map": "/budget-app/static/js/runtime-main.e7da029f.js.map",
+    "static/js/2.6192f67f.chunk.js": "/budget-app/static/js/2.6192f67f.chunk.js",
+    "static/js/2.6192f67f.chunk.js.map": "/budget-app/static/js/2.6192f67f.chunk.js.map",
+    "index.html": "/budget-app/index.html",
+    "static/css/main.b3c31ee0.chunk.css.map": "/budget-app/static/css/main.b3c31ee0.chunk.css.map",
+    "static/js/2.6192f67f.chunk.js.LICENSE.txt": "/budget-app/static/js/2.6192f67f.chunk.js.LICENSE.txt",
+    "static/media/CreditCardBackground.3b32bef8.png": "/budget-app/static/media/CreditCardBackground.3b32bef8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e7da029f.js",
+    "static/js/2.6192f67f.chunk.js",
+    "static/css/main.b3c31ee0.chunk.css",
+    "static/js/main.d19af6ac.chunk.js"
+  ]
+}
